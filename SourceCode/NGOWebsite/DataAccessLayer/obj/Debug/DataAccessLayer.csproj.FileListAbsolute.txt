@@ -1,0 +1,7 @@
+D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\Models.dll
+D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\Models.pdb
+D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
