@@ -28,28 +28,24 @@
                 switch (value)
                 {
                     case "success":
-                        <div class="alert alert-success" style="text-align:center;margin-top:30px;margin-bottom:-35px">
+                        <div class="alert alert-success" style="text-align:center;margin-top:30px;margin-bottom:-10px">
                             <i class="fa fa-check-circle  fa-fw"></i> Successfull !
                         </div>
 
                         break;
                     case "error":
-                    <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -35px">
+                    <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -10px">
                         <i class="fa fa-times-circle  fa-fw"></i> Something went wrong !
                     </div>
                         break;
-
                 }
             }
         }
     </div>
-    <!-- /.col-lg-12 -->
-    <div class="col-lg-12">
-        <h1 class="page-header"></h1>
-    </div>
+
 </div>
 <!-- /.row -->
-<div class="row">
+<div class="row" style="margin-top:30px">
     <div class="col-lg-12">
         <div class="panel panel-primary">
             <div class="panel-heading" style="font-weight:bold">
@@ -92,9 +88,9 @@
                                         }
                                     </td>
                                     <td>
-                                        <a href="@Url.Action("View","Admin")" title="View Detail"><i class="fa fa-search-plus  fa-fw"></i></a>
-                                        <a href="@Url.Action("Edit","Admin")" title="Update"><i class="fa fa-edit  fa-fw"></i></a>
-                                        <a href="@Url.Action("Delete","Admin")" title="Delete"><i class="fa fa-eraser  fa-fw"></i></a>
+                                        <a href="@Url.Action("Details", "Admin", new { id=item.Id})" title="View Detail"><i class="fa fa-search-plus  fa-fw"></i></a>
+                                        <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" title="Update"><i class="fa fa-edit  fa-fw"></i></a>
+                                        <a href="@Url.Action("Delete", "Admin", new { id = item.Id })" title="Delete"><i class="fa fa-eraser  fa-fw"></i></a>
                                     </td>
                                 </tr>
                             }

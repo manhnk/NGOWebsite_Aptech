@@ -42,6 +42,7 @@ namespace DataAccessLayer
                 param.Add("@address");
                 param.Add("@email");
                 param.Add("@isActived");
+                param.Add("@isSuperAdmin");
 
                 List<object> value = new List<object>();
                 value.Add(admin.UserName);
@@ -52,6 +53,7 @@ namespace DataAccessLayer
                 value.Add(admin.Address);
                 value.Add(admin.Email);
                 value.Add(admin.IsActived);
+                value.Add(admin.IsSuperAdmin);
 
                 kt = DataConnect.CRUDData(sql, param, value);
             }

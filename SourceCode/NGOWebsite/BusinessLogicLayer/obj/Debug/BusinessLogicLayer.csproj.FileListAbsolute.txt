@@ -7,3 +7,12 @@ D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\BusinessLogicLayer\bin\Debug\DataA
 D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\BusinessLogicLayer\bin\Debug\Models.pdb
 D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
 D:\Aptech\Project Sem 3\SourceCode\NGOWebsite\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojResolveAssemblyReference.cache
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\bin\Debug\Models.dll
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\bin\Debug\Models.pdb
+D:\Aptech\Project Sem 3\Version\20151001\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb

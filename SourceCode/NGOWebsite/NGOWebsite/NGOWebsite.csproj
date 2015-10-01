@@ -937,6 +937,8 @@
     <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ListAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

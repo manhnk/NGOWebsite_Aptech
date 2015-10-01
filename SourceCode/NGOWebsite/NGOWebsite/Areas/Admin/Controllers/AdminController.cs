@@ -101,7 +101,12 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            List<Models.Admin> ls = AdminBusiness.GetAdminById(id);
+            if (ls.Count > 0)
+            {
+                return View(ls[0]);
+            }
+            else return null;
         }
 
         //
@@ -136,7 +141,8 @@ namespace NGOWebsite.Areas.Admin.Controllers
                     Phone = frm["Phone"],
                     Address = frm["Address"],
                     Email = frm["Email"],
-                    IsActived = actived
+                    IsActived = actived,
+                    IsSuperAdmin=false
                 };
 
                 kt=AdminBusiness.AddAdmin(ad);

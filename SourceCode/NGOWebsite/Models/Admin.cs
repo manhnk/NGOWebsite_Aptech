@@ -54,5 +54,7 @@ namespace Models
         
         [Display(Name="Is Actived")]
         public bool IsActived { get; set; }
+
+        public bool IsSuperAdmin { get; set; }
     }
 }
