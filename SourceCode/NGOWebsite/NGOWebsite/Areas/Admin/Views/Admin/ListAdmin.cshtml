@@ -103,10 +103,10 @@
                                     <td>
                                         <a href="@Url.Action("Details", "Admin", new { id=item.Id})" title="View Detail"><i class="fa fa-search-plus  fa-fw"></i></a>
 
-                                        @if (ad.IsSuperAdmin)
+                                        @if (ad.IsSuperAdmin && !item.IsSuperAdmin)
                                         {
                                             <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" title="Update"><i class="fa fa-edit  fa-fw"></i></a>
-                                            <a href="@Url.Action("Delete", "Admin", new { id = item.Id })" title="Delete"><i class="fa fa-eraser  fa-fw"></i></a>
+                                            <a href="@Url.Action("Delete", "Admin", new { id = item.Id })" onclick="return confirm('Are you sure?');" title="Delete"><i class="fa fa-times  fa-fw"></i></a>
                                         }
                                         else if (ad.Id == item.Id)
                                         {

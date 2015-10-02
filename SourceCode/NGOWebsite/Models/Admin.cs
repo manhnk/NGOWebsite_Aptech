@@ -14,15 +14,15 @@ namespace Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please type user name!")]
-        [Remote("CheckAccExisted", "Admin", HttpMethod = "POST", ErrorMessage = "User name is existed. Please enter a different user name.")]
+        [Remote("CheckAccExisted", "Admin", HttpMethod = "POST", ErrorMessage = "User name is existed. Please enter a different user name.", AdditionalFields = "Id")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
         
         [Required(ErrorMessage = "Please type password!")]
+        [Remote("CheckPassword", "Admin", HttpMethod = "POST", ErrorMessage = "Password is wrong !")]        
         [Display(Name = "Password")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
-        [Remote("CheckPassword", "Admin", HttpMethod = "POST", ErrorMessage = "Password is wrong !")]        
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

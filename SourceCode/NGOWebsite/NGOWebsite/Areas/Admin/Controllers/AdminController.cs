@@ -64,38 +64,6 @@ namespace NGOWebsite.Areas.Admin.Controllers
         }
 
 
-        public ActionResult ListAdmin()
-        {
-            List<Models.Admin> ls= AdminBusiness.GetAllAdmin();
-            return View(ls);
-        }
-
-        public ActionResult ChangeStatus(int id)
-        {
-            List<Models.Admin> ls=AdminBusiness.GetAdminById(id);
-            int check = 0;
-            if (ls.Count > 0)
-            {
-                if (ls[0].IsActived) {
-                    ls[0].IsActived = false;
-                }
-                else {
-                    ls[0].IsActived = true;                    
-                }
-
-                check = AdminBusiness.EditAdmin(ls[0]);
-                if (check > 0)
-                {
-                    return RedirectToAction("ListAdmin","Admin");
-                }
-                else
-                {
-                    return RedirectToAction("ListAdmin", "Admin", new {@error=-1});
-                }
-            }
-            return null;
-        }
-
         //
         // GET: /Admin/Admin/Details/5
 
@@ -164,41 +132,6 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         }
 
-        [HttpPost]   
-        public JsonResult CheckAccExisted(string username,int ? id) {
-                    bool check = false;
-
-            List<Models.Admin> ls=AdminBusiness.CheckUserExisted(username,id);
-            if (ls.Count > 0)
-            {
-                check = true;
-            }
-            return Json(check == false);
-        }
-
-        [HttpPost]
-        public JsonResult CheckPassword(FormCollection frm)
-        {
-            bool check = false;
-            int id = 0;
-            if (Session["mvc_user"] != null)
-            {
-                Models.Admin ad = Session["mvc_user"] as Models.Admin;
-                id = ad.Id;
-            }
-            
-
-            List<Models.Admin> ls = AdminBusiness.GetAdminById(id);
-            if (ls.Count > 0)
-            {
-                if (ls[0].Password == DataAccessLayer.DataConnect.GetMd5Hash(frm["Password"]))
-                {
-                    check = true;
-                }
-            }
-            return Json(check == false);
-        }
-
         //
         // GET: /Admin/Admin/Edit/5
 
@@ -229,7 +162,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
                 // TODO: Add insert logic here
                 Models.Admin ad = new Models.Admin()
                 {
-                    Id=int.Parse(frm["Id"]),
+                    Id = int.Parse(frm["Id"]),
                     UserName = frm["UserName"],
                     FullName = frm["FullName"],
                     Gender = frm["Gender"],
@@ -257,6 +190,102 @@ namespace NGOWebsite.Areas.Admin.Controllers
             }
         }
 
+        //
+        // POST: /Admin/Admin/Delete/5
+
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                int kt=AdminBusiness.DeleteAdmin(id);
+                if (kt > 0)
+                {
+                    return RedirectToAction("ListAdmin", "Admin", new { update = "success" });
+                }
+                else
+                {
+                    return RedirectToAction("ListAdmin", "Admin", new { update = "error" });
+                }
+            }
+            catch
+            {
+                return RedirectToAction("ListAdmin", "Admin", new { update = "error" });
+            }
+        }
+
+        public ActionResult ListAdmin()
+        {
+            List<Models.Admin> ls = AdminBusiness.GetAllAdmin();
+            return View(ls);
+        }
+
+        public ActionResult ChangeStatus(int id)
+        {
+            List<Models.Admin> ls = AdminBusiness.GetAdminById(id);
+            int check = 0;
+            if (ls.Count > 0)
+            {
+                if (ls[0].IsActived)
+                {
+                    ls[0].IsActived = false;
+                }
+                else
+                {
+                    ls[0].IsActived = true;
+                }
+
+                check = AdminBusiness.EditAdmin(ls[0]);
+                if (check > 0)
+                {
+                    return RedirectToAction("ListAdmin", "Admin");
+                }
+                else
+                {
+                    return RedirectToAction("ListAdmin", "Admin", new { @error = -1 });
+                }
+            }
+            return null;
+        }
+
+
+        [HttpPost]   
+        public JsonResult CheckAccExisted(string username,int ? id) {
+                    bool check = false;
+
+            List<Models.Admin> ls=AdminBusiness.CheckUserExisted(username,id);
+            if (ls.Count > 0)
+            {
+                check = true;
+            }
+            return Json(check == false);
+        }
+
+        [HttpPost]
+        public JsonResult CheckPassword(string password)// name of paramter must be same with name of control 
+        {
+            bool check = false;
+            int id = 0;
+           if (Session["mvc_user"] != null)
+            {
+                Models.Admin ad = Session["mvc_user"] as Models.Admin;
+                id = ad.Id;
+            }
+            
+
+            List<Models.Admin> ls = AdminBusiness.GetAdminById(id);
+            if (ls.Count > 0)
+            {
+                if (ls[0].Password != DataAccessLayer.DataConnect.GetMd5Hash(password))
+                {
+                    check = true;
+                }
+            }
+            return Json(check == false);
+        }
+
+
+
         public ActionResult ChangePassword()
         {
             return View();
@@ -276,7 +305,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
             {
                 string pass = frm["NewPassword"];
 
-                kt = AdminBusiness.ChangePassword(id,pass);
+                kt = AdminBusiness.ChangePassword(id, pass);
 
             }
             catch
@@ -294,30 +323,6 @@ namespace NGOWebsite.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Admin/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Admin/Admin/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
     }
 }

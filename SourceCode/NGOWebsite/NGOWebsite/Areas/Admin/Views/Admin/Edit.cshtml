@@ -71,7 +71,14 @@
                                 {
                                     if (ad.IsSuperAdmin)
                                     {
-                                        <label>@Html.CheckBox("cbIsActived", new { @Value = "rmb", @checked = "checked" }) Is Actived </label>
+                                        if (Model.IsSuperAdmin)
+                                        {
+                                            <label>@Html.CheckBox("cbIsActived", new { @Value = "rmb", @checked = "checked", @disabled = "disabled" }) Is Actived </label>
+                                        }
+                                        else
+                                        {
+                                            <label>@Html.CheckBox("cbIsActived", new { @Value = "rmb", @checked = "checked" }) Is Actived </label>
+                                        }
                                     }
                                     else
                                     {
@@ -95,8 +102,8 @@
                             <!-- /.col-lg-12 -->
                         <div class="col-lg-12">
                             <div class="col-lg-6">
-                                <button type="submit" style="margin-left:-15px" class="btn btn-primary"><i class="fa fa-plus-circle  fa-fw"></i> Update </button>
-                                <a class="btn btn-primary" href="@Url.Action("ListAdmin","Admin")" style="margin-left:50px"><i class="fa  fa-mail-forward fa-fw"></i> Cancel </a>
+                                <button type="submit" style="margin-left:-15px" class="btn btn-primary"><i class="fa fa-edit fa-fw"></i> Update </button>
+                                <a class="btn btn-primary" href="@Url.Action("ListAdmin","Admin")" style="margin-left:50px"><i class="fa  fa-mail-reply fa-fw"></i> Cancel </a>
                             </div>
                             <div class="col-lg-6">
                                 @if (ad.Id == Model.Id)

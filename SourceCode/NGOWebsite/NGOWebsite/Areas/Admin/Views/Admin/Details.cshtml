@@ -89,14 +89,14 @@
                     </div>
                     <div class="col-lg-4">
 
-                        @if (ad.IsSuperAdmin)
+                        @if (ad.IsSuperAdmin && !Model.IsSuperAdmin)
                         {
-                        <a class="btn btn-primary" style="width:120px" href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><i class="fa fa-plus-circle  fa-fw"></i> Update </a><br />
-                        <a class="btn btn-danger" style="margin-top:15px;width:120px" href="@Url.Action("Delete", "Admin", new { @id = Model.Id })"><i class="fa fa-times-circle  fa-fw"></i> Delete </a><br />
+                        <a class="btn btn-primary" style="width:120px" href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><i class="fa fa-edit  fa-fw"></i> Update </a><br />
+                        <a class="btn btn-danger" style="margin-top:15px;width:120px" href="@Url.Action("Delete", "Admin", new { @id = Model.Id })" onclick="return confirm('Are you sure?');"><i class="fa fa-times-circle  fa-fw"></i> Delete </a><br />
                         }
                         else if (ad.Id == Model.Id)
                         {
-                        <a class="btn btn-primary" style="width:120px" href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><i class="fa fa-plus-circle  fa-fw"></i> Update </a><br />
+                        <a class="btn btn-primary" style="width:120px" href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><i class="fa fa-edit  fa-fw"></i> Update </a><br />
                         }
 
                         <a class="btn btn-success" style="margin-top:15px;width:120px" href="@Url.Action("ListAdmin", "Admin")"><i class="fa fa-mail-reply  fa-fw"></i> Back to list </a>
