@@ -1285,6 +1285,8 @@
     <Content Include="Views\User\Partners.cshtml" />
     <Content Include="Views\User\AboutUs.cshtml" />
     <Content Include="Views\User\Stories.cshtml" />
+    <Content Include="Views\User\Member.cshtml" />
+    <Content Include="Views\User\Help.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
