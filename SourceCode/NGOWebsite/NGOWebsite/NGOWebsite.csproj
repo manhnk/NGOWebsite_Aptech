@@ -1248,7 +1248,6 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="index.html" />
     <Content Include="recent_program.html" />
-    <Content Include="register.html" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -1264,7 +1263,6 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="stories.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1282,6 +1280,11 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Donation.cshtml" />
     <Content Include="Views\User\Gallery.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Contact.cshtml" />
+    <Content Include="Views\User\Partners.cshtml" />
+    <Content Include="Views\User\AboutUs.cshtml" />
+    <Content Include="Views\User\Stories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

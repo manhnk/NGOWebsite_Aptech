@@ -36,5 +36,29 @@ namespace NGOWebsite.Controllers
         {
             return View();
         }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+        public ActionResult Partners()
+        {
+            return View();
+        }
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+        public ActionResult Stories()
+        {
+            return View();
+        }
     }
+
+
 }
