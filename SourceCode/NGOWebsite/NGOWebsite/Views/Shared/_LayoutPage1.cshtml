@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<html lang="en">
-<head>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="Content/View_components/Content/View_components/images/ico/favicon.png">
+    <link rel="shortcut icon" href="Content/View_components/images/ico/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="Content/View_components/images/ico/favicon.ico">
 
     <title>Borno - Education for all</title>
@@ -40,8 +41,6 @@
 		  <script src="Content/View_components/js/html5shiv.js"></script>
 		  <script src="Content/View_components/js/respond.min.js"></script>
 		<![endif]-->
-
-
 </head>
 <body>
     <!-- Fixed navbar -->
@@ -54,64 +53,32 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="Content/View_components/#">
+                    <a class="navbar-brand" href="#">
                         <img src="Content/View_components/images/logo_s_w.png" alt="logo"></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="navfix navbar-nav navbar-right">
-                        <li><a href="index.html">Home</a></li>
-                        <!--<li><a href="Content/View_components/#education">What we do</a></li>-->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1
+    <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Submenu 1-1</a></li>
+                                <li><a href="#">Submenu 1-2</a></li>
+                                <li><a href="#">Submenu 1-3</a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <!--<li><a href="#education">What we do</a></li>-->
                         <li><a href="education.html">What we do</a></li>
-                        <li><a href="Content/View_components/#stories">Our Success</a></li>
-                        <li><a href="Content/View_components/#help">Donate</a></li>
-                        <li><a href="Content/View_components/#gallery">Gallery</a></li>
-                        <li><a href="Content/View_components/#contact">Contact us</a></li>
+                        <li><a href="#stories">Our Success</a></li>
+                        <li><a href="#help">Donate</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact us</a></li>
+                        <li><a href="login.cshtml">Login</a></li>
+
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
-            </div>
-        </div>
-    </div>
-    <div class="contact-bg parallax" id="contact">
-        <div class="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;Login</span>&nbsp;&nbsp;&nbsp     Form</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-5 contact_form animate_left">
-
-
-
-                        <form name="loginForm" id='contact_form' method="post" action=''>
-
-
-                            <div id='name_error' class='error'>
-                                <img src='Content/View_components/images/error.png' alt="img">Please enter your username.
-                            </div>
-                            <input type="text" name='name' id='name' class="form-control" placeholder="Your Username">
-
-                            <div id='pass_error' class='error'>
-                                <img src='Content/View_components/images/error.png' alt="img">Please enter your valid password.
-                            </div>
-                            <input type="password" name='password' id='password' class="form-control" placeholder="Password">
-
-                            <!--<div id='message_error' class='error'>
-                                <img src='Content/View_components/images/error.png' alt="img">Please enter your message.
-                            </div>
-                            <textarea name='message' id='message' class="form-control" placeholder="Message"></textarea>-->
-
-                            <button class="bttn" id='login' type="submit">Login</button>
-                            <button class="bttn" id='cancel' type="reset">Cancel</button>
-                            <p class="alert-link"><a href="register.html">You don't have an account? Registry now!</a></p>
-                        </form>
-                    </div>
-                </div>
-
-
-
             </div>
         </div>
     </div>
@@ -125,12 +92,14 @@
             </div>
         </div>
     </div>
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="Content/View_components/js/jquery.js"></script>
 
-    <script src="Content/View_components/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Content/View_components/assets/bootstrap/js/bootstrap.js"></script>
 
     <!--<script src="Content/View_components/js/inviewport.jquery.js"></script>-->
 
@@ -163,5 +132,8 @@
     <script src="Content/View_components/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
 
     <script src="Content/View_components/js/custom.js"></script>
+
+
+
 </body>
 </html>
