@@ -1,0 +1,141 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="Content/View_components/images/ico/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="Content/View_components/images/ico/favicon.ico">
+
+    <title>Borno - Education for all</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="Content/View_components/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="Content/View_components/css/style.css" rel="stylesheet">
+
+    <!-- color schema -->
+    <link href="Content/View_components/css/color-4.css" rel="stylesheet" id="layoutstyle">
+
+    <!-- google font for title -->
+    <link href="Content/View_components/css/google-font.css" rel="stylesheet" id="googlefont">
+
+    <!-- fontawesome -->
+    <link href="Content/View_components/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="Content/View_components/lib/superslides/dist/stylesheets/superslides.css" rel="stylesheet">
+
+    <link href="Content/View_components/lib/jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
+
+    <link href="Content/View_components/lib/3DGridEffect/css/component.css" rel="stylesheet" />
+    <script src="Content/View_components/lib/3DGridEffect/js/modernizr.custom.js"></script>
+
+    <link href="Content/View_components/lib/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+		  <script src="Content/View_components/js/html5shiv.js"></script>
+		  <script src="Content/View_components/js/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <div id="nav-wrapper">
+        <div id="nav" class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="Content/View_components/images/logo_s_w.png" alt="logo"></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="navfix navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1
+    <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Submenu 1-1</a></li>
+                                <li><a href="#">Submenu 1-2</a></li>
+                                <li><a href="#">Submenu 1-3</a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <!--<li><a href="#education">What we do</a></li>-->
+                        <li><a href="education.html">What we do</a></li>
+                        <li><a href="#stories">Our Success</a></li>
+                        <li><a href="#help">Donate</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact us</a></li>
+                        <li><a href="login.cshtml">Login</a></li>
+
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <p>Copyright &copy; 2014, All rights reserved by TheWebLab</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="Content/View_components/js/jquery.js"></script>
+
+    <script src="Content/View_components/assets/bootstrap/js/bootstrap.js"></script>
+
+    <!--<script src="Content/View_components/js/inviewport.jquery.js"></script>-->
+
+    <script src="Content/View_components/js/jquery.animateNumbers.js"></script>
+
+    <script src="Content/View_components/js/responsive-tabs.js"></script>
+
+    <script src="Content/View_components/lib/jQuery-One-Page-Nav/jquery.scrollTo.js"></script>
+    <script src="Content/View_components/lib/jQuery-One-Page-Nav/jquery.nav.js"></script>
+
+    <!-- jquery-parallax -->
+    <script src="Content/View_components/lib/jquery-parallax/scripts/jquery.parallax-1.1.3.js"></script>
+
+    <!-- mailchimp -->
+    <script src="Content/View_components/lib/mcapi-simple-subscribe-jquery/js/mailing-list.js"></script>
+    <!-- mailchimp -->
+
+    <script src="Content/View_components/lib/ajax-html-contact-form/js/validation.js"></script>
+
+    <script src="Content/View_components/lib/superslides/dist/jquery.superslides.js"></script>
+
+    <script src="Content/View_components/lib/jquery.appear/jquery.appear.js"></script>
+
+    <script src="Content/View_components/lib/jquery.bxslider/jquery.bxslider.min.js"></script>
+
+    <script src="Content/View_components/lib/3DGridEffect/js/classie.js"></script>
+    <script src="Content/View_components/lib/3DGridEffect/js/helper.js"></script>
+    <script src="Content/View_components/lib/3DGridEffect/js/grid3d.js"></script>
+
+    <script src="Content/View_components/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+
+    <script src="Content/View_components/js/custom.js"></script>
+
+
+
+</body>
+</html>

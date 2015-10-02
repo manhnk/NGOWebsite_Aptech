@@ -1733,7 +1733,8 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     })
   })
 
-}(window.jQuery);
+    }
+    (window.jQuery);
 
 /* ========================================================================
  * Bootstrap: tab.js v3.0.0
