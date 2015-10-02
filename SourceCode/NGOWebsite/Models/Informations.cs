@@ -23,5 +23,8 @@ namespace Models
 
         public int ParentId { get; set; }
         public string ParentName { get; set; }
+
+        [Display(Name="Links")]
+        public string Links { get; set; }
     }
 }

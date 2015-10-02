@@ -4,7 +4,12 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+@{ Models.Admin ad = new Models.Admin();}
 
+@if (Session["mvc_user"] != null)
+{
+    ad = Session["mvc_user"] as Models.Admin;
+}
 <!-- /.row -->
 <div class="row" style="margin-top:30px">
     <div class="col-lg-12">
@@ -83,9 +88,18 @@
 
                     </div>
                     <div class="col-lg-4">
-                        <a href="@Url.Action("Edit", "Admin", new { id = Model.Id, @class = "btn btn-primary", @style = "width:120px" })"><i class="fa fa-plus-circle  fa-fw"></i> Update </a>
-                        <a href="@Url.Action("Delete", "Admin", new { id = Model.Id, @class = "btn btn-danger", @style = "margin-top:15px;width:120px" })"><i class="fa fa-times-circle  fa-fw"></i> Delete </a>
-                        <a href="@Url.Action("ListAdmin", "Admin", new { id = Model.Id, @class = "btn btn-success", @style = "margin-top:15px;width:120px" })"><i class="fa fa-mail-reply  fa-fw"></i> Back to list </a>
+
+                        @if (ad.IsSuperAdmin)
+                        {
+                        <a class="btn btn-primary" style="width:120px" href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><i class="fa fa-plus-circle  fa-fw"></i> Update </a><br />
+                        <a class="btn btn-danger" style="margin-top:15px;width:120px" href="@Url.Action("Delete", "Admin", new { @id = Model.Id })"><i class="fa fa-times-circle  fa-fw"></i> Delete </a><br />
+                        }
+                        else if (ad.Id == Model.Id)
+                        {
+                        <a class="btn btn-primary" style="width:120px" href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><i class="fa fa-plus-circle  fa-fw"></i> Update </a><br />
+                        }
+
+                        <a class="btn btn-success" style="margin-top:15px;width:120px" href="@Url.Action("ListAdmin", "Admin")"><i class="fa fa-mail-reply  fa-fw"></i> Back to list </a>
                     </div>
                 </div>
             </div>

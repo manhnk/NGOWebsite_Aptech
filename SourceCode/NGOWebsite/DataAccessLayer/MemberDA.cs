@@ -26,6 +26,29 @@ namespace DataAccessLayer
             return dt;
         }
 
+
+        public static int ChangePassword(int id, string pass)
+        {
+            int kt = 0;
+            try
+            {
+                string sql = "sp_changePasswordMember";
+                List<string> param = new List<string>();
+                param.Add("@id");
+                param.Add("@pass");
+
+                List<object> value = new List<object>();
+                value.Add(id);
+                value.Add(DataConnect.GetMd5Hash(pass));
+
+                kt = DataConnect.CRUDData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return kt;
+        }
         public static int AddMember(Models.Member mem)
         {
             int kt = 0;
@@ -34,7 +57,6 @@ namespace DataAccessLayer
                 string sql = "sp_addNewMember";
                 List<string> param = new List<string>();
                 param.Add("@username");
-                param.Add("@password");
                 param.Add("@fullname");
                 param.Add("@gender");
                 param.Add("@address");
@@ -170,7 +192,7 @@ namespace DataAccessLayer
             return dt;
         }
 
-        public static DataTable CheckUserExisted(string username,int ? id)
+        public static DataTable CheckUserExisted(string username, int? id)
         {
             DataTable dt = null;
             try

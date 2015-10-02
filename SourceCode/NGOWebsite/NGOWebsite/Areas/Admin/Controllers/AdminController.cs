@@ -176,29 +176,121 @@ namespace NGOWebsite.Areas.Admin.Controllers
             return Json(check == false);
         }
 
+        [HttpPost]
+        public JsonResult CheckPassword(FormCollection frm)
+        {
+            bool check = false;
+            int id = 0;
+            if (Session["mvc_user"] != null)
+            {
+                Models.Admin ad = Session["mvc_user"] as Models.Admin;
+                id = ad.Id;
+            }
+            
+
+            List<Models.Admin> ls = AdminBusiness.GetAdminById(id);
+            if (ls.Count > 0)
+            {
+                if (ls[0].Password == DataAccessLayer.DataConnect.GetMd5Hash(frm["Password"]))
+                {
+                    check = true;
+                }
+            }
+            return Json(check == false);
+        }
+
         //
         // GET: /Admin/Admin/Edit/5
 
         public ActionResult Edit(int id)
         {
-            return View();
+            List<Models.Admin> ls = AdminBusiness.GetAdminById(id);
+            if (ls.Count > 0)
+            {
+                return View(ls[0]);
+            }
+            else return null;
         }
 
         //
         // POST: /Admin/Admin/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditProcess(FormCollection frm)
         {
+            int kt = 0;
             try
             {
-                // TODO: Add update logic here
+                bool actived = false;
+                if (frm["cbIsActived"].ToString().Contains("rmb"))
+                {
+                    actived = true;
+                }
+                // TODO: Add insert logic here
+                Models.Admin ad = new Models.Admin()
+                {
+                    Id=int.Parse(frm["Id"]),
+                    UserName = frm["UserName"],
+                    FullName = frm["FullName"],
+                    Gender = frm["Gender"],
+                    Phone = frm["Phone"],
+                    Address = frm["Address"],
+                    Email = frm["Email"],
+                    IsActived = actived,
+                };
 
-                return RedirectToAction("Index");
+                kt = AdminBusiness.EditAdmin(ad);
+
             }
             catch
             {
-                return View();
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListAdmin", "Admin", new { update = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListAdmin", "Admin", new { update = "error" });
+            }
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePasswordProcess(FormCollection frm)
+        {
+            int id = 0;
+            if (Session["mvc_user"] != null)
+            {
+                Models.Admin ad = Session["mvc_user"] as Models.Admin;
+                id = ad.Id;
+            }
+            int kt = 0;
+            try
+            {
+                string pass = frm["NewPassword"];
+
+                kt = AdminBusiness.ChangePassword(id,pass);
+
+            }
+            catch
+            {
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListAdmin", "Admin", new { change = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListAdmin", "Admin", new { change = "error" });
             }
         }
 

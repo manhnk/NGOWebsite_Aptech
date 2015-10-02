@@ -42,6 +42,7 @@ namespace DataAccessLayer
                 param.Add("@parentId");
                 param.Add("@position");
                 param.Add("@isDeleted");
+                param.Add("@links");
 
                 List<object> value = new List<object>();
                 value.Add(info.Subject);
@@ -50,6 +51,7 @@ namespace DataAccessLayer
                 value.Add(info.ParentId);
                 value.Add(info.Position);
                 value.Add(info.IsDeleted);
+                value.Add(info.Links);
 
 
                 kt = DataConnect.CRUDData(sql, param, value);
@@ -74,6 +76,7 @@ namespace DataAccessLayer
                 param.Add("@parentId");
                 param.Add("@position");
                 param.Add("@isDeleted");
+                param.Add("@links");
 
                 List<object> value = new List<object>();
                 value.Add(info.Id);
@@ -83,6 +86,7 @@ namespace DataAccessLayer
                 value.Add(info.ParentId);
                 value.Add(info.Position);
                 value.Add(info.IsDeleted);
+                value.Add(info.Links);
 
                 kt = DataConnect.CRUDData(sql, param, value);
             }

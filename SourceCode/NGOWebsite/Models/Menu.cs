@@ -20,5 +20,8 @@ namespace Models
         public string TextTooltip { get; set; }
         public int Position { get; set; }
         public int IsDeleted{ get; set; }
+
+        [Display(Name = "Links")]
+        public string Links { get; set; }
     }
 }

@@ -14,11 +14,14 @@
     });
 </script>
 
+@{ Models.Admin ad = new Admin();}
 
-
-
+@if (Session["mvc_user"] != null)
+{
+    ad = Session["mvc_user"] as Models.Admin;
+}
 <div class="row">
-    
+
     <div class="col-lg-12">
         @{
             if (Request.QueryString.Count > 0)
@@ -81,16 +84,35 @@
                                     <td style="text-align:center">
                                         @if (item.IsActived)
                                         {
-                                            <span style="color:green">@Html.DisplayName("Active")</span><span style="float:right"><a href="@Url.Action("ChangeStatus", "Admin", new { @id=item.Id})" title="Change Status"><i class="fa  fa-retweet fa-fw"></i></a></span>                                        }
+                                            <span style="color:green">@Html.DisplayName("Active")</span>
+                                            if (ad.IsSuperAdmin)
+                                            {<span style="float:right">
+                                                <a href="@Url.Action("ChangeStatus", "Admin", new { @id=item.Id})" title="Change Status"><i class="fa  fa-retweet fa-fw"></i></a>
+                                            </span>
+                                            }
+                                        }
                                         else
                                         {
-                                            <span style="color:red">@Html.DisplayName("Not Active")</span><span style="float:right"><a href="@Url.Action("ChangeStatus", "Admin", new { @id=item.Id})" title="Change Status"><i class="fa  fa-retweet fa-fw"></i></a></span>
+                                            <span style="color:red">@Html.DisplayName("Not Active")</span>
+                                            if (ad.IsSuperAdmin)
+                                            {
+                                                <span style="float:right"><a href="@Url.Action("ChangeStatus", "Admin", new { @id=item.Id})" title="Change Status"><i class="fa  fa-retweet fa-fw"></i></a></span>
+                                            }
                                         }
                                     </td>
                                     <td>
                                         <a href="@Url.Action("Details", "Admin", new { id=item.Id})" title="View Detail"><i class="fa fa-search-plus  fa-fw"></i></a>
-                                        <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" title="Update"><i class="fa fa-edit  fa-fw"></i></a>
-                                        <a href="@Url.Action("Delete", "Admin", new { id = item.Id })" title="Delete"><i class="fa fa-eraser  fa-fw"></i></a>
+
+                                        @if (ad.IsSuperAdmin)
+                                        {
+                                            <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" title="Update"><i class="fa fa-edit  fa-fw"></i></a>
+                                            <a href="@Url.Action("Delete", "Admin", new { id = item.Id })" title="Delete"><i class="fa fa-eraser  fa-fw"></i></a>
+                                        }
+                                        else if (ad.Id == item.Id)
+                                        {
+                                            <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" title="Update"><i class="fa fa-edit  fa-fw"></i></a>
+                                        }
+
                                     </td>
                                 </tr>
                             }
@@ -104,7 +126,11 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <a class="btn btn-primary" href="@Url.Action("Create","Admin")"><i class="fa fa-plus-circle  fa-fw"></i>Add New Admin</a>
+        @if (ad.IsSuperAdmin)
+        {
+            <a class="btn btn-primary" href="@Url.Action("Create", "Admin")"><i class="fa fa-plus-circle  fa-fw"></i>Add New Admin</a>
+        }
+
     </div>
 </div>
 

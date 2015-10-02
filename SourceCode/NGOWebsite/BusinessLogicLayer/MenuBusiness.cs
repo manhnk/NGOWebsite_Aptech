@@ -25,7 +25,9 @@ namespace BusinessLogicLayer
                         Subject = dt.Rows[i]["Subject"].ToString(),
                         TextTooltip = dt.Rows[i]["TextTooltip"].ToString(),
                         Position = int.Parse(dt.Rows[i]["Position"].ToString()),
-                        IsDeleted = int.Parse(dt.Rows[i]["IsDeleted"].ToString())
+                        IsDeleted = int.Parse(dt.Rows[i]["IsDeleted"].ToString()),
+                        Links = dt.Rows[i]["Links"].ToString()
+
                     };
 
                     ls.Add(ad);

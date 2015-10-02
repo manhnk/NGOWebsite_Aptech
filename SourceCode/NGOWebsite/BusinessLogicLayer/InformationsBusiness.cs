@@ -28,7 +28,8 @@ namespace BusinessLogicLayer
                         ParentId = int.Parse(dt.Rows[i]["ParentId"].ToString()),
                         ParentName = dt.Rows[i]["Description"].ToString(),
                         Position = int.Parse(dt.Rows[i]["Position"].ToString()),
-                        IsDeleted = int.Parse(dt.Rows[i]["IsDeleted"].ToString())
+                        IsDeleted = int.Parse(dt.Rows[i]["IsDeleted"].ToString()),
+                        Links = dt.Rows[i]["Links"].ToString()
                     };
 
                     ls.Add(ad);

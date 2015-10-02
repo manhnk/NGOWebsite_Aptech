@@ -37,14 +37,16 @@ namespace DataAccessLayer
                 List<string> param = new List<string>();
                 param.Add("@subject");
                 param.Add("@textTooltip");
-                param.Add("@position ");
-                param.Add("@isDeleted ");
+                param.Add("@position");
+                param.Add("@isDeleted");
+                param.Add("@links");
 
                 List<object> value = new List<object>();
                 value.Add(menu.Subject);
                 value.Add(menu.TextTooltip);
                 value.Add(menu.Position);
                 value.Add(menu.IsDeleted);
+                value.Add(menu.Links);
 
 
                 kt = DataConnect.CRUDData(sql, param, value);
@@ -66,13 +68,15 @@ namespace DataAccessLayer
                 param.Add("@subject");
                 param.Add("@textTooltip");
                 param.Add("@position ");
-                param.Add("@isDeleted ");
+                param.Add("@isDeleted");
+                param.Add("@links");
 
                 List<object> value = new List<object>();
                 value.Add(menu.Subject);
                 value.Add(menu.TextTooltip);
                 value.Add(menu.Position);
                 value.Add(menu.IsDeleted);
+                value.Add(menu.Links);
 
                 kt = DataConnect.CRUDData(sql, param, value);
             }

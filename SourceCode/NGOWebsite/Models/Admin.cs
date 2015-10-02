@@ -14,14 +14,15 @@ namespace Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please type user name!")]
-        [Remote("CheckAccExisted", "Admin", HttpMethod = "POST", ErrorMessage = "User name is existed. Please enter a different user name.", AdditionalFields = "ID")]
+        [Remote("CheckAccExisted", "Admin", HttpMethod = "POST", ErrorMessage = "User name is existed. Please enter a different user name.")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
         
         [Required(ErrorMessage = "Please type password!")]
         [Display(Name = "Password")]
-        [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]        
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
+        [Remote("CheckPassword", "Admin", HttpMethod = "POST", ErrorMessage = "Password is wrong !")]        
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
@@ -56,5 +57,18 @@ namespace Models
         public bool IsActived { get; set; }
 
         public bool IsSuperAdmin { get; set; }
+
+        [Display(Name="New Password")]
+        [Required(ErrorMessage="Please type new password !")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+
+        [Display(Name = "Confirm New Password")]
+        [Required(ErrorMessage = "Please type confirm password !")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
+        [DataType(DataType.Password)]
+       // [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
     }
 }

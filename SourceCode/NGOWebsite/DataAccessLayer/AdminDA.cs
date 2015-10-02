@@ -63,6 +63,29 @@ namespace DataAccessLayer
             }
             return kt;
         }
+                
+        public static int ChangePassword(int id,string pass)
+        {
+            int kt = 0;
+            try
+            {
+                string sql = "sp_changePassword";
+                List<string> param = new List<string>();
+                param.Add("@id");
+                param.Add("@pass");
+
+                List<object> value = new List<object>();
+                value.Add(id);
+                value.Add(DataConnect.GetMd5Hash(pass));
+
+                kt = DataConnect.CRUDData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return kt;
+        }
 
         public static int EditAdmin(Models.Admin admin)
         {
@@ -72,7 +95,6 @@ namespace DataAccessLayer
                 string sql = "sp_editAdmin";
                 List<string> param = new List<string>();
                 param.Add("@id");
-                param.Add("@password");
                 param.Add("@fullname");
                 param.Add("@gender");
                 param.Add("@phone");
@@ -82,7 +104,6 @@ namespace DataAccessLayer
 
                 List<object> value = new List<object>();
                 value.Add(admin.Id);
-                value.Add(DataConnect.GetMd5Hash(admin.Password));
                 value.Add(admin.FullName);
                 value.Add(admin.Gender);
                 value.Add(admin.Phone);

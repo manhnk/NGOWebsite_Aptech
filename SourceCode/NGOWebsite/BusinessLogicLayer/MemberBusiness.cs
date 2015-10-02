@@ -106,8 +106,22 @@ namespace BusinessLogicLayer
                 return 0;
             }
             return upt;
+
         }
 
+        public int ChangePassword(int id,string pass)
+        {
+            int upt = 0;
+            try
+            {
+                upt = DataAccessLayer.MemberDA.ChangePassword(id,pass);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return upt;
+        }
         public int DeleteMember(int id)
         {
             int del = 0;
