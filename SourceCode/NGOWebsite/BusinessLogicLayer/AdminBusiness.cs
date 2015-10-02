@@ -29,7 +29,8 @@ namespace BusinessLogicLayer
                         Phone = dt.Rows[i]["Phone"].ToString(),
                         Address = dt.Rows[i]["Address"].ToString(),
                         Email = dt.Rows[i]["Email"].ToString(),
-                        IsActived = bool.Parse(dt.Rows[i]["IsActived"].ToString())
+                        IsActived = bool.Parse(dt.Rows[i]["IsActived"].ToString()),
+                        IsSuperAdmin = bool.Parse(dt.Rows[i]["IsSuperAdmin"].ToString()),
 
                     };
 
@@ -53,26 +54,26 @@ namespace BusinessLogicLayer
 
         public static List<Admin> SearchAdmin(string value)
         {
-                DataTable dt = DataAccessLayer.AdminDA.SearchAdmin(value);
-                return AddAdminToList(dt);
+            DataTable dt = DataAccessLayer.AdminDA.SearchAdmin(value);
+            return AddAdminToList(dt);
         }
 
         public static List<Admin> GetAdminById(int id)
         {
-                DataTable dt = DataAccessLayer.AdminDA.GetAdminById(id);
-                return AddAdminToList(dt);
+            DataTable dt = DataAccessLayer.AdminDA.GetAdminById(id);
+            return AddAdminToList(dt);
         }
 
 
-        public static List<Admin> CheckUserExisted(string username,int ? id)
+        public static List<Admin> CheckUserExisted(string username, int? id)
         {
-                DataTable dt = DataAccessLayer.AdminDA.CheckUserExisted(username,id);
-                return AddAdminToList(dt);
+            DataTable dt = DataAccessLayer.AdminDA.CheckUserExisted(username, id);
+            return AddAdminToList(dt);
         }
 
-        public static List<Admin> CheckLogin(string username,string password)
+        public static List<Admin> CheckLogin(string username, string password)
         {
-            DataTable dt = DataAccessLayer.AdminDA.CheckLogin(username,password);
+            DataTable dt = DataAccessLayer.AdminDA.CheckLogin(username, password);
             return AddAdminToList(dt);
         }
 
@@ -98,6 +99,20 @@ namespace BusinessLogicLayer
             try
             {
                 upt = DataAccessLayer.AdminDA.EditAdmin(ad);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return upt;
+        }
+
+        public static int ChangePassword(int id, string pass)
+        {
+            int upt = 0;
+            try
+            {
+                upt = DataAccessLayer.AdminDA.ChangePassword(id, pass);
             }
             catch (Exception)
             {

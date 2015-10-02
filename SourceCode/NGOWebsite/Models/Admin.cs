@@ -68,7 +68,7 @@ namespace Models
         [Required(ErrorMessage = "Please type confirm password !")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         [DataType(DataType.Password)]
-       // [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 }
