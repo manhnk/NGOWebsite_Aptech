@@ -1,6 +1,50 @@
 ﻿@{
     ViewBag.Title = "User";
-    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+<div class="mask">
+    <div id="intro-loader">
+    </div>
+</div>
 
-<h2>User</h2>
+<div id="slides">
+    <div class="slides-container">
+        <img src="~/Content/View_components/images/slider/slider1.jpg" alt="slider1">
+        <img src="~/Content/View_components/images/slider/slider2.jpg" alt="slider2">
+        <img src="~/Content/View_components/images/slider/slider3.jpg" alt="slider3">
+    </div>
+</div>
+<div id="top" class="top">
+    <div class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 text-center animate_left">
+                    <div class="logo">
+                        <img src="~/Content/View_components/images/logo.png" alt="logo">
+                    </div>
+                    <span class="subtitle">Education for all.</span>
+                </div>
+                <div class="col-md-9 slider_title">
+                    <h2 class="animate_top">Supporting <span id="pageLoad">0</span> child education, and counting...</h2>
+                    <!--<a class="top_btn" href="#">Donate Now</a>-->
+
+                    <div class="animate_bottom">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_donations">
+                            <input type="hidden" name="business" value="eh.rajib@gmail.com">
+                            <input type="hidden" name="lc" value="US">
+                            <input type="hidden" name="item_name" value="theweblab">
+                            <input type="hidden" name="no_note" value="0">
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+                            <input type="submit" class="top_btn" value="Donate Now">
+                        </form>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -16,7 +16,25 @@ namespace NGOWebsite.Controllers
              return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult Program()
+        {
+            return View();
+        }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
 
+        public ActionResult Donation()
+        {
+            return View();
+        }
+
+        public ActionResult Gallery()
+        {
+            return View();
+        }
     }
 }
