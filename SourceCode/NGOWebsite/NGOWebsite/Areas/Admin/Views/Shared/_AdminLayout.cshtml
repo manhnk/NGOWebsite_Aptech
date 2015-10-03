@@ -301,6 +301,43 @@
                         <li>
                             <a href="@Url.Action("Index","HomeAdmin")"><i class="fa fa-home fa-fw"></i> Home Admin </a>
                         </li>
+                       
+                        <li>
+                            <a href="#"><i class="fa fa-cubes  fa-fw"></i> Donation<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#"><i class="fa fa-th  fa-fw"></i> Cause Of Donation <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="@Url.Action("Create","CauseOfDonation")"><i class="fa fa-caret-right  fa-fw"></i> Add New Cause</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="@Url.Action("ListCause","CauseOfDonation")"><i class="fa fa-caret-right  fa-fw"></i> List Cause</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("DonationForPrograms","Donation")"><i class="fa fa-cube  fa-fw"></i> Donation For Programs </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("DonationForOthers", "Donation")"><i class="fa fa-bank  fa-fw"></i> Donation For Others </a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-list-alt  fa-fw"></i> Contact Details <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="@Url.Action("Create","ContactDetails")"><i class="fa fa-caret-right  fa-fw"></i> Add New Contact</a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("ListContact","ContactDetails")"><i class="fa fa-caret-right  fa-fw"></i> List Contacts</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="#"><i class="fa fa-user  fa-fw"></i> Admin Management <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -308,42 +345,19 @@
                                 @if (ad.IsSuperAdmin)
                                 {
                                     <li>
-                                        <a href="@Url.Action("Create","Admin")"> Add New Admin</a>
+                                        <a href="@Url.Action("Create","Admin")"><i class="fa fa-caret-right  fa-fw"></i> Add New Admin</a>
                                     </li>
                                 }
 
                                 <li>
-                                    <a href="@Url.Action("ListAdmin","Admin")"> List Admin</a>
+                                    <a href="@Url.Action("ListAdmin","Admin")"><i class="fa fa-caret-right  fa-fw"></i> List Admin</a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("ChangePassword", "Admin")"> Change Password </a>
+                                    <a href="@Url.Action("ChangePassword", "Admin")"><i class="fa fa-caret-right  fa-fw"></i> Change Password </a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-th  fa-fw"></i> Cause Of Donation <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="@Url.Action("Create","CauseOfDonation")"> Add New Cause</a>
-                                </li>
-
-                                <li>
-                                    <a href="@Url.Action("ListCause","CauseOfDonation")"> List Cause</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cubes  fa-fw"></i> Donation<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">For programs</a>
-                                </li>
-                                <li>
-                                    <a href="#">For other reasons</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                        
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>

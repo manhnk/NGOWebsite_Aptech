@@ -15,7 +15,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult ListCause()
         {
-            List<CauseOfDonation> ls= CauseOfDonationBusiness.GetAllCauseOfDonation();
+            List<CauseOfDonation> ls = CauseOfDonationBusiness.GetAllCauseOfDonation();
             return View(ls);
         }
 
@@ -24,7 +24,12 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            List<CauseOfDonation> ls = CauseOfDonationBusiness.GetCauseOfDonationById(id);
+            if (ls.Count > 0)
+            {
+                return View(ls[0]);
+            }
+            return null;
         }
 
         //
@@ -39,17 +44,39 @@ namespace NGOWebsite.Areas.Admin.Controllers
         // POST: /Admin/CauseOfDonation/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateProcess(FormCollection frm)
         {
+            int kt = 0;
             try
             {
+                int isField = 0;
+                if (frm["cbIsFieldOfProgram"].ToString().Contains("rmb"))
+                {
+                    isField = 1;
+                }
                 // TODO: Add insert logic here
+                Models.CauseOfDonation ad = new Models.CauseOfDonation()
+                {
+                    Description = frm["Description"],
+                    IsFieldOfPrograms = isField,
+                    IsDeleted = 0
+                };
 
-                return RedirectToAction("Index");
+                kt = CauseOfDonationBusiness.AddCauseOfDonation(ad);
+
             }
             catch
             {
-                return View();
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListCause", "CauseOfDonation", new { add = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListCause", "CauseOfDonation", new { add = "error" });
             }
         }
 
@@ -58,24 +85,52 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            List<CauseOfDonation> ls = CauseOfDonationBusiness.GetCauseOfDonationById(id);
+            if (ls.Count > 0)
+            {
+                return View(ls[0]);
+            }
+            return null;
         }
 
         //
         // POST: /Admin/CauseOfDonation/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditProcess(int id, FormCollection frm)
         {
+            int kt = 0;
             try
             {
-                // TODO: Add update logic here
+                int isField = 0;
+                if (frm["cbIsFieldOfProgram"].ToString().Contains("rmb"))
+                {
+                    isField = 1;
+                }
+                // TODO: Add insert logic here
+                Models.CauseOfDonation ad = new Models.CauseOfDonation()
+                {
+                    Id=int.Parse(frm["Id"]),
+                    Description = frm["Description"],
+                    IsFieldOfPrograms = isField,
+                    IsDeleted = int.Parse(frm["IsDeleted"])
+                };
 
-                return RedirectToAction("Index");
+                kt = CauseOfDonationBusiness.EditCauseOfDonation(ad);
+
             }
             catch
             {
-                return View();
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListCause", "CauseOfDonation", new { update = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListCause", "CauseOfDonation", new { update = "error" });
             }
         }
 
@@ -84,25 +139,38 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/CauseOfDonation/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                int kt = CauseOfDonationBusiness.DeleteCauseOfDonation(id);
+                if (kt > 0)
+                {
+                    return RedirectToAction("ListCause", "CauseOfDonation", new { delete = "success" });
+                }
+                else
+                {
+                    return RedirectToAction("ListCause", "CauseOfDonation", new { delete = "error" });
+                }
             }
             catch
             {
-                return View();
+                return RedirectToAction("ListCause", "CauseOfDonation", new { delete = "error" });
             }
         }
+
+     
+        [HttpPost]
+        public JsonResult CheckExist(string description, int? id)
+        {
+            bool check = false;
+            List<Models.CauseOfDonation> ls = CauseOfDonationBusiness.CheckCauseExisted(description, id);
+            if (ls.Count > 0)
+            {
+                check = true;
+            }
+            return Json(check == false);
+        }
+
+
     }
 }

@@ -57,7 +57,7 @@ namespace BusinessLogicLayer
         }
 
 
-        public int AddContactDetails(ContactDetails ad)
+        public static int AddContactDetails(ContactDetails ad)
         {
             int ins = 0;
             try
@@ -73,7 +73,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditContactDetails(ContactDetails ad)
+        public static int EditContactDetails(ContactDetails ad)
         {
             int upt = 0;
             try
@@ -87,7 +87,7 @@ namespace BusinessLogicLayer
             return upt;
         }
 
-        public int DeleteContactDetails(int id)
+        public static int DeleteContactDetails(int id)
         {
             int del = 0;
             try

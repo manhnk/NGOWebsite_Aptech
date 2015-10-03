@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace Models
 {
-   public class ContactDetails
+    public class ContactDetails
     {
-       [Key]
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please type Address!")]
@@ -20,13 +20,13 @@ namespace Models
 
         [Required(ErrorMessage = "Please type Phone!")]
         [Display(Name = "Phone")]
-        [DataType(DataType.PhoneNumber)]
-        [StringLength(15, MinimumLength = 9, ErrorMessage = "Length must be between 9 and 15 charactes !")]        
+        [StringLength(15, MinimumLength = 9, ErrorMessage = "Length must be between 9 and 15 charactes !")]
+        [RegularExpression("^\\d{1,15}$", ErrorMessage = "Phone number is not valid !")]
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Please type Email!")]
         [Display(Name = "Email")]
-        [DataType(DataType.EmailAddress)]
+        [RegularExpression("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", ErrorMessage = "Email address is not valid!")]        
         public string Email { get; set; }
     }
 }

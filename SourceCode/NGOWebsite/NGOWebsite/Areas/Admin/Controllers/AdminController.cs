@@ -201,16 +201,16 @@ namespace NGOWebsite.Areas.Admin.Controllers
                 int kt=AdminBusiness.DeleteAdmin(id);
                 if (kt > 0)
                 {
-                    return RedirectToAction("ListAdmin", "Admin", new { update = "success" });
+                    return RedirectToAction("ListAdmin", "Admin", new { delete = "success" });
                 }
                 else
                 {
-                    return RedirectToAction("ListAdmin", "Admin", new { update = "error" });
+                    return RedirectToAction("ListAdmin", "Admin", new { delete = "error" });
                 }
             }
             catch
             {
-                return RedirectToAction("ListAdmin", "Admin", new { update = "error" });
+                return RedirectToAction("ListAdmin", "Admin", new { delete = "error" });
             }
         }
 

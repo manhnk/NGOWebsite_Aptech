@@ -68,7 +68,7 @@ namespace BusinessLogicLayer
             return AddCauseToList(dt);
         }
 
-        public int AddCauseOfDonation(CauseOfDonation ad)
+        public static int AddCauseOfDonation(CauseOfDonation ad)
         {
             int ins = 0;
             try
@@ -84,7 +84,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditCauseOfDonation(CauseOfDonation ad)
+        public static int EditCauseOfDonation(CauseOfDonation ad)
         {
             int upt = 0;
             try
@@ -98,7 +98,7 @@ namespace BusinessLogicLayer
             return upt;
         }
 
-        public int DeleteCauseOfDonation(int id)
+        public static int DeleteCauseOfDonation(int id)
         {
             int del = 0;
             try

@@ -28,6 +28,7 @@ namespace Models
 
 
         [Required(ErrorMessage = "Please type full name!")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 

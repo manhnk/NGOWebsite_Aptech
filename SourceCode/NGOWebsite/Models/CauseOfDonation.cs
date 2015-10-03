@@ -13,11 +13,12 @@ namespace Models
        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please type Description!")]
-        //[Remote("CheckNameExist", "Book", HttpMethod = "POST", ErrorMessage = "Book name already exists. Please enter a different user name.", AdditionalFields = "ID")]
+        [Required(ErrorMessage = "Please type cause name!")]
+        [Remote("CheckExist", "CauseOfDonation", HttpMethod = "POST", ErrorMessage = "Cause already exists. Please enter a different cause.", AdditionalFields = "Id")]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 100 charactes !")]
-        [Display(Name = "Description")]
+        [Display(Name = "Cause Of Donation")]
         public string Description{ get; set; }
+
         public int IsDeleted { get; set; }
 
        [Display(Name="Is Field Of Program")]
