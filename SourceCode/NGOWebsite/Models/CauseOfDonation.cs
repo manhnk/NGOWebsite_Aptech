@@ -20,6 +20,7 @@ namespace Models
         public string Description{ get; set; }
         public int IsDeleted { get; set; }
 
+       [Display(Name="Is Field Of Program")]
         public int IsFieldOfPrograms { get; set; }
     }
 }

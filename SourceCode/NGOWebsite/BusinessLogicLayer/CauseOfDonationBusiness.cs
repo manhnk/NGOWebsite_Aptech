@@ -22,7 +22,7 @@ namespace BusinessLogicLayer
                     CauseOfDonation ad = new CauseOfDonation()
                     {
                         Id = int.Parse(dt.Rows[i]["Id"].ToString()),
-                        Description = dt.Rows[i]["UserName"].ToString(),
+                        Description = dt.Rows[i]["Description"].ToString(),
                         IsFieldOfPrograms = int.Parse(dt.Rows[i]["IsFieldOfPrograms"].ToString()),
                         IsDeleted = int.Parse(dt.Rows[i]["IsDeleted"].ToString())
                     };
