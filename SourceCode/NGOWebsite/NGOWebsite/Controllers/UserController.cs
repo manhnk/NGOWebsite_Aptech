@@ -76,6 +76,11 @@ namespace NGOWebsite.Controllers
         {
             return View();
         }
+
+        public ActionResult RecentProgram()
+        {
+            return View();
+        }
     }
 
 

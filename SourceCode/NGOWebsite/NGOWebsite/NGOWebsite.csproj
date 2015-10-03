@@ -1263,7 +1263,6 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\User\recent_program.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1289,6 +1288,7 @@
     <Content Include="Views\User\Member.cshtml" />
     <Content Include="Views\User\Help.cshtml" />
     <Content Include="Views\User\Program.cshtml" />
+    <Content Include="Views\User\RecentProgram.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
