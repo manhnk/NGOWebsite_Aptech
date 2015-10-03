@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
-
+@*@using Models
+@model IEnumerable<Models.CauseOfDonation>*@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -68,11 +69,7 @@
                                 <li><a href="~/#">Submenu 1-3</a></li>
                             </ul>
                         </li>*@
-                        @*foreach (var menuItem in Model.Menu){
-                        <li>
-                            @Html.ActionLink(menuItem.MenuTitle, menuItem.Action, menuItem.Controller, new { id = menuItem.MenuID })
-                        </li>
-                        }*@
+                        
                         <li class="active"><a href="@Url.Action("Index", "User")">Home</a></li>
                         <li><a href="@Url.Action("Program", "User")">Programs</a></li>
                         <li><a href="@Url.Action("Stories", "User")">Our Success</a></li>
