@@ -71,6 +71,11 @@ namespace NGOWebsite.Controllers
         {
             return View();
         }
+
+        public ActionResult Education()
+        {
+            return View();
+        }
     }
 
 
