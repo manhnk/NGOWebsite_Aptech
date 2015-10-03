@@ -3,4 +3,74 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>Register</h2>
+<div class="contact-bg parallax" id="contact">
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register</span>&nbsp;&nbsp;&nbspForm</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-5 contact_form animate_left">
+
+
+
+                    <form name="loginForm" id='contact_form' method="post" action=''>
+
+
+                        <div id='name_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your username.
+                        </div>
+                        <input type="text" name='name' id='name' class="form-control" placeholder="Your Username">
+                        @*@Html.TextBoxFor(m => m.UserName, new { @Value = user, @placeholder = " username", @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.UserName)*@
+
+                        <div id='pass_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your valid password.
+                        </div>
+                        <input type="password" name='password' id='password' class="form-control" placeholder="Password">
+
+                        <div id='fname_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your fullname.
+                        </div>
+                        <input type="text" name='name' id='fname' class="form-control" placeholder="Your FullName">
+
+                        <select name="gender" class="form-control">
+                            <option value="">--Select gender--</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="-">Other</option>
+                        </select>
+                        <div id='address_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your message.
+                        </div>
+                        <textarea name='address' id='address' class="form-control" placeholder="Address"></textarea>
+
+                        <div id='phone_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your fullname.
+                        </div>
+                        <input type="text" name='phone' id='phone' class="form-control" placeholder="Your Phone number">
+
+                        <div id='email_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your fullname.
+                        </div>
+                        <input type="text" name='email' id='email' class="form-control" placeholder="Your E-mail">
+                        <select name="join" class="form-control">
+                            <option value="">Do you wana join with us?</option>
+                            <option value="yes">Yes, I will join!</option>
+                            <option value="no">No, Thanks</option>
+                        </select>
+
+                        <button class="bttn" id='login' type="submit">Register</button>
+                        <button class="bttn" id='cancel' type="reset">Reset</button>
+                        <p class=""><a href='@Url.Action("Login", "User")'>You have an account? Back to login!</a></p>
+                    </form>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
