@@ -1288,7 +1288,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Home.cshtml" />
     <Content Include="Views\User\Education.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Donation.cshtml" />
@@ -1296,12 +1296,13 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Contact.cshtml" />
     <Content Include="Views\User\Partners.cshtml" />
-    <Content Include="Views\User\AboutUs.cshtml" />
+    <Content Include="Views\User\About.cshtml" />
     <Content Include="Views\User\Stories.cshtml" />
     <Content Include="Views\User\Member.cshtml" />
     <Content Include="Views\User\Help.cshtml" />
     <Content Include="Views\User\Program.cshtml" />
     <Content Include="Views\User\RecentProgram.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

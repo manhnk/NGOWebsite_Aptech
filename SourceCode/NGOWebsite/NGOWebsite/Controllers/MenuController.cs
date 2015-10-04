@@ -12,12 +12,14 @@ namespace NGOWebsite.Controllers
     {
         //
         // GET: /Menu/
-
-        public ActionResult ListCause()
+        [ChildActionOnly]
+        public ActionResult Index()
         {
-            List<Menu> ls = MenuBusiness.GetAllMenu();
-            return View(ls);
+            List<Models.Menu> ls = MenuBusiness.GetAllMenu();
+            return PartialView(ls) ;
+
         }
+
 
     }
 }

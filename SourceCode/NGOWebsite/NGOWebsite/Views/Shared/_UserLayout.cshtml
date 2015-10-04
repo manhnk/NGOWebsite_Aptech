@@ -1,6 +1,4 @@
 ﻿<!DOCTYPE html>
-@*@using Models
-@model IEnumerable<Models.CauseOfDonation>*@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -45,48 +43,8 @@
 </head>
 <body>
 
-    <!-- Fixed navbar -->
-    <div id="nav-wrapper">
-        <div id="nav" class="navbar">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="@Url.Action("Index", "User")">
-                        <img src="~/Content/View_components/images/logo_s_w.png" alt="logo"></a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="navfix navbar-nav navbar-right">
-                        @*<li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="~/#">Menu 1
-    <span class="caret"></span></a>
-                            <ul class="dropdown-menu navfix">
-                                <li><a href="~/#">Submenu 1-1</a></li>
-                                <li><a href="~/#">Submenu 1-2</a></li>
-                                <li><a href="~/#">Submenu 1-3</a></li>
-                            </ul>
-                        </li>*@
-                        
-                        <li class="active"><a href="@Url.Action("Index", "User")">Home</a></li>
-                        <li><a href="@Url.Action("Program", "User")">Programs</a></li>
-                        <li><a href="@Url.Action("Stories", "User")">Our Success</a></li>
-                        <li><a href="@Url.Action("Donation", "User")">Donate</a></li>
-                        <li><a href="@Url.Action("Gallery", "User")">Gallery</a></li>
-                        <li><a href="@Url.Action("Member", "User")">Member</a></li>
-                        <li><a href="@Url.Action("Help", "User")">Help</a></li>
-                        <li><a href="@Url.Action("Contact", "User")">Contact us</a></li>
-                        <li><a href="@Url.Action("AboutUs", "User")">About us</a></li>
-                        <li><a href="@Url.Action("Login", "User")">Login</a></li>
+    @{Html.RenderAction("Index","Menu");} 
 
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </div>
-    </div>
 
     @RenderBody()
 
@@ -97,10 +55,12 @@
             <div class="row text-center">
                 <div class="col-md-12">
                     <p>Copyright &copy; 2015, All rights reserved by Eproject Team</p>
+
                 </div>
             </div>
         </div>
     </div>
+
 
 </body>
 

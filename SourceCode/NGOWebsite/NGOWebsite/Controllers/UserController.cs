@@ -11,7 +11,7 @@ namespace NGOWebsite.Controllers
         //
         // GET: /User/
 
-        public ActionResult Index()
+        public ActionResult Home()
         {
              return View();
         }
@@ -52,7 +52,7 @@ namespace NGOWebsite.Controllers
             return View();
         }
 
-        public ActionResult AboutUs()
+        public ActionResult About()
         {
             return View();
         }
