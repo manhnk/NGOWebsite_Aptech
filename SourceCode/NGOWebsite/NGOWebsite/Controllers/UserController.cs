@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLogicLayer;
+using Models;
 
 namespace NGOWebsite.Controllers
 {
@@ -17,7 +19,7 @@ namespace NGOWebsite.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Program()
+        public ActionResult Programs()
         {
             return View();
         }
@@ -46,11 +48,7 @@ namespace NGOWebsite.Controllers
         {
             return View();
         }
-
-        public ActionResult Partners()
-        {
-            return View();
-        }
+        
 
         public ActionResult About()
         {
@@ -62,10 +60,7 @@ namespace NGOWebsite.Controllers
             return View();
         }
 
-        public ActionResult Member()
-        {
-            return View();
-        }
+       
 
         public ActionResult Help()
         {

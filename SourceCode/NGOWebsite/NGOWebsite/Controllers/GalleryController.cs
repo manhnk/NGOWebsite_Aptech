@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BusinessLogicLayer;
-using Models;
 
 namespace NGOWebsite.Controllers
 {
-    public class MenuController : Controller
+    public class GalleryController : Controller
     {
         //
-        // GET: /Menu/
-        [ChildActionOnly]
+        // GET: /Gallery/
+
         public ActionResult Index()
         {
-            List<Models.Menu> ls = MenuBusiness.GetAllMenu();
-            return PartialView(ls);
-
+            return View();
         }
-
 
     }
 }
