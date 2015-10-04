@@ -23,6 +23,7 @@ namespace Models
         [Required(ErrorMessage = "Please type email!")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
+        [RegularExpression("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", ErrorMessage = "Email address is not valid!")]        
         public string SenderEmail { get; set; }
 
         [Required(ErrorMessage = "Please type content!")]

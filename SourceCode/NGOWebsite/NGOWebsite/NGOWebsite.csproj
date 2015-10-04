@@ -1257,6 +1257,9 @@
     <Content Include="Areas\Admin\Views\ContactDetails\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ContactDetails\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ContactDetails\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Donation\Donation.cshtml" />
+    <Content Include="Areas\Admin\Views\Donation\DonationDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Donation\Details.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

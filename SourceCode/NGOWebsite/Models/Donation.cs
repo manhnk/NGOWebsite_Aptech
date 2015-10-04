@@ -25,15 +25,18 @@ namespace Models
         [Required(ErrorMessage = "Please type Email!")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
+        [RegularExpression("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", ErrorMessage = "Email address is not valid!")]        
         public string EmailDonator { get; set; }
 
         [Display(Name="Date Of Donation")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfDonation { get; set; }
 
         [Display(Name="Amount")]
         [Required(ErrorMessage="Please type Amount!")]
         [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:#,##0.00}")]
         public double Amount { get; set; }
 
         [Display(Name = "Credit Type")]
@@ -45,8 +48,8 @@ namespace Models
         [DataType(DataType.CreditCard)]
         public string CardNumber { get; set; }
 
-        public int CauseId { get; set; }
-        public int ProgramId { get; set; }
+        public Nullable<int> CauseId { get; set; }
+        public Nullable<int> ProgramId { get; set; }
 
         [Display(Name = "Cause Of Donation")]
         public string CauseOfDonation { get; set; }
@@ -55,5 +58,13 @@ namespace Models
         public string Program { get; set; }
 
         public int IsDeleted { get; set; }
+
+        [Display(Name="Number Of Program")]
+        public int NumberOfDonation { get; set; }
+
+        [Display(Name = "Total Amount")]
+        [DisplayFormat(DataFormatString = "{0:#,##0.00}")]
+        [DataType(DataType.Currency)]
+        public double TotalAmount { get; set; }
     }
 }

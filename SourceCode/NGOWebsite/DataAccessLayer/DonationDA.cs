@@ -130,7 +130,7 @@ namespace DataAccessLayer
             return kt;
         }
 
-        public static DataTable SearchDonation(string text,string flag,int id)
+        public static DataTable SearchDonation(string text, string flag, int id)
         {
             DataTable dt = null;
             try
@@ -155,7 +155,28 @@ namespace DataAccessLayer
             return dt;
         }
 
-        public static DataTable GetDonation(int id,string flag)
+        public static DataTable GetDonationByProgramOrCause(string flag)
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getDonationByProgramOrCause";
+                List<string> param = new List<string>();
+                param.Add("@flag");
+
+                List<object> value = new List<object>();
+                value.Add(flag);
+                dt = DataConnect.FindData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetDonation(int id, string flag)
         {
             DataTable dt = null;
             try
