@@ -79,6 +79,7 @@ namespace NGOWebsite.Controllers
         [HttpPost]
         public ActionResult RegisterProcess(FormCollection frm)
         {
+            
             int kt = 0;
             try
             {
@@ -91,14 +92,15 @@ namespace NGOWebsite.Controllers
                 Models.Member ad = new Models.Member()
                 {
                     UserName = frm["UserName"],
-                    Password = "1234567",
+                    Password = frm["Password"],
                     FullName = frm["FullName"],
                     Gender = frm["Gender"],
                     Phone = frm["Phone"],
                     Address = frm["Address"],
                     Email = frm["Email"],
                     IsMemberOfTeam = i,
-                    IsDeleted = 0
+                    IsDeleted = 0,
+                    Image = null
                 };
 
                 kt = MemberBusiness.AddMember(ad);
