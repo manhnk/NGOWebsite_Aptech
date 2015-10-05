@@ -70,19 +70,6 @@ namespace NGOWebsite.Controllers
 
         }
 
-        
-        [AllowAnonymous]
-        public ActionResult Programs()
-        {
-            return View();
-        }
-
-
-        public ActionResult Gallery()
-        {
-            return View();
-        }
-
        
 
         public ActionResult Register()
@@ -91,32 +78,8 @@ namespace NGOWebsite.Controllers
         }
         
 
-        public ActionResult About()
-        {
-            return View();
-        }
 
-        public ActionResult Stories()
-        {
-            return View();
-        }
-
-       
-
-        public ActionResult Help()
-        {
-            return View();
-        }
-
-        public ActionResult Education()
-        {
-            return View();
-        }
-
-        public ActionResult RecentProgram()
-        {
-            return View();
-        }
+        
     }
 
 
