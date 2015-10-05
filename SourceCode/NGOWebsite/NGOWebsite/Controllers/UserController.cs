@@ -100,7 +100,7 @@ namespace NGOWebsite.Controllers
                     Email = frm["Email"],
                     IsMemberOfTeam = i,
                     IsDeleted = 0,
-                    Image = null
+                    Image = ""
                 };
 
                 kt = MemberBusiness.AddMember(ad);

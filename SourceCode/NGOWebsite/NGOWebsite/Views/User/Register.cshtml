@@ -12,10 +12,16 @@
                 if (Request.QueryString["add"].Equals("error"))
                 {
                 <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
-                    <img src='~/Content/View_components/images/error.png' alt="img">Register Failed !
+                    <img src='~/Content/View_components/images/error.png' alt="img">Register Fail !
 
                 </div>
                 
+                }
+                else{
+                    <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                    <img src='~/Content/View_components/images/error.png' alt="img">Register Successfull !
+
+                </div>
                 }
             }
             <div class="row">
@@ -28,28 +34,23 @@
                     
                     @using (Html.BeginForm("RegisterProcess", "User", FormMethod.Post))
                     {
-
+                        
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
-                        <div id='name_error' class='error'>
-                            <img src='Content/View_components/images/error.png' alt="img">Please enter your username.
-                        </div>
+                          
+                        
                         @Html.LabelFor(model => model.UserName)
-                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50", @required = "required"})
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50"})
                         @Html.ValidationMessageFor(model => model.UserName)
 
-                        <div id='pass_error' class='error'>
-                            <img src='Content/View_components/images/error.png' alt="img">Please enter your password.
-                        </div>
+                        
                         @Html.LabelFor(model => model.Password)
                         @Html.TextBoxFor(model => model.Password, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Password)
 
-                        <div id='fname_error' class='error'>
-                            <img src='Content/View_components/images/error.png' alt="img">Please enter your fullname.
-                        </div>
+                        
                         @Html.LabelFor(model => model.FullName)
-                        @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" , @required = "required"})
+                        @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
                         @Html.ValidationMessageFor(model => model.FullName)
 
                         @Html.LabelFor(model => model.Gender) 
@@ -60,25 +61,19 @@
                             @Html.RadioButtonFor(model => model.Gender, "Female") Female
                         </label>
                         @Html.ValidationMessageFor(model => model.Gender)
-                        <div id='address_error' class='error'>
-                            <img src='Content/View_components/images/error.png' alt="img">Please enter your address.
-                        </div>
+                           
                         @Html.LabelFor(model => model.Address)
-                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" , @required = "required"})
+                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100"})
                         @Html.ValidationMessageFor(model => model.Address)
 
-                        <div id='phone_error' class='error'>
-                            <img src='Content/View_components/images/error.png' alt="img">Please enter your phone.
-                        </div>
+                        
                         @Html.LabelFor(model => model.Phone)
-                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "15" , @required = "required"})
+                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "15"})
                         @Html.ValidationMessageFor(model => model.Phone)
 
-                        <div id='email_error' class='error'>
-                            <img src='Content/View_components/images/error.png' alt="img">Please enter your email.
-                        </div>
+                        
                         @Html.LabelFor(model => model.Email)
-                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" , @required = "required"})
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
                         @Html.ValidationMessageFor(model => model.Email)
                         <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb" }) Join With Us </label>
 
@@ -96,3 +91,7 @@
         </div>
     </div>
 </div>
+@section Scripts 
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}  
