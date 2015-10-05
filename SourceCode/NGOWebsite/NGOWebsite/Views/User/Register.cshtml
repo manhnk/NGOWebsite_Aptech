@@ -17,8 +17,9 @@
                 </div>
                 
                 }
-                else{
-                    <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                else
+                {
+                <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
                     <img src='~/Content/View_components/images/error.png' alt="img">Register Successfull !
 
                 </div>
@@ -31,50 +32,56 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-5 contact_form animate_left">
-                    
+
                     @using (Html.BeginForm("RegisterProcess", "User", FormMethod.Post))
                     {
                         
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
                           
-                        
-                        @Html.LabelFor(model => model.UserName)
-                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50"})
-                        @Html.ValidationMessageFor(model => model.UserName)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserName)
+                            @Html.ValidationMessageFor(model => model.UserName)
+                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
+                            
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password)
+                            @Html.ValidationMessageFor(model => model.Password)
+                            @Html.TextBoxFor(model => model.Password, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FullName)
+                            @Html.ValidationMessageFor(model => model.FullName)
+                            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Gender)
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.Gender, "Male") Male
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.Gender, "Female") Female
+                            </label>
 
-                        
-                        @Html.LabelFor(model => model.Password)
-                        @Html.TextBoxFor(model => model.Password, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Password)
-
-                        
-                        @Html.LabelFor(model => model.FullName)
-                        @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
-                        @Html.ValidationMessageFor(model => model.FullName)
-
-                        @Html.LabelFor(model => model.Gender) 
-                        <label class="radio-inline">
-                            @Html.RadioButtonFor(model => model.Gender, "Male") Male
-                        </label> 
-                        <label class="radio-inline">
-                            @Html.RadioButtonFor(model => model.Gender, "Female") Female
-                        </label>
-                        @Html.ValidationMessageFor(model => model.Gender)
-                           
-                        @Html.LabelFor(model => model.Address)
-                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100"})
-                        @Html.ValidationMessageFor(model => model.Address)
-
-                        
-                        @Html.LabelFor(model => model.Phone)
-                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "15"})
-                        @Html.ValidationMessageFor(model => model.Phone)
-
-                        
-                        @Html.LabelFor(model => model.Email)
-                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
-                        @Html.ValidationMessageFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Gender)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address)
+                            @Html.ValidationMessageFor(model => model.Address)
+                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
+                            
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone)
+                            @Html.ValidationMessageFor(model => model.Phone)
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "15" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Email)
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
+                        </div>
                         <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb" }) Join With Us </label>
 
                         <button class="bttn" id='register' type="submit">Register</button>
@@ -94,4 +101,4 @@
 @section Scripts 
 {
     @Scripts.Render("~/bundles/jqueryval")
-}  
+}
