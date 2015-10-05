@@ -19,23 +19,88 @@ namespace BusinessLogicLayer
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    Nullable<int> proId = null;
+                    Nullable<int> isTopicImg = null;
+                    Nullable<int> isSlideImg = null;
+                    Nullable<int> position = null;
+                    if (dt.Rows[i]["ProgramId"].ToString() != "")
+                    {
+                        proId = int.Parse(dt.Rows[i]["ProgramId"].ToString());
+                    }
+                    if (dt.Rows[i]["IsTopicImage"].ToString() != "")
+                    {
+                        isTopicImg = int.Parse(dt.Rows[i]["IsTopicImage"].ToString());
+                    }
+                    if (dt.Rows[i]["IsSlideImage"].ToString() != "")
+                    {
+                        isSlideImg = int.Parse(dt.Rows[i]["IsSlideImage"].ToString());
+                    }
+                    if (dt.Rows[i]["PositionInSlide"].ToString() != "")
+                    {
+                        position = int.Parse(dt.Rows[i]["PositionInSlide"].ToString());
+                    }
+
+
                     ImageGallery ad = new ImageGallery()
                     {
                         Id = int.Parse(dt.Rows[i]["Id"].ToString()),
-                        ProgramId = int.Parse(dt.Rows[i]["ProgramId"].ToString()),
+                        ProgramId = proId,
                         ProgramName = dt.Rows[i]["Name"].ToString(),
                         ImagePath = dt.Rows[i]["ImagePath"].ToString(),
                         Description = dt.Rows[i]["Description"].ToString(),
-                        IsTopicImage = int.Parse(dt.Rows[i]["IsTopicImage"].ToString()),
-                        IsSildeImage = int.Parse(dt.Rows[i]["IsSlideImage"].ToString()),
-                        PositionInSilde = int.Parse(dt.Rows[i]["PositionInSlide"].ToString()),
+                        IsTopicImage = isTopicImg,
+                        IsSildeImage = isSlideImg,
+                        PositionInSilde = position,
                         IsDeleted = int.Parse(dt.Rows[i]["IsDeleted"].ToString()),
-                       
+
                     };
 
                     ls.Add(ad);
 
                 }
+            }
+            catch (Exception)
+            {
+                return new List<ImageGallery>();
+            }
+            return ls;
+        }
+
+        private static List<ImageGallery> AddImageGalleryToList2(DataTable dt, string flag)
+        {
+            List<ImageGallery> ls = new List<ImageGallery>();
+            try
+            {
+                if (flag == "getImageProgram")
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ImageGallery ad = new ImageGallery()
+                        {
+                         
+                            ProgramId=int.Parse(dt.Rows[i]["ProgramId"].ToString()),
+                            ProgramName = dt.Rows[i]["Name"].ToString(),
+                            TotalImage = int.Parse(dt.Rows[i]["TotalImage"].ToString()),
+                        };
+
+                        ls.Add(ad);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ImageGallery ad = new ImageGallery()
+                        {
+                            ProgramId = int.Parse(dt.Rows[i]["ProgramId"].ToString()),
+                            ProgramName = dt.Rows[i]["Name"].ToString(),
+                            ImagePath = dt.Rows[i]["ImagePath"].ToString()
+                        };
+
+                        ls.Add(ad);
+                    }
+                }
+
             }
             catch (Exception)
             {
@@ -74,7 +139,24 @@ namespace BusinessLogicLayer
             return AddImageGalleryToList(dt);
         }
 
-        public int AddImageGallery(ImageGallery ad)
+        public static List<ImageGallery> GetProgramImage()
+        {
+            DataTable dt = DataAccessLayer.ImageGalleryDA.GetProgramImage();
+            return AddImageGalleryToList2(dt,"getImageProgram");
+        }
+        public static List<ImageGallery> GetImageTopicPrograms()
+        {
+            DataTable dt = DataAccessLayer.ImageGalleryDA.GetImageTopicPrograms();
+            return AddImageGalleryToList2(dt,"getTopicImage");
+        }
+
+        public static List<ImageGallery> GetImageOthers()
+        {
+            DataTable dt = DataAccessLayer.ImageGalleryDA.GetImageOthers();
+            return AddImageGalleryToList(dt);
+        }
+
+        public static int AddImageGallery(ImageGallery ad)
         {
             int ins = 0;
             try
@@ -90,7 +172,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditImageGallery(ImageGallery ad)
+        public static int EditImageGallery(ImageGallery ad)
         {
             int upt = 0;
             try
@@ -104,7 +186,7 @@ namespace BusinessLogicLayer
             return upt;
         }
 
-        public int DeleteImageGallery(int id)
+        public static int DeleteImageGallery(int id)
         {
             int del = 0;
             try

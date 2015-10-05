@@ -13,7 +13,7 @@ namespace Models
        [Key]
         public int Id { get; set; }
 
-       public int ProgramId { get; set; }
+       public Nullable<int> ProgramId { get; set; }
 
         [Display(Name="Program")]
         public string ProgramName { get; set; }
@@ -25,9 +25,11 @@ namespace Models
         [Display(Name="Description")]
         public string Description { get; set; }
 
-        public int IsTopicImage { get; set; }
-        public int IsSildeImage { get; set; }
-        public int PositionInSilde { get; set; }
+        public Nullable<int> IsTopicImage { get; set; }
+        public Nullable<int> IsSildeImage { get; set; }
+        public Nullable<int> PositionInSilde { get; set; }
         public int IsDeleted { get; set; }
+
+        public int TotalImage { get; set; }
     }
 }

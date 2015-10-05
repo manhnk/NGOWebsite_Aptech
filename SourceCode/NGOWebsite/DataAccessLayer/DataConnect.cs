@@ -105,10 +105,14 @@ namespace DataAccessLayer
 
             SqlCommand cmd = new SqlCommand(proc, cnn);
             cmd.CommandType = CommandType.StoredProcedure;
-            for (int i = 0; i < param.Count; i++)
+            if (param != null && param.Count > 0)
             {
-                cmd.Parameters.AddWithValue(param[i], values[i]);
+                for (int i = 0; i < param.Count; i++)
+                {
+                    cmd.Parameters.AddWithValue(param[i], values[i]);
+                }
             }
+         
             SqlDataAdapter da = new SqlDataAdapter(cmd);
 
             da.Fill(dt);

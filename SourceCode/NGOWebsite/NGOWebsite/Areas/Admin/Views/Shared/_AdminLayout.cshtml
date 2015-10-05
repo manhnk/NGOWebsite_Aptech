@@ -327,6 +327,18 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-image  fa-fw"></i> Image Gallery <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="@Url.Action("Index","ImageGallery")"><i class="fa fa-caret-right  fa-fw"></i> Gallery</a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Create","ImageGallery")"><i class="fa fa-caret-right  fa-fw"></i> Add Image</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-list-alt  fa-fw"></i> Contact Details <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -454,6 +466,7 @@
     <script src="@Url.Content("~/Areas/Admin/Contents/bower_components/metisMenu/dist/metisMenu.min.js")"></script>
     <!-- Custom Theme JavaScript -->
     <script src="@Url.Content("~/Areas/Admin/Contents/dist/js/sb-admin-2.js")"></script>
+
     <!-- DataTables JavaScript -->
     <script src="@Url.Content("~/Areas/Admin/Contents/bower_components/datatables/media/js/jquery.dataTables.min.js")"></script>
     <script src="@Url.Content("~/Areas/Admin/Contents/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js")"></script>

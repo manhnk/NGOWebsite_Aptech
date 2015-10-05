@@ -187,7 +187,7 @@ namespace DataAccessLayer
             try
             {
                 string sql = "sp_findTopicImage";
-            
+
                 dt = DataConnect.FindData(sql, null, null);
             }
             catch (Exception)
@@ -198,6 +198,57 @@ namespace DataAccessLayer
             return dt;
         }
 
-      
+        public static DataTable GetProgramImage()
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getProgramImage";
+
+                dt = DataConnect.FindData(sql, null, null);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+
+
+        public static DataTable GetImageTopicPrograms()
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getImageTopicPrograms";
+
+                dt = DataConnect.FindData(sql, null, null);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+        public static DataTable GetImageOthers()
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getImageOthers";
+
+                dt = DataConnect.FindData(sql, null, null);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+
+
     }
 }
