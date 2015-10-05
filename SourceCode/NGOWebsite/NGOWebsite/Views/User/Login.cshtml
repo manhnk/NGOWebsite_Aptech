@@ -1,22 +1,85 @@
 ﻿@{
     ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@model Models.Member
 <div class="contact-bg parallax" id="contact">
-        <div class="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;Login</span>&nbsp;&nbsp;&nbsp     Form</div>
+    <div class="contact">
+        <div class="container">
+            @if (Request.QueryString["error"] != null)
+            {
+                if (Request.QueryString["error"].Equals("-1"))
+                {
+                <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                    <img src='~/Content/View_components/images/error.png' alt="img">Acount is not existed ! Please type again !
+
                 </div>
+                
+                }
+            }
+            <div class="row">
 
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-5 contact_form animate_left">
+                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;Login</span>&nbsp;&nbsp;&nbsp     Form</div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-5 contact_form animate_left">
 
+                    @using (Html.BeginForm("LoginProcess", "User", FormMethod.Post))
+                    {
 
-                        <form name="loginForm" id='contact_form' method="post" action='#'>
+                        var user = "";
+                        var pass = "";
+                        var check = "";
+                        if (Request.Cookies["user_ck"] != null)
+                        {
+                            user = Request.Cookies["user_ck"].Values["user"].ToString();
+                            pass = Request.Cookies["user_ck"].Values["pass"].ToString();
+                            check = "checked";
+                        }
+                        else if (Session["draftUserAcc"] != null)
+                        {
+                            Models.Member mb = Session["draftUserAcc"] as Models.Member;
+                            user = mb.UserName;
+                            pass = mb.Password;
+                        }
+
+                        @Html.ValidationSummary(true)
+                        
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.UserName, new { @Value = user, @placeholder = "User name", @class = "form-control", @required = "required" })
+
+                            <div id='name_error' class='error'>
+                                <img src='~/Content/View_components/images/error.png' alt="img">@Html.ValidationMessageFor(m => m.UserName)
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Password, new { @Value = pass, @type = "password", @placeholder = "Password", @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                @if (check != "")
+                                {
+                                    @Html.CheckBox("cbRemember", new { @Value = "rmb", @checked = check })
+                                }
+                                else
+                                {
+                                    @Html.CheckBox("cbRemember", new { @Value = "rmb" })
+                                }
+                                Remember Me
+                            </label>
+                        </div>
+                        <input type="submit" value="Login" class="bttn" />
+                    }
+
+                    @*<form name="loginForm" id='contact_form' method="post" action='#'>
 
 
                             <div id='name_error' class='error'>
@@ -27,22 +90,22 @@
                             <div id='pass_error' class='error'>
                                 <img src='~/Content/View_components/images/error.png' alt="img">Please enter your valid password.
                             </div>
-                            <input type="password" name='password' id='password' class="form-control" placeholder="Password">
+                            <input type="password" name='password' id='password' class="form-control" placeholder="Password">*@
 
-                            <!--<div id='message_error' class='error'>
+                    <!--<div id='message_error' class='error'>
                                 <img src='~/Content/View_components/images/error.png' alt="img">Please enter your message.
                             </div>
                             <textarea name='message' id='message' class="form-control" placeholder="Message"></textarea>-->
 
-                            <button class="bttn" id='login' type="submit">Login</button>
-                            @*<button class="bttn" id='cancel' type="reset">Cancel</button>*@
-                            <h3><a href='@Url.Action("Register","User")'>You don't have an account? Registry now!</a></h3>
-                        </form>
-                    </div>
+                    @*<button class="bttn" id='login' type="submit">Login</button>*@
+                    @*<button class="bttn" id='cancel' type="reset">Cancel</button>*@
+                    <h3><a href='@Url.Action("Register", "User")'>You don't have an account? Registry now!</a></h3>
                 </div>
-
-
-
             </div>
+
+
+
         </div>
     </div>
+</div>
+

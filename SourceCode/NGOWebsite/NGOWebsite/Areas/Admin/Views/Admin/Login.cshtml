@@ -74,7 +74,6 @@
 
                             @Html.ValidationSummary(true)
                         
-                            <fieldset>
                                 <div class="form-group">
                                     @Html.TextBoxFor(m => m.UserName, new { @Value = user, @placeholder = "User name", @class = "form-control", @required = "required" })
                                     @Html.ValidationMessageFor(m => m.UserName)
@@ -97,7 +96,6 @@
                                     </label>
                                 </div>
                                 <input type="submit" value="Login" class="btn btn-lg btn-success btn-block" />
-                            </fieldset>
                         }
                     </div>
                 </div>

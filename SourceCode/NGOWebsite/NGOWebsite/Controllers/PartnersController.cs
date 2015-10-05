@@ -18,7 +18,7 @@ namespace NGOWebsite.Controllers
         public ActionResult Partners()
         {
             List<Models.Partners> ls = PartnersBusiness.GetAllPartners();
-            return View();
+            return View(ls);
         }
 
     }

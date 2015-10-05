@@ -11,7 +11,7 @@ namespace NGOWebsite.Controllers
         //
         // GET: /Donate/
 
-        public ActionResult Index()
+        public ActionResult Donate()
         {
             return View();
         }

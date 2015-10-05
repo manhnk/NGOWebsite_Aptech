@@ -11,7 +11,7 @@ namespace NGOWebsite.Controllers
         //
         // GET: /Gallery/
 
-        public ActionResult Index()
+        public ActionResult Gallery()
         {
             return View();
         }

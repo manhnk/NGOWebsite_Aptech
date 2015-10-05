@@ -11,7 +11,7 @@ namespace NGOWebsite.Controllers
         //
         // GET: /Contact/
 
-        public ActionResult Index()
+        public ActionResult Contact()
         {
             return View();
         }

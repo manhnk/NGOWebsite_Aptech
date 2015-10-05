@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace NGOWebsite.Controllers
 {
-    public class ProgramsController : Controller
+    public class AboutController : Controller
     {
         //
-        // GET: /Programs/
+        // GET: /About/
 
-        public ActionResult Programs()
+        public ActionResult About()
         {
             return View();
         }
