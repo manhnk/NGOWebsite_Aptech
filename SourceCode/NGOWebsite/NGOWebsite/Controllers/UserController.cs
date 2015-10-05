@@ -76,7 +76,49 @@ namespace NGOWebsite.Controllers
         {
             return View();
         }
-        
+        [HttpPost]
+        public ActionResult RegisterProcess(FormCollection frm)
+        {
+            int kt = 0;
+            try
+            {
+                int i = 0;
+                if (frm["cbIsMOT"].ToString().Contains("rmb"))
+                {
+                    i = 1;
+                }
+                // TODO: Add insert logic here
+                Models.Member ad = new Models.Member()
+                {
+                    UserName = frm["UserName"],
+                    Password = "1234567",
+                    FullName = frm["FullName"],
+                    Gender = frm["Gender"],
+                    Phone = frm["Phone"],
+                    Address = frm["Address"],
+                    Email = frm["Email"],
+                    IsMemberOfTeam = i,
+                    IsDeleted = 0
+                };
+
+                kt = MemberBusiness.AddMember(ad);
+
+            }
+            catch
+            {
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("Register", "User", new { add = "success" });
+            }
+            else
+            {
+                return RedirectToAction("Register", "User", new { add = "error" });
+            }
+
+        }
 
 
         

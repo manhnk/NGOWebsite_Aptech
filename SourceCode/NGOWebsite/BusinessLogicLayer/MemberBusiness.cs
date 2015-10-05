@@ -78,7 +78,7 @@ namespace BusinessLogicLayer
             return AddMemberToList(dt);
         }
 
-        public int AddMember(Member ad)
+        public static int AddMember(Member ad)
         {
             int ins = 0;
             try
@@ -94,7 +94,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditMember(Member ad)
+        public static int EditMember(Member ad)
         {
             int upt = 0;
             try
@@ -109,7 +109,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int ChangePassword(int id,string pass)
+        public static int ChangePassword(int id,string pass)
         {
             int upt = 0;
             try
@@ -122,7 +122,7 @@ namespace BusinessLogicLayer
             }
             return upt;
         }
-        public int DeleteMember(int id)
+        public static int DeleteMember(int id)
         {
             int del = 0;
             try
