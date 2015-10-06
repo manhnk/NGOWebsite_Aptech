@@ -69,7 +69,7 @@ namespace BusinessLogicLayer
         }
 
 
-        public int AddMessage(Message ad)
+        public static int AddMessage(Message ad)
         {
             int ins = 0;
             try
@@ -85,7 +85,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditMessage(Message ad)
+        public static int EditMessage(Message ad)
         {
             int upt = 0;
             try
@@ -99,7 +99,7 @@ namespace BusinessLogicLayer
             return upt;
         }
 
-        public int DeleteMessage(int id)
+        public static int DeleteMessage(int id)
         {
             int del = 0;
             try
