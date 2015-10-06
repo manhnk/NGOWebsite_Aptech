@@ -22,6 +22,8 @@ namespace Models
         public int Position { get; set; }
 
         public int ParentId { get; set; }
+
+        [Display(Name="Parent")]
         public string ParentName { get; set; }
 
         [Display(Name="Links")]

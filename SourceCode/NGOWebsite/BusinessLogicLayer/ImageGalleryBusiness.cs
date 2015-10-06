@@ -246,6 +246,12 @@ namespace BusinessLogicLayer
             int del = 0;
             try
             {
+                List<ImageGallery> lsOld = ImageGalleryBusiness.GetImageGalleryById(id);
+                ImageGallery imgOld = lsOld[0];
+                if (imgOld.IsTopicImage == 1)
+                {
+                    int kt = UpdateIsTopicImageForOldProgram((int)imgOld.ProgramId, imgOld.Id);
+                }
                 del = DataAccessLayer.ImageGalleryDA.DeleteImage(id);
             }
             catch (Exception)

@@ -14,16 +14,30 @@ namespace Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please type user name!")]
-        //[Remote("CheckNameExist", "Book", HttpMethod = "POST", ErrorMessage = "Book name already exists. Please enter a different user name.", AdditionalFields = "ID")]
+        [Remote("CheckNameExist", "Member", HttpMethod = "POST", ErrorMessage = "Username already exists. Please enter a different user name.", AdditionalFields = "ID")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Please type password!")]
         [Display(Name = "Password")]
+        [Remote("CheckPassword", "Member", HttpMethod = "POST", ErrorMessage = "Password is wrong !")]        
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Display(Name = "New Password")]
+        [Required(ErrorMessage = "Please type new password !")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+
+        [Display(Name = "Confirm New Password")]
+        [Required(ErrorMessage = "Please type confirm password !")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
+        [DataType(DataType.Password)]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
 
         [Display(Name="Gender")]
         [Required(ErrorMessage="Please choose gender!")]

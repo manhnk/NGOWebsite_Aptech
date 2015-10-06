@@ -133,6 +133,7 @@
     <Compile Include="Areas\Admin\Controllers\DonationController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageGalleryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InformationsController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DonateController.cs" />
@@ -1274,6 +1275,7 @@
     <Content Include="Areas\Admin\Views\ImageGallery\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ImageGallery\ProgramImages.cshtml" />
     <Content Include="Areas\Admin\Views\ImageGallery\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Informations\ListInformations.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

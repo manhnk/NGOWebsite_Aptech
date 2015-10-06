@@ -24,7 +24,7 @@ namespace BusinessLogicLayer
                         Id = int.Parse(dt.Rows[i]["Id"].ToString()),
                         Subject = dt.Rows[i]["Subject"].ToString(),
                         TextTooltip = dt.Rows[i]["TextTooltip"].ToString(),
-                        Contents = dt.Rows[i]["Content"].ToString(),
+                        Contents = dt.Rows[i]["Contents"].ToString(),
                         ParentId = int.Parse(dt.Rows[i]["ParentId"].ToString()),
                         ParentName = dt.Rows[i]["Description"].ToString(),
                         Position = int.Parse(dt.Rows[i]["Position"].ToString()),

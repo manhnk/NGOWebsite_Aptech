@@ -57,6 +57,7 @@ namespace DataAccessLayer
                 string sql = "sp_addNewMember";
                 List<string> param = new List<string>();
                 param.Add("@username");
+                param.Add("@password");
                 param.Add("@fullname");
                 param.Add("@gender");
                 param.Add("@address");
@@ -96,7 +97,6 @@ namespace DataAccessLayer
                 List<string> param = new List<string>();
                 param.Add("@id");
                 param.Add("@username");
-                param.Add("@password");
                 param.Add("@fullname");
                 param.Add("@gender");
                 param.Add("@address");
@@ -110,7 +110,6 @@ namespace DataAccessLayer
                 List<object> value = new List<object>();
                 value.Add(mem.Id);
                 value.Add(mem.UserName);
-                value.Add(DataConnect.GetMd5Hash(mem.Password));
                 value.Add(mem.FullName);
                 value.Add(mem.Gender);
                 value.Add(mem.Address);

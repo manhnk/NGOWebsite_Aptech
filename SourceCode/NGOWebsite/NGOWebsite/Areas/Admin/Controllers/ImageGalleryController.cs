@@ -185,7 +185,24 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            int kt = 0;
+            try
+            {
+                kt = ImageGalleryBusiness.DeleteImageGallery(id);
+            }
+            catch
+            {
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("Index", "ImageGallery", new { delete = "success" });
+            }
+            else
+            {
+                return RedirectToAction("Index", "ImageGallery", new { delete = "error" });
+            }
         }
 
         //

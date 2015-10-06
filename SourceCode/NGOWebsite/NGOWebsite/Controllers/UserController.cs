@@ -18,6 +18,42 @@ namespace NGOWebsite.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult CheckNameExist(string username, int? id)
+        {
+            bool check = false;
+
+            List<Models.Member> ls = MemberBusiness.CheckUserExisted(username, id);
+            if (ls.Count > 0)
+            {
+                check = true;
+            }
+            return Json(check == false);
+        }
+
+        [HttpPost]
+        public JsonResult CheckPassword(string password)// name of paramter must be same with name of control 
+        {
+            bool check = false;
+            int id = 0;
+            if (Session["user_login"] != null)
+            {
+                Models.Member ad = Session["user_login"] as Models.Member;
+                id = ad.Id;
+            }
+
+
+            List<Models.Member> ls = MemberBusiness.GetMemberById(id);
+            if (ls.Count > 0)
+            {
+                if (ls[0].Password != DataAccessLayer.DataConnect.GetMd5Hash(password))
+                {
+                    check = true;
+                }
+            }
+            return Json(check == false);
+        }
+
         [AllowAnonymous]
         public ActionResult Login()
         {
