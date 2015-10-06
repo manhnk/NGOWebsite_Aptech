@@ -28,7 +28,7 @@ namespace NGOWebsite.Controllers
             {
                 check = true;
             }
-            return Json(check == true);
+            return Json(check == false);
         }
 
         [HttpPost]
