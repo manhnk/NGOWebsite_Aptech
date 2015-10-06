@@ -1315,7 +1315,6 @@
     <Content Include="Views\Partners\Partners.cshtml" />
     <Content Include="Views\Programs\Programs.cshtml" />
     <Content Include="Views\Information\WhatWeDo.cshtml" />
-    <Content Include="Views\Information\Help.cshtml" />
     <Content Include="Views\Information\About.cshtml" />
     <Content Include="Views\Information\Stories.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />

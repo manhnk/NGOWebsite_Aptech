@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Models;
+using BusinessLogicLayer;
 
 namespace NGOWebsite.Controllers
 {
@@ -13,11 +15,26 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Programs()
         {
-            return View();
+            List<Models.Programs> ls = ProgramsBusiness.GetAllPrograms();
+            if (ls.Count > 0)
+            {
+                return View(ls);
+            }
+            else return null;
+
         }
-        public ActionResult RecentProgram()
+        public ActionResult RecentProgram(int id)
         {
-            return View();
+
+            List<Models.Programs> ls = ProgramsBusiness.GetProgramsById(id);
+            if (ls.Count > 0)
+            {
+                return View(ls[0]);
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

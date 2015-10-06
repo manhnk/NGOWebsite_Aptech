@@ -17,11 +17,11 @@
                 str = str.Split(new char[] { ' ' })[0];
                 if (str.Equals("Home") || str.Equals("Login") || str.Equals("Register"))
                 {
-    <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
+    <li><a href="@Url.Action(str, "User")">@item.Subject</a></li>
                 }
-                else if (str.Equals("About") || str.Equals("Help") || str.Equals("Contact"))
+                else if (str.Equals("About"))
                 {
-
+    <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
                 }
                 else
                 {
@@ -29,7 +29,7 @@
                 }
             }
 
-    <li class="dropdown">
+@*<li class="dropdown">
         <a href="#" data-toggle="dropdown" class="dropdown-toggle">More Info <b class="caret"></b></a>
         <ul class="dropdown-menu navfix">
             @foreach (var item in Model)
@@ -47,7 +47,7 @@
                 }
             }
         </ul>
-    </li>
+    </li>*@
 
         }
     }
@@ -66,9 +66,9 @@
     <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
                 }
 
-                else if (str.Equals("About") || str.Equals("Help") || str.Equals("Contact"))
+                else if (str.Equals("About"))
                 {
-
+    <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
                 }
                 else
                     if (str.Equals("Login"))
@@ -82,6 +82,8 @@
     <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
                     }
             }
+    
+    
     <li class="dropdown">
         <a href="#" data-toggle="dropdown" class="dropdown-toggle">@ad.UserName <b class="caret"></b></a>
         <ul class="dropdown-menu navfix">
@@ -91,32 +93,12 @@
                 str = str.Split(new char[] { ' ' })[0];
                 if (str.Equals("Login"))
                 {
-                <li><a href="@Url.Action("Logout", "User")">Log out</a></li>	
-                                	 
+                <li><a href="@Url.Action("Profile", "User")">Profile</a></li>
+                <li class="divider"></li>
                 }
                 else if (str.Equals("Register"))
                 {
-                <li><a href="@Url.Action("Profile", "User")">Profile</a></li>
-                <li class="divider"></li>		 
-                }
-            }
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">More Info <b class="caret"></b></a>
-        <ul class="dropdown-menu navfix">
-            @foreach (var item in Model)
-            {
-                string str = item.Subject;
-                str = str.Split(new char[] { ' ' })[0];
-                if (str.Equals("About") || str.Equals("Help"))
-                {
-                <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
-                <li class="divider"></li>
-                }
-                else if (str.Equals("Contact"))
-                {
-                <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
+                <li><a href="@Url.Action("Logout", "User")">Log out</a></li>	                		 
                 }
             }
         </ul>
