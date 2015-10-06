@@ -41,7 +41,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-5 contact_form animate_left">
 
-                    @using (Html.BeginForm("RegisterProcess", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("RegisterProcess", "User", FormMethod.Post))
                     {
                         
                         @Html.AntiForgeryToken()

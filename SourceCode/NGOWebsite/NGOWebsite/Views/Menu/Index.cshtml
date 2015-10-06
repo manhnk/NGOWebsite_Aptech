@@ -23,6 +23,10 @@
                 {
     <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
                 }
+                else if (str.Equals("Contact"))
+                {
+    <li><a href="@Url.Action("Message", "Message")">@item.Subject</a></li>
+                }
                 else
                 {
     <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
@@ -69,6 +73,10 @@
                 else if (str.Equals("About"))
                 {
     <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
+                }
+                else if (str.Equals("Contact"))
+                {
+    <li><a href="@Url.Action("Message", "Message")">@item.Subject</a></li>
                 }
                 else
                     if (str.Equals("Login"))

@@ -141,6 +141,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PartnersController.cs" />
     <Compile Include="Controllers\ProgramsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -1310,7 +1311,6 @@
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Donate\Donate.cshtml" />
-    <Content Include="Views\Contact\Contact.cshtml" />
     <Content Include="Views\Gallery\Gallery.cshtml" />
     <Content Include="Views\Partners\Partners.cshtml" />
     <Content Include="Views\Programs\Programs.cshtml" />
@@ -1319,6 +1319,8 @@
     <Content Include="Views\Information\Stories.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
+    <Content Include="Views\Message\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
