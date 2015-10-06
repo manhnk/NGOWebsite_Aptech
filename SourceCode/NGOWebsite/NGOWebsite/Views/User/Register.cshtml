@@ -1,7 +1,11 @@
 ﻿@model Models.Member
 @{
-    
-    ViewBag.Title = "Profile";
+    if (Session["user_login"] != null)
+    {
+        ViewBag.Title = "Profile";
+
+    }
+    ViewBag.Title = "Register";
 
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
@@ -48,9 +52,14 @@
 
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Password)
-                            @Html.TextBoxFor(model => model.Password, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Password)
+                            @Html.LabelFor(model => model.NewPassword)
+                            @Html.TextBoxFor(model => model.NewPassword, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NewPassword)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ConfirmPassword)
+                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword)
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.FullName)

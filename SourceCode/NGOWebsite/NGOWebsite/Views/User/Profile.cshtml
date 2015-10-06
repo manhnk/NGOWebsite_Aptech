@@ -86,7 +86,7 @@
                             @Html.ValidationMessageFor(model => model.Email)
                             @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
                         </div>
-                        <div>
+                        @*<div>
                             @if (Model.IsMemberOfTeam == 1)
                             {
                                 <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb", @checked = "checked" }) Join With Us </label>		 
@@ -95,7 +95,7 @@
                             {
                                 <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb" }) Join With Us </label>                                
                             }
-                        </div>
+                        </div>*@
                         <button class="bttn" id='register' type="submit">Update</button>
                         <button class="bttn" id='cancel' type="reset">Reset</button>
                         

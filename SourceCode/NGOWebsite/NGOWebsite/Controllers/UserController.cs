@@ -135,7 +135,7 @@ namespace NGOWebsite.Controllers
                 Models.Member ad = new Models.Member()
                 {
                     UserName = frm["UserName"],
-                    Password = frm["Password"],
+                    Password = frm["NewPassword"],
                     FullName = frm["FullName"],
                     Gender = frm["Gender"],
                     Phone = frm["Phone"],
