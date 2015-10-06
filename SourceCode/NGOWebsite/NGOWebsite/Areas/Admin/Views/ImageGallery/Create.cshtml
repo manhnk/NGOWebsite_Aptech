@@ -26,17 +26,30 @@
                                 @Html.TextBoxFor(model => model.ImagePath, new { @class = "form-control", @type = "file", @multiple = "multiple", @accept = ".png,.gif,.jpg" })
                                 @Html.ValidationMessageFor(model => model.ImagePath)
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.ProgramName)
-                                @Html.DropDownListFor(model => model.ProgramId, (SelectList)ViewData["Program"], "** Select **", new { @class="form-control"})
-                            </div>
-                           <!--
-                               <div class="form-group">
-                                <label>@Html.CheckBox("cbIsTopicImage", new { @Value = "rmb", @disabled = "disabled"}) Is Topic Image Of This Program</label>
-                            </div>--> 
+                            @if (ViewData["pro"] != null)
+                            {
+                                Models.Programs p=ViewData["pro"] as Models.Programs;
+                                <div class="form-group">
+                                    @Html.Hidden("ProgramId",p.Id)
+                                    @Html.LabelFor(model => model.ProgramName)
+                                    @Html.TextBox("ProgramName", p.Name, new { @class="form-control",@disabled="disabled"})
+                                </div>
+
+                               <!--<div class="form-group">
+                                    <label>@Html.CheckBox("cbIsTopicImage", new { @Value = "rmb" }) Is Topic Image Of This Program</label>
+                                </div>--> 
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ProgramName)
+                                    @Html.DropDownListFor(model => model.ProgramId, (SelectList)ViewData["Program"], "** Select **", new { @class = "form-control" })
+                                </div>
+                            }
+
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Description)
-                                @Html.TextAreaFor(model => model.Description, 5, 10, new { @class="form-control"})
+                                @Html.TextAreaFor(model => model.Description, 5, 10, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Description)
                             </div>
                         </div>
@@ -56,16 +69,16 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script type="text/javascript">
-    /*    $("#ProgramId").change(function () {
-            var value = $(this).val();
-            if (value != "") {
-                $("#cbIsTopicImage").removeAttr("disabled");
-                $("#cbIsTopicImage").removeAttr("checked");
-            } else {
-                $("#cbIsTopicImage").attr("disabled", "disabled");
-                $("#cbIsTopicImage").removeAttr("checked");
-            }
-        });*/
+        /*    $("#ProgramId").change(function () {
+                var value = $(this).val();
+                if (value != "") {
+                    $("#cbIsTopicImage").removeAttr("disabled");
+                    $("#cbIsTopicImage").removeAttr("checked");
+                } else {
+                    $("#cbIsTopicImage").attr("disabled", "disabled");
+                    $("#cbIsTopicImage").removeAttr("checked");
+                }
+            });*/
     </script>
 }
 

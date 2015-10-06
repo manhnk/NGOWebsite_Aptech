@@ -97,6 +97,51 @@ namespace DataAccessLayer
             return kt;
         }
 
+
+
+        public static int UpdateIsTopicImage(int proId)
+        {
+            int kt = 0;
+            try
+            {
+                string sql = "sp_updateIsTopicImage";
+                List<string> param = new List<string>();
+                param.Add("@proId");
+
+                List<object> value = new List<object>();
+                value.Add(proId);
+
+                kt = DataConnect.CRUDData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return kt;
+        }
+
+        public static int UpdateIsTopicImageForOldProgram(int proId,int id)
+        {
+            int kt = 0;
+            try
+            {
+                string sql = "sp_setImageTopicForProgramOld";
+                List<string> param = new List<string>();
+                param.Add("@proId");
+                param.Add("@id");
+
+                List<object> value = new List<object>();
+                value.Add(proId);
+                value.Add(id);
+
+                kt = DataConnect.CRUDData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return kt;
+        }
         public static int DeleteImage(int id)
         {
             int kt = 0;

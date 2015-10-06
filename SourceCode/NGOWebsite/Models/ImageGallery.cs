@@ -25,6 +25,7 @@ namespace Models
         [Display(Name="Description")]
         public string Description { get; set; }
 
+       [Display(Name="Is Topic Imgae")]
         public Nullable<int> IsTopicImage { get; set; }
         public Nullable<int> IsSildeImage { get; set; }
         public Nullable<int> PositionInSilde { get; set; }

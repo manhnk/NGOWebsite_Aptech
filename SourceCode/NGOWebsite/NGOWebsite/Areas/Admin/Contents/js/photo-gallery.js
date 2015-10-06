@@ -1,9 +1,14 @@
-$(document).ready(function(){        
+
+
+$(document).ready(function () {
 	$('li img').on('click',function(){
 		var src = $(this).attr('src');
 		var img = '<img src="' + src + '" class="img-responsive"/>';
-		var id = $(this).parent('li').attr("id");
-		var url = "ImageGallery/Details/" + id;
+		var id = $(this).attr("id");
+		var urlRoot = window.location.href.substr(0,window.location.href.toLowerCase().indexOf("admin/"));
+		var urlDetail = urlRoot+"Admin/ImageGallery/Details/" + id;
+		var urlEdit = urlRoot + "Admin/ImageGallery/Edit/" + id;
+		var urlDelete = urlRoot + "Admin/ImageGallery/Delete/" + id;
 
 		//start of new code new code
 		var index = $(this).parent('li').index();   
@@ -11,9 +16,13 @@ $(document).ready(function(){
 		var html = '';
 		html += img;                
 		html += '<div style="height:25px;clear:both;display:block;">';
-		html += '<a class="controls next" href="' + (index + 2) + '">next &raquo;</a>';
-		html += '<a class="controls details" href="'+url+'">Details</a>';
-		html += '<a class="controls previous" href="' + (index) + '">&laquo; prev</a>';
+		html += '<a class="controls next" href="' + (index + 2) + '">Next &raquo;</a>';
+		html += '<a class="controls previous" href="' + (index) + '">&laquo; Prev</a>';
+		html += '<div style="margin-left:140px;float:left ;font-size: 11px;padding-top: 8px;font-weight: bold;">';
+		html += '<a class="details" href="' + urlDetail + '">Detail</a> | ';
+		html += '<a class="edit" href="' + urlEdit + '">Edit</a> | ';
+		html += '<a class="delete" href="' + urlDelete + '">Delete</a>';
+		html += '</div>';
 		html += '</div>';
 		
 		$('#myModal').modal();
@@ -35,8 +44,16 @@ $(document).ready(function(){
          
 $(document).on('click', 'a.controls', function(){
 	var index = $(this).attr('href');
-	var src = $('ul.row li:nth-child('+ index +') img').attr('src');             
-	
+	var src = $('ul.row li:nth-child(' + index + ') img').attr('src');
+	var id = $('ul.row li:nth-child(' + index + ') img').attr('id');
+	var urlRoot = window.location.href.substr(0, window.location.href.toLowerCase().indexOf("admin/"));
+	var urlDetail = urlRoot + "Admin/ImageGallery/Details/" + id;
+	var urlEdit = urlRoot + "Admin/ImageGallery/Edit/" + id;
+	var urlDelete = urlRoot + "Admin/ImageGallery/Delete/" + id;
+	$("a.details").attr('href', urlDetail);
+	$("a.edit").attr('href', urlEdit);
+	$("a.delete").attr('href', urlDelete);
+
 	$('.modal-body img').attr('src', src);
 	
 	var newPrevIndex = parseInt(index) - 1; 

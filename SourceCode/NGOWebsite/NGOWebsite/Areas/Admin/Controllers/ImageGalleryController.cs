@@ -29,14 +29,24 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
+            List<Models.ImageGallery> ls = ImageGalleryBusiness.GetImageGalleryById(id);
+            if (ls.Count > 0)
+            {
+                return View(ls[0]);
+            }
             return View();
         }
 
         //
         // GET: /Admin/ImageGallery/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int? proId)
         {
+            if (proId != null)
+            {
+                List<Programs> ls = ProgramsBusiness.GetProgramsById((int)proId);
+                ViewData["pro"] = ls[0];
+            }
             List<Models.Programs> lsPro = BusinessLogicLayer.ProgramsBusiness.GetAllPrograms();
             ViewData["Program"] = new SelectList(lsPro, "Id", "Name");
             return View();
@@ -46,7 +56,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
         // POST: /Admin/ImageGallery/Create
 
         [HttpPost]
-        public ActionResult CreateProcess(FormCollection frm,HttpPostedFileBase[] ImagePath)
+        public ActionResult CreateProcess(FormCollection frm, HttpPostedFileBase[] ImagePath)
         {
             int kt = 0;
             try
@@ -59,32 +69,34 @@ namespace NGOWebsite.Areas.Admin.Controllers
                     file.SaveAs(Server.MapPath(@"~/ImageUpload/" + filename));
                     string filepathtosave = "ImageUpload/" + filename;
 
+                    Nullable<int> isTopicImg = null;
+
                     Nullable<int> proId = null;
                     if (frm["ProgramId"] != "")
                     {
-                        proId=int.Parse(frm["ProgramId"]);
+                        proId = int.Parse(frm["ProgramId"]);
+                        List<ImageGallery> lsImg = ImageGalleryBusiness.GetImageTopic((int)proId);
+                        if (lsImg.Count == 0)//if program doesn't has any image then set topic image =1
+                        {
+                            isTopicImg = 1;
+                        }
                     }
 
-                    Nullable<int> isTopicImg = null;
-                    if (proId != null && kt == 0)
-                    {
-                        isTopicImg = 1;
-                    }
                     Models.ImageGallery ad = new Models.ImageGallery()
                     {
-                        ImagePath=filepathtosave,
-                        ProgramId=proId,
-                        IsTopicImage=isTopicImg,
-                        Description=frm["Description"]
+                        ImagePath = filepathtosave,
+                        ProgramId = proId,
+                        IsTopicImage = isTopicImg,
+                        Description = frm["Description"]
                     };
 
-                    int check= ImageGalleryBusiness.AddImageGallery(ad);
+                    int check = ImageGalleryBusiness.AddImageGallery(ad);
                     if (check > 0)
                     {
                         kt++;
                     }
                 }
-                
+
             }
             catch
             {
@@ -106,6 +118,13 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
+            List<Models.Programs> lsPro = BusinessLogicLayer.ProgramsBusiness.GetAllPrograms();
+            ViewData["Program"] = new SelectList(lsPro, "Id", "Name");
+            List<ImageGallery> ls = ImageGalleryBusiness.GetImageGalleryById(id);
+            if (ls.Count > 0)
+            {
+                return View(ls[0]);
+            }
             return View();
         }
 
@@ -113,17 +132,51 @@ namespace NGOWebsite.Areas.Admin.Controllers
         // POST: /Admin/ImageGallery/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditProcess(int id, FormCollection frm)
         {
+            int kt = 0;
             try
             {
-                // TODO: Add update logic here
+                Nullable<int> isTopicImg = null;
 
-                return RedirectToAction("Index");
+                Nullable<int> proId = null;
+                if (frm["ProgramId"] != "")
+                {
+                    proId = int.Parse(frm["ProgramId"]);
+                }
+
+                if (frm["cbIsTopicImage"].ToString().Contains("rmb"))
+                {
+                    isTopicImg = 1;
+                }
+
+                Models.ImageGallery ad = new Models.ImageGallery()
+                {
+                    Id=int.Parse(frm["Id"]),
+                    ImagePath=frm["ImagePath"],
+                    ProgramId = proId,
+                    IsTopicImage = isTopicImg,
+                    Description = frm["Description"]
+                };
+
+                int check = ImageGalleryBusiness.EditImageGallery(ad);
+                if (check > 0)
+                {
+                    kt++;
+                }
             }
             catch
             {
-                return View();
+                kt = 0;
+            }
+
+            if (kt>0)
+            {
+                return RedirectToAction("Index", "ImageGallery", new { update = "success" });
+            }
+            else
+            {
+                return RedirectToAction("Index", "ImageGallery", new { update = "error" });
             }
         }
 
@@ -136,21 +189,18 @@ namespace NGOWebsite.Areas.Admin.Controllers
         }
 
         //
-        // POST: /Admin/ImageGallery/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult ProgramImages(int id)
         {
-            try
+            List<Models.ImageGallery> ls = ImageGalleryBusiness.GetImageGalleryByProgram(id);
+            if (ls.Count > 0)
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                ViewData["program"] = ls[0];
+                return View(ls);
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
+
+
     }
 }

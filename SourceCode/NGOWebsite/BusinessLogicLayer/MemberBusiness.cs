@@ -31,7 +31,7 @@ namespace BusinessLogicLayer
                         Email = dt.Rows[i]["Email"].ToString(),
                         IsMemberOfTeam = int.Parse(dt.Rows[i]["IsMemberOfTeam"].ToString()),
                         IsDeleted = int.Parse(dt.Rows[i]["IsDeleted"].ToString()),
-                        Image = dt.Rows[i]["IsActived"].ToString()
+                        Image = dt.Rows[i]["Image"].ToString()
 
                     };
 

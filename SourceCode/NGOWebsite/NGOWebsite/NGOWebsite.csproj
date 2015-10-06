@@ -1272,6 +1272,8 @@
     <Content Include="Areas\Admin\Views\ImageGallery\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ImageGallery\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ImageGallery\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageGallery\ProgramImages.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageGallery\Edit.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

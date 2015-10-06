@@ -45,10 +45,12 @@
         float: right;
         text-align: right;
     }
-
-    .details {
-        text-align:center;
+    
+    .previous{
+        float:left;
+        text-align:left;
     }
+
     /*override modal for demo only*/
     .modal-dialog {
         max-width: 500px;
@@ -130,7 +132,7 @@
                                         <td style="text-align:center"><img src="~/@lsTopic[i].ImagePath" width="150px" height="100px" /></td>
                                         <td>@lsProgram[i].TotalImage</td>
                                         <td>
-                                            <a href="@Url.Action("Details", "ImageGallery", new { id=lsProgram[i].ProgramId})" title="View Gallery"><i class="fa fa-search-plus  fa-fw"></i> View Gallery </a>
+                                            <a href="@Url.Action("ProgramImages", "ImageGallery", new { id = lsProgram[i].ProgramId })" title="View Gallery"><i class="fa fa-search-plus  fa-fw"></i> View Gallery </a>
                                         </td>
                                     </tr>
                                 }
@@ -159,8 +161,8 @@
                             List<Models.ImageGallery> lsOthers = ViewData["lsOthers"] as List<Models.ImageGallery>;
                             foreach (ImageGallery img in lsOthers)
                             {
-                                <li id="@img.Id" class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                                    <img class="img-responsive" src="~/@img.ImagePath" />
+                                <li  class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                                    <img id="@img.Id" class="img-responsive" src="~/@img.ImagePath" />
                                 </li>
                             }
                         }

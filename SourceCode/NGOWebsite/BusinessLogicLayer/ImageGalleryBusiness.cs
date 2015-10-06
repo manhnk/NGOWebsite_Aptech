@@ -172,11 +172,66 @@ namespace BusinessLogicLayer
 
         }
 
+        public static int UpdateIsTopicImage(int proId)
+        {
+            int ins = 0;
+            try
+            {
+                ins = DataAccessLayer.ImageGalleryDA.UpdateIsTopicImage(proId);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return ins;
+        }
+
+        public static int UpdateIsTopicImageForOldProgram(int proId,int id)
+        {
+            int ins = 0;
+            try
+            {
+                ins = DataAccessLayer.ImageGalleryDA.UpdateIsTopicImageForOldProgram(proId,id);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return ins;
+        }
+        
         public static int EditImageGallery(ImageGallery ad)
         {
             int upt = 0;
             try
             {
+                List<ImageGallery> lsOld = ImageGalleryBusiness.GetImageGalleryById(ad.Id);
+                ImageGallery imgOld = lsOld[0];
+                if (imgOld.IsTopicImage == 1 && imgOld.ProgramId!=ad.ProgramId)
+                {
+                   int kt= UpdateIsTopicImageForOldProgram((int)imgOld.ProgramId,imgOld.Id);
+                }
+
+                if (ad.ProgramId != null)
+                {
+                    List<ImageGallery> ls = ImageGalleryBusiness.GetImageTopic((int)ad.ProgramId);
+                    if (ad.IsTopicImage == 1)
+                    {
+                        if (ls.Count > 0)
+                        {
+                            UpdateIsTopicImage((int)ad.ProgramId);
+                        }
+                    }
+                    else
+                    {
+                        if (ls.Count == 0)
+                        {
+                            ad.IsTopicImage = 1;
+                        }
+                       
+                    }
+                }
+               
                 upt = DataAccessLayer.ImageGalleryDA.EditImage(ad);
             }
             catch (Exception)
