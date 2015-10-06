@@ -28,7 +28,7 @@ namespace NGOWebsite.Controllers
             {
                 check = true;
             }
-            return Json(check == false);
+            return Json(check == true);
         }
 
         [HttpPost]
@@ -221,11 +221,48 @@ namespace NGOWebsite.Controllers
 
             if (kt > 0)
             {
-                return RedirectToAction("ListAdmin", "Admin", new { update = "success" });
+                return RedirectToAction("Profile", "User", new { update = "success" });
             }
             else
             {
-                return RedirectToAction("ListAdmin", "Admin", new { update = "error" });
+                return RedirectToAction("Profile", "User", new { update = "error" });
+            }
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePasswordProcess(FormCollection frm)
+        {
+            int id = 0;
+            if (Session["user_login"] != null)
+            {
+                Models.Member ad = Session["user_login"] as Models.Member;
+                id = ad.Id;
+            }
+            int kt = 0;
+            try
+            {
+                string newpass = frm["NewPassword"];
+
+                kt = MemberBusiness.ChangePassword(id, newpass);
+
+            }
+            catch
+            {
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("Profile", "User", new { change = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ChangePassword", "User", new { change = "error" });
             }
         }
     }

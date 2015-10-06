@@ -14,14 +14,14 @@ namespace Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please type user name!")]
-        [Remote("CheckNameExist", "Member", HttpMethod = "POST", ErrorMessage = "Username already exists. Please enter a different user name.", AdditionalFields = "ID")]
+        [Remote("CheckNameExist", "User", HttpMethod = "POST", ErrorMessage = "Username already exists. Please enter a different user name.", AdditionalFields = "ID")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Please type password!")]
         [Display(Name = "Password")]
-        [Remote("CheckPassword", "Member", HttpMethod = "POST", ErrorMessage = "Password is wrong !")]        
+        [Remote("CheckPassword", "User", HttpMethod = "POST", ErrorMessage = "Password is wrong !")]        
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
@@ -71,5 +71,7 @@ namespace Models
         public int IsDeleted { get; set; }
 
         public string Image { get; set; }
+
+        
     }
 }

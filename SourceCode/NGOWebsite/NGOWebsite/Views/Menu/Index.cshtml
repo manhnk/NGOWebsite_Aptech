@@ -94,11 +94,12 @@
                 if (str.Equals("Login"))
                 {
                 <li><a href="@Url.Action("Profile", "User")">Profile</a></li>
-                <li class="divider"></li>
+                
                 }
                 else if (str.Equals("Register"))
                 {
-                <li><a href="@Url.Action("Logout", "User")">Log out</a></li>	                		 
+                <li><a href="@Url.Action("Logout", "User")">Log out</a></li>	
+                <li class="divider"></li>                		 
                 }
             }
         </ul>
