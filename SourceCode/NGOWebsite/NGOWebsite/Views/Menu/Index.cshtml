@@ -5,6 +5,7 @@
     
     Models.Member ad = new Models.Member();
     ad = (Models.Member)Session["user_login"];
+    //============== Menu for VISITORs============
     if (Session["user_login"] == null)
     {
 
@@ -52,6 +53,7 @@
     }
     else
     {
+        //============== Menu for MEMBERs==============
         ad = Session["user_login"] as Models.Member;
         if (Model != null)
         {
