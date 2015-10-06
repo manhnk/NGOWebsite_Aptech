@@ -15,7 +15,7 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Home()
         {
-             return View();
+            return View();
         }
 
         [AllowAnonymous]
@@ -26,6 +26,13 @@ namespace NGOWebsite.Controllers
                 return RedirectToAction("Home", "User");
             }
             else return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Home", "User");
+
         }
 
         [AllowAnonymous]
@@ -70,7 +77,7 @@ namespace NGOWebsite.Controllers
 
         }
 
-       
+
 
         public ActionResult Register()
         {
@@ -79,7 +86,7 @@ namespace NGOWebsite.Controllers
         [HttpPost]
         public ActionResult RegisterProcess(FormCollection frm)
         {
-            
+
             int kt = 0;
             try
             {
@@ -123,7 +130,7 @@ namespace NGOWebsite.Controllers
         }
 
 
-        
+
     }
 
 

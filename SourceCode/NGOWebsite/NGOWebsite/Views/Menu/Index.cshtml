@@ -1,24 +1,63 @@
 ﻿@* Partial View Menu Which Wil Be Pasted In  _UserLayout Master Page*@
 
 @model IEnumerable<Models.Menu>
-
-@if (Model != null)
-{
-    foreach (var item in Model)
+@{
+    Models.Member ad = new Models.Member();
+    if (Session["user_login"] == null)
     {
-        string str = item.Subject;
-        str = str.Split(new char[] { ' ' })[0];
-        if (str.Equals("Home") || str.Equals("Login") || str.Equals("Register"))
+        if (Model != null)
         {
+            foreach (var item in Model)
+            {
+                string str = item.Subject;
+                str = str.Split(new char[] { ' ' })[0];
+                if (str.Equals("Home") || str.Equals("Login") || str.Equals("Register"))
+                {
     <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
-        }
-        else if (str.Equals("About") || str.Equals("Help"))
-        {
+                }
+                else if (str.Equals("About") || str.Equals("Help"))
+                {
     <li class="active"><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
-        }
-        else
-        {
+                }
+                else
+                {
     <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
+                }
+            }
+
+        }
+    }
+    else
+    {
+        ad = Session["user_login"] as Models.Member;
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                string str = item.Subject;
+                str = str.Split(new char[] { ' ' })[0];
+                if (str.Equals("Home"))
+                {
+    <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
+                }
+                else if (str.Equals("About") || str.Equals("Help"))
+                {
+    <li class="active"><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
+                }
+                else if (str.Equals("Login"))
+                {
+    <li><a href="@Url.Action("Logout", "User")">Log out</a></li>		 
+                }
+                else if (str.Equals("Register"))
+                {
+    <li><a href="@Url.Action(str, "User")">Profile</a></li>		 
+                }
+                else
+                {
+    <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
+                }
+            }
+
         }
     }
 }

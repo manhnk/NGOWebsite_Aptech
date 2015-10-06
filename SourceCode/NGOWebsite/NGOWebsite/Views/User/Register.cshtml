@@ -1,6 +1,11 @@
 ﻿@model Models.Member
 @{
-    ViewBag.Title = "Register";
+    if (Session["user_login"] == null){
+    ViewBag.Title = "Register";}
+    else
+    {
+        ViewBag.Title = "Profile";    
+    }
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
