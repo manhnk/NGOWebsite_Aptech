@@ -28,23 +28,23 @@
                 }
             }
             <div class="row">
-                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register</span>&nbsp;&nbsp;&nbspForm</div>
+                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your</span>&nbsp;&nbsp;&nbsp;Profile</div>
             </div>
 
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-5 contact_form animate_left">
 
-                    @using (Html.BeginForm("RegisterProcess", "User", FormMethod.Post))
+                    @using (Html.BeginForm("EditProcess", "User", FormMethod.Post))
                     {
-                        
+                        @Html.HiddenFor(model => model.Id)
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
                           
                         <div class="form-group">
                             @Html.LabelFor(model => model.UserName)
                             @Html.ValidationMessageFor(model => model.UserName)
-                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
+                            @Html.TextBoxFor(model => model.UserName, new { @disabled = "disabled", @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
 
                         </div>
                         <div class="form-group">
@@ -84,12 +84,19 @@
                             @Html.ValidationMessageFor(model => model.Email)
                             @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
                         </div>
-                        <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb" }) Join With Us </label>
-
-                        <button class="bttn" id='register' type="submit">Register</button>
+                        <div>
+                            @if (Model.IsMemberOfTeam == 1)
+                            {
+                                <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb", @checked = "checked" }) Join With Us </label>		 
+                            }
+                            else
+                            {
+                                <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb" }) Join With Us </label>                                
+                            }
+                        </div>
+                        <button class="bttn" id='register' type="submit">Update</button>
                         <button class="bttn" id='cancel' type="reset">Reset</button>
                         
-                        <h3><a href='@Url.Action("Login", "User")'>You have an account? Back to login!</a></h3>
                        
                     }
                 </div>

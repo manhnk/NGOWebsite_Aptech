@@ -109,7 +109,7 @@ namespace NGOWebsite.Controllers
                     IsDeleted = 0,
                     Image = ""
                 };
-
+                // In error, need to be fixed!
                 kt = MemberBusiness.AddMember(ad);
 
             }
@@ -131,6 +131,67 @@ namespace NGOWebsite.Controllers
 
 
 
+        public ActionResult Profile()
+        {
+            Models.Member ad = new Models.Member();
+            ad = (Member)Session["user_login"];
+            if (Session["user_login"] != null)
+            {
+                List<Models.Member> ls = MemberBusiness.GetMemberById(ad.Id);
+                if (ls.Count > 0)
+                {
+                    return View(ls[0]);
+                }
+                else return null;
+            }
+            else return null;
+
+        }
+
+        //
+        // POST: /Admin/Admin/Edit/5
+
+        [HttpPost]
+        public ActionResult EditProcess(FormCollection frm)
+        {
+            int kt = 0;
+            try
+            {
+                bool actived = false;
+                if (frm["cbIsActived"].ToString().Contains("rmb"))
+                {
+                    actived = true;
+                }
+                // TODO: Add insert logic here
+                Models.Admin ad = new Models.Admin()
+                {
+                    Id = int.Parse(frm["Id"]),
+                    UserName = frm["UserName"],
+                    FullName = frm["FullName"],
+                    Gender = frm["Gender"],
+                    Phone = frm["Phone"],
+                    Address = frm["Address"],
+                    Email = frm["Email"],
+                    IsActived = actived,
+                };
+
+                kt = AdminBusiness.EditAdmin(ad);
+
+            }
+            catch
+            {
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListAdmin", "Admin", new { update = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListAdmin", "Admin", new { update = "error" });
+            }
+        }
     }
 
 
