@@ -2,92 +2,108 @@
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
+@model IEnumerable<Models.ContactDetails>
 <div class="contact-bg parallax" id="contact">
-        <div class="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center heading animate_top"><span class="brd">Contact </span>with us</div>
-                </div>
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center heading animate_top"><span class="brd">Contact </span>with us</div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5 contact_form animate_left">
-
-
-
-                        <form name="contactForm" id='contact_form' method="post" action='lib/ajax-html-contact-form/email.php'>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-5 contact_form animate_left">
 
 
-                            <div id='mail_success' class='success'>
-                                <img src='Content/View_components/images/success.png' alt="img">Your message has been sent successfully.
-                            </div>
-                            <div id='mail_fail' class='error'>
-                                <img src='Content/View_components/images/error.png' alt="img">
-                                Sorry, error occured this time sending your message.
-                            </div>
 
-                            <div id='name_error' class='error'>
-                                <img src='Content/View_components/images/error.png' alt="img">Please enter your name.
-                            </div>
-                            <input type="text" name='name' id='name' class="form-control" placeholder="Your name">
+                    <form name="contactForm" id='contact_form' method="post" action='lib/ajax-html-contact-form/email.php'>
 
-                            <div id='email_error' class='error'>
-                                <img src='Content/View_components/images/error.png' alt="img">Please enter your valid E-mail ID.
-                            </div>
-                            <input type="text" name='emailaddress' id='emailaddress' class="form-control" placeholder="Email">
 
-                            <div id='message_error' class='error'>
-                                <img src='Content/View_components/images/error.png' alt="img">Please enter your message.
-                            </div>
-                            <textarea name='message' id='message' class="form-control" placeholder="Message"></textarea>
+                        <div id='mail_success' class='success'>
+                            <img src='Content/View_components/images/success.png' alt="img">Your message has been sent successfully.
+                        </div>
+                        <div id='mail_fail' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">
+                            Sorry, error occured this time sending your message.
+                        </div>
 
-                            <button class="bttn" id='send_message' type="submit">Send</button>
-                        </form>
+                        <div id='name_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your name.
+                        </div>
+                        <input type="text" name='name' id='name' class="form-control" placeholder="Your name">
 
-                    </div>
+                        <div id='email_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your valid E-mail ID.
+                        </div>
+                        <input type="text" name='emailaddress' id='emailaddress' class="form-control" placeholder="Email">
 
-                    <div class="col-md-5 contact_info animate_right">
+                        <div id='message_error' class='error'>
+                            <img src='Content/View_components/images/error.png' alt="img">Please enter your message.
+                        </div>
+                        <textarea name='message' id='message' class="form-control" placeholder="Message"></textarea>
 
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam erat ut turpis malesuada .</p>
-
-                        <h5>Address</h5>
-                        <p>
-                            Some house, some road<br>
-                            Some city, Country
-                        </p>
-
-                        <h5>Phone</h5>
-                        <p>
-                            +88089302119<br>
-                            +88089304143
-                        </p>
-
-                        <h5>Email</h5>
-                        <p>info@borno.com</p>
-                    </div>
-                    <div class="col-md-1"></div>
-
+                        <button class="bttn" id='send_message' type="submit">Send</button>
+                    </form>
 
                 </div>
+
+                <div class="col-md-5 contact_info animate_right">
+
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam erat ut turpis malesuada .</p>
+
+                    <h5>Address</h5>
+                    <p>
+                        @foreach (var item in Model)
+                        {
+                            
+                            @item.Address<br>
+                        
+                        }
+                    </p>
+
+
+                    <h5>Phone</h5>
+                    <p>
+                        @foreach (var item in Model)
+                        {
+                            
+                            @item.Phone<br>
+                        
+                        }
+                    </p>
+
+                    <h5>Email</h5>
+                    <p>
+                        @foreach (var item in Model)
+                        {
+                            
+                            @item.Email<br>
+                        
+                        }
+                    </p>
+                </div>
+                <div class="col-md-1"></div>
+
+
             </div>
         </div>
     </div>
+</div>
 <div class="social-icons">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-12 text-center heading animate_top"><span>Spread </span>the word</div>
-            </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12 text-center heading animate_top"><span>Spread </span>the word</div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="animate_bottom">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="animate_bottom">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
