@@ -143,7 +143,7 @@ namespace NGOWebsite.Controllers
                     Email = frm["Email"],
                     IsMemberOfTeam = i,
                     IsDeleted = 0,
-                    Image = ""
+                    Image = frm["Image"]
                 };
                 // In error, need to be fixed!
                 kt = MemberBusiness.AddMember(ad);

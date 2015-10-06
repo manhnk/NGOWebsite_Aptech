@@ -70,6 +70,7 @@ namespace Models
         public int IsMemberOfTeam { get; set; }
         public int IsDeleted { get; set; }
 
+        [DataType(DataType.ImageUrl)]
         public string Image { get; set; }
 
         

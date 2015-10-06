@@ -1,4 +1,5 @@
 ﻿@model Models.Member
+
 @{
     if (Session["user_login"] != null)
     {
@@ -9,6 +10,7 @@
 
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+
 
 <div class="contact-bg parallax" id="contact">
     <div class="contact">
@@ -39,7 +41,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-5 contact_form animate_left">
 
-                    @using (Html.BeginForm("RegisterProcess", "User", FormMethod.Post))
+                    @using (Html.BeginForm("RegisterProcess", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         
                         @Html.AntiForgeryToken()
@@ -52,12 +54,12 @@
 
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.NewPassword)
+                            @Html.Label("Password")
                             @Html.TextBoxFor(model => model.NewPassword, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.NewPassword)
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.ConfirmPassword)
+                            @Html.Label("Confirm Password")
                             @Html.TextBoxFor(model => model.ConfirmPassword, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.ConfirmPassword)
                         </div>
@@ -93,14 +95,15 @@
                             @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
                             @Html.ValidationMessageFor(model => model.Email)
                         </div>
+                        @Html.Label("Your avatar")
+                        
                         <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb" }) Join With Us </label>
-
                         <button class="bttn" id='register' type="submit">Register</button>
                         <button class="bttn" id='cancel' type="reset">Reset</button>
-                        
-                        <h3><a href='@Url.Action("Login", "User")'>You have an account? Back to login!</a></h3>
-                       
                     }
+                    <h3><a href='@Url.Action("Login", "User")'>You have an account? Back to login!</a></h3>
+
+
                 </div>
             </div>
 
@@ -113,3 +116,7 @@
 {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+
+
