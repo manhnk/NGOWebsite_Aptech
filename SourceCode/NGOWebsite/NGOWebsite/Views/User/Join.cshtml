@@ -1,0 +1,132 @@
+﻿@model Models.Member
+@{
+    ViewBag.Title = "JoinTeam";
+}
+
+<div class="contact-bg parallax" id="contact">
+    <div class="contact">
+        <div class="container">
+            @if (Request.QueryString["change"] != null)
+            {
+                if (Request.QueryString["change"].Equals("error"))
+                {
+                <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                    <img src='~/Content/View_components/images/error.png' alt="img">Something went wrong !
+
+                </div>
+                
+                }
+                else
+                {
+                <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                    <img src='~/Content/View_components/images/success.png' alt="img">Successfully! Welcome to my team!
+
+                </div>
+                }
+            }
+            <div class="row">
+                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Join</span>&nbsp;&nbsp;&nbsp;With Us</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-5 contact_form animate_left">
+
+                    @using (Html.BeginForm("JoinTeamProcess", "User", FormMethod.Post))
+                    {
+                        
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                          
+                        <div class="form-group">
+                            @if (Session["user_login"] == null)
+                            {
+                                @Html.LabelFor(model => model.UserName)
+                                @Html.ValidationMessageFor(model => model.UserName)
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
+
+                            }
+                            else
+                            {
+                                @Html.LabelFor(model => model.UserName)
+                                @Html.ValidationMessageFor(model => model.UserName)
+                                @Html.TextBoxFor(model => model.UserName, new { @disabled = "disabled", @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
+
+                            }
+
+                        </div>
+                        <div class="form-group">
+                            @if (Session["user_login"] == null)
+                            {
+                                @Html.LabelFor(model => model.Password)
+                                @Html.ValidationMessageFor(model => model.Password)
+                                @Html.TextBoxFor(model => model.Password, new { @type = "password", @placeholder = "Enter text", @class = "form-control" })
+                            }
+                            else
+                            {
+                                @Html.LabelFor(model => model.Password)
+                                @Html.ValidationMessageFor(model => model.Password)
+                                @Html.TextBoxFor(model => model.Password, new { @disabled ="disabled", @type = "password", @placeholder = "Enter text", @class = "form-control" })
+
+                            }
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FullName)
+                            @Html.ValidationMessageFor(model => model.FullName)
+                            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Gender)
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.Gender, "Male") Male
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.Gender, "Female") Female
+                            </label>
+
+                            @Html.ValidationMessageFor(model => model.Gender)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address)
+                            @Html.ValidationMessageFor(model => model.Address)
+                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone)
+                            @Html.ValidationMessageFor(model => model.Phone)
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "15" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Email)
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
+                        </div>
+@*<div>
+                            @if (Model.IsMemberOfTeam == 1)
+                            {
+                                <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb", @checked = "checked" }) Join With Us </label>		 
+                            }
+                            else
+                            {
+                                <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb" }) Join With Us </label>                                
+                            }
+                        </div>*@
+                        <button class="bttn" id='register' type="submit">Join Our Team!</button>
+                        <button class="bttn" id='cancel' type="reset">Reset</button>
+                        
+                       
+                    }
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+@section Scripts 
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

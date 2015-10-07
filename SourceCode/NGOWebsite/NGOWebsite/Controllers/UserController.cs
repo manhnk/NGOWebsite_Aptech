@@ -17,7 +17,10 @@ namespace NGOWebsite.Controllers
         {
             return View();
         }
-
+        public ActionResult Notify()
+        {
+            return View();
+        }
         [HttpPost]
         public JsonResult CheckNameExist(string username, int? id)
         {
@@ -126,11 +129,6 @@ namespace NGOWebsite.Controllers
             int kt = 0;
             try
             {
-                int i = 0;
-                if (frm["cbIsMOT"].ToString().Contains("rmb"))
-                {
-                    i = 1;
-                }
                 // TODO: Add insert logic here
                 Models.Member ad = new Models.Member()
                 {
@@ -141,7 +139,7 @@ namespace NGOWebsite.Controllers
                     Phone = frm["Phone"],
                     Address = frm["Address"],
                     Email = frm["Email"],
-                    IsMemberOfTeam = i,
+                    IsMemberOfTeam = -1,
                     IsDeleted = 0,
                     Image = frm["Image"]
                 };
@@ -263,6 +261,88 @@ namespace NGOWebsite.Controllers
             else
             {
                 return RedirectToAction("ChangePassword", "User", new { change = "error" });
+            }
+        }
+
+        public ActionResult Join()
+        {
+            if (Session["user_login"] != null)
+            {
+
+                Models.Member ad = Session["user_login"] as Models.Member;
+                if (ad.IsMemberOfTeam == 0 || ad.IsMemberOfTeam == 1)
+                {
+                    return View(ad);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return View();
+
+            }
+        }
+
+        [HttpPost]
+        public ActionResult JoinTeamProcess(FormCollection frm)
+        {
+            int ktUpdate = 0;
+            int ktInsert = 0;
+            if (Session["user_login"] != null)
+            {
+                try
+                {
+                    Models.Member ad = Session["user_login"] as Models.Member;
+                    ad.IsMemberOfTeam = 0;
+                    ktUpdate = MemberBusiness.EditMember(ad);
+                }
+                catch (Exception)
+                {
+
+                    ktUpdate = 0;
+                }
+
+            }
+            else
+            {
+
+                try
+                {
+
+                    // TODO: Add insert logic here
+                    Models.Member ad = new Models.Member()
+                    {
+                        UserName = frm["UserName"],
+                        Password = frm["NewPassword"],
+                        FullName = frm["FullName"],
+                        Gender = frm["Gender"],
+                        Phone = frm["Phone"],
+                        Address = frm["Address"],
+                        Email = frm["Email"],
+                        IsMemberOfTeam = 0,
+                        IsDeleted = 0,
+                        Image = frm["Image"]
+                    };
+                    // In error, need to be fixed!
+                    ktInsert = MemberBusiness.AddMember(ad);
+
+                }
+                catch
+                {
+                    ktInsert = 0;
+                }
+            }
+            if (ktUpdate > 0 || ktInsert > 0)
+            {
+                return RedirectToAction("Join", "User", new { change = "success" });
+            }
+
+            else
+            {
+                return RedirectToAction("Join", "User", new { change = "error" });
             }
         }
     }

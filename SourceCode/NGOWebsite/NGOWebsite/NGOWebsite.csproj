@@ -1615,6 +1615,8 @@
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
     <Content Include="Views\Message\Message.cshtml" />
+    <Content Include="Views\User\Join.cshtml" />
+    <Content Include="Views\User\Notify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

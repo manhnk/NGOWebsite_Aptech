@@ -15,7 +15,7 @@
             {
                 string str = item.Subject;
                 str = str.Split(new char[] { ' ' })[0];
-                if (str.Equals("Home") || str.Equals("Login") || str.Equals("Register"))
+                if (str.Equals("Home") || str.Equals("Login") || str.Equals("Register") || str.Equals("Join"))
                 {
     <li><a href="@Url.Action(str, "User")">@item.Subject</a></li>
                 }
@@ -65,11 +65,23 @@
             {
                 string str = item.Subject;
                 str = str.Split(new char[] { ' ' })[0];
-                if (str.Equals("Home"))
+                if (str.Equals("Join"))
+                {
+                    if (ad.IsMemberOfTeam == 1 || ad.IsMemberOfTeam == 0)
+                    {
+    <li><a href="@Url.Action("Notify", "User")" class="ajax-popup-link" >@item.Subject</a></li>
+                    }
+                    else
+                    {
+    <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
+                        
+                    }
+                }
+                else if (str.Equals("Home"))
                 {
     <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
+                    
                 }
-
                 else if (str.Equals("About"))
                 {
     <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
@@ -78,17 +90,16 @@
                 {
     <li><a href="@Url.Action("Message", "Message")">@item.Subject</a></li>
                 }
+                else if (str.Equals("Login"))
+                {
+                }
+                else if (str.Equals("Register"))
+                {
+                }
                 else
-                    if (str.Equals("Login"))
-                    {
-                    }
-                    else if (str.Equals("Register"))
-                    {
-                    }
-                    else
-                    {
+                {
     <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
-                    }
+                }
             }
     
     
