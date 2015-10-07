@@ -14,14 +14,23 @@ namespace Models
         public int Id { get; set; }
 
         [Display(Name="Subject")]
+        [Remote("CheckSubjectExisted","Informations",HttpMethod="POST",ErrorMessage="Subject is existed ! Please type again !")]
         [Required(ErrorMessage="Please type Subject!")]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         public string Subject { get; set; }
+
+        [Display(Name="Text Tooltip")]
         public string TextTooltip{ get; set; }
+
+        [Display(Name = "Content")]
         public string Contents { get; set; }
         public int IsDeleted { get; set; }
-        public int Position { get; set; }
 
-        public int ParentId { get; set; }
+        [Display(Name = "Position")]
+        [RegularExpression("^[1-9][0-9]?$",ErrorMessage="Position must be a number greater than 0 !")]
+        public Nullable<int> Position { get; set; }
+
+        public Nullable<int> ParentId { get; set; }
 
         [Display(Name="Parent")]
         public string ParentName { get; set; }

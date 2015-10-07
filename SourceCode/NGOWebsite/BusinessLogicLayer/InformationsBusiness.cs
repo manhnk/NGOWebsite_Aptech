@@ -17,17 +17,28 @@ namespace BusinessLogicLayer
             try
             {
 
+
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    int? position = null;
+                    int? parentId = null;
+                    if (dt.Rows[i]["Position"].ToString() != "")
+                    {
+                        position = int.Parse(dt.Rows[i]["Position"].ToString());
+                    }
+                    if (dt.Rows[i]["ParentId"].ToString() != "")
+                    {
+                        parentId = int.Parse(dt.Rows[i]["ParentId"].ToString());
+                    }
                     Informations ad = new Informations()
                     {
                         Id = int.Parse(dt.Rows[i]["Id"].ToString()),
                         Subject = dt.Rows[i]["Subject"].ToString(),
                         TextTooltip = dt.Rows[i]["TextTooltip"].ToString(),
                         Contents = dt.Rows[i]["Contents"].ToString(),
-                        ParentId = int.Parse(dt.Rows[i]["ParentId"].ToString()),
-                        ParentName = dt.Rows[i]["Description"].ToString(),
-                        Position = int.Parse(dt.Rows[i]["Position"].ToString()),
+                        ParentId = parentId,
+                        ParentName = dt.Rows[i]["ParentName"].ToString(),
+                        Position = position,
                         IsDeleted = int.Parse(dt.Rows[i]["IsDeleted"].ToString()),
                         Links = dt.Rows[i]["Links"].ToString()
                     };
@@ -61,17 +72,69 @@ namespace BusinessLogicLayer
             return AddInformationToList(dt);
         }
 
-        public static List<Informations> CheckInformationExisted(string value,int ? id)
+        public static int? GetMaxPositionBaseOnParent(int parentId)
         {
-            DataTable dt = DataAccessLayer.InformationsDA.CheckInforExisted(value,id);
+            DataTable dt = DataAccessLayer.InformationsDA.GetMaxPositionBaseOnParent(parentId);
+            int? kt = null;
+            if (dt.Rows[0]["MaxPosition"].ToString() != "")
+            {
+                kt = int.Parse(dt.Rows[0]["MaxPosition"].ToString());
+            }
+            return kt;
+        }
+
+        public static List<Informations> CheckInformationExisted(string value, int? id)
+        {
+            DataTable dt = DataAccessLayer.InformationsDA.CheckInforExisted(value, id);
             return AddInformationToList(dt);
         }
 
-        public int AddInformations(Informations ad)
+        public static int UpdatePostion(int parentId, int position)
+        {
+            int upt = 0;
+            try
+            {
+                upt = DataAccessLayer.InformationsDA.UpdatePostion(parentId, position);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return upt;
+        }
+
+        public static int AddInformations(Informations ad)
         {
             int ins = 0;
             try
             {
+                if (ad.ParentId != null)
+                {
+                    int? maxPos = GetMaxPositionBaseOnParent((int)(ad.ParentId));
+                    if (maxPos == null)
+                    {
+                        ad.Position = 1;
+                    }
+                    else
+                    {
+                        if (ad.Position == null)
+                        {
+                            ad.Position = maxPos + 1;
+                        }
+                        else
+                        {
+                            if (ad.Position > maxPos)
+                            {
+                                ad.Position = maxPos + 1;
+                            }
+                            else
+                            {
+                                int kt = UpdatePostion((int)ad.ParentId, (int)ad.Position);
+                            }
+                        }
+                    }
+
+                }
                 ins = DataAccessLayer.InformationsDA.AddInfor(ad);
             }
             catch (Exception)
@@ -83,7 +146,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditInformations(Informations ad)
+        public static int EditInformations(Informations ad)
         {
             int upt = 0;
             try
@@ -97,7 +160,7 @@ namespace BusinessLogicLayer
             return upt;
         }
 
-        public int DeleteInformations(int id)
+        public static int DeleteInformations(int id)
         {
             int del = 0;
             try

@@ -65,7 +65,7 @@ namespace BusinessLogicLayer
             return AddMenuToList(dt);
         }
 
-        public int AddMenu(Menu ad)
+        public static int AddMenu(Menu ad)
         {
             int ins = 0;
             try
@@ -81,7 +81,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditMenu(Menu ad)
+        public static int EditMenu(Menu ad)
         {
             int upt = 0;
             try
@@ -95,7 +95,7 @@ namespace BusinessLogicLayer
             return upt;
         }
 
-        public int DeleteMenu(int id)
+        public static int DeleteMenu(int id)
         {
             int del = 0;
             try

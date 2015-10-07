@@ -118,6 +118,29 @@ namespace DataAccessLayer
             return kt;
         }
 
+        public static int UpdatePostion(int parentId,int position)
+        {
+            int kt = 0;
+            try
+            {
+                string sql = "sp_UpdatePosition";
+                List<string> param = new List<string>();
+                param.Add("@parentId");
+                param.Add("@position");
+
+                List<object> value = new List<object>();
+                value.Add(parentId);
+                value.Add(position);
+
+                kt = DataConnect.CRUDData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return kt;
+        }
+
         public static DataTable SearchInfor(string text)
         {
             DataTable dt = null;
@@ -129,6 +152,27 @@ namespace DataAccessLayer
 
                 List<object> value = new List<object>();
                 value.Add(text);
+                dt = DataConnect.FindData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetMaxPositionBaseOnParent(int parentId)
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getMaxPositionBaseOnParent";
+                List<string> param = new List<string>();
+                param.Add("@parentId");
+
+                List<object> value = new List<object>();
+                value.Add(parentId);
                 dt = DataConnect.FindData(sql, param, value);
             }
             catch (Exception)

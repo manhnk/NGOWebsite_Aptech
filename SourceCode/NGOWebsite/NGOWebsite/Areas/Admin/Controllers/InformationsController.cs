@@ -28,6 +28,11 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
+            List<Informations> ls = InformationsBusiness.GetInformationsById(id);
+            if (ls.Count > 0)
+            {
+                return View(ls[0]);
+            }
             return View();
         }
 
@@ -36,24 +41,69 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            List<Menu> lsMenu = MenuBusiness.GetAllMenu();
+            ViewData["lsMenu"] = new SelectList(lsMenu, "Id", "Subject"); 
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult CheckSubjectExisted(string subject, int? id)
+        {
+             bool check=false;
+            List<Models.Informations> ls = InformationsBusiness.CheckInformationExisted(subject, id);
+            if (ls.Count > 0)
+            {
+                check = true;
+            }
+            return Json(check == false);
         }
 
         //
         // POST: /Admin/Informations/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateInput(false)]
+        public ActionResult CreateProcess(FormCollection frm)
         {
+            int kt = 0;
             try
             {
-                // TODO: Add insert logic here
+                int ? parentId = null;
+                if (frm["ParentId"] != "")
+                {
+                    parentId = int.Parse(frm["ParentId"]);
+                }
 
-                return RedirectToAction("Index");
+                int? postion = null;
+                if (frm["Position"] != null && frm["Position"] != "")
+                {
+                    postion = int.Parse(frm["Position"]);
+                }
+                // TODO: Add insert logic here
+                Models.Informations ad = new Models.Informations()
+                {
+                    Subject = frm["Subject"],
+                    TextTooltip = frm["TextTooltip"],
+                    Contents = frm["Contents"],
+                    Links = frm["Links"],
+                    ParentId = parentId,
+                    Position= postion
+                };
+
+                kt = InformationsBusiness.AddInformations(ad);
             }
             catch
             {
-                return View();
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListInformations", "Informations", new { add = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListInformations", "Informations", new { add = "error" });
             }
         }
 
@@ -62,6 +112,8 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
+            List<Menu> lsMenu = MenuBusiness.GetAllMenu();
+            ViewData["lsMenu"] = new SelectList(lsMenu, "Id", "Subject"); 
             return View();
         }
 
@@ -69,7 +121,9 @@ namespace NGOWebsite.Areas.Admin.Controllers
         // POST: /Admin/Informations/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateInput(false)]
+
+        public ActionResult EditProcess(int id, FormCollection collection)
         {
             try
             {
