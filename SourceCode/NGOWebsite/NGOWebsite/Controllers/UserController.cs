@@ -46,7 +46,7 @@ namespace NGOWebsite.Controllers
             }
             else
             {
-                ViewData["infor"] = ls2;
+                ViewData["infor"] = null;
             }
             
             return View(ls);
