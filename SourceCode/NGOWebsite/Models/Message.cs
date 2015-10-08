@@ -13,7 +13,7 @@ namespace Models
         [Key]
         public int Id { get; set; }
 
-        public int ProgramId { get; set; }
+        public Nullable<int> ProgramId { get; set; }
         public string ProgramName { get; set; }
 
         [Required(ErrorMessage = "Please type Full name!")]

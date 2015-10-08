@@ -17,7 +17,6 @@ namespace NGOWebsite.Controllers
         {
             if (Session["user_login"] != null)
             {
-
                 Models.Member ad = Session["user_login"] as Models.Member;
                 Models.Message msg = new Models.Message();
                 msg.SenderName = ad.UserName;
@@ -42,7 +41,6 @@ namespace NGOWebsite.Controllers
                 // TODO: Add insert logic here
                 Models.Message ad = new Models.Message()
                 {
-                    ProgramId = 0,
                     SenderName = frm["SenderName"],
                     SenderEmail = frm["SenderEmail"],
                     Messages = frm["Messages"],
