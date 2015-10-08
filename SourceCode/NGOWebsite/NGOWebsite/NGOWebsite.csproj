@@ -1619,7 +1619,7 @@
     <Content Include="Views\Information\WhatWeDo.cshtml" />
     <Content Include="Views\Information\About.cshtml" />
     <Content Include="Views\Information\Stories.cshtml" />
-    <Content Include="Views\User\Profile.cshtml" />
+    <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
     <Content Include="Views\Message\Message.cshtml" />

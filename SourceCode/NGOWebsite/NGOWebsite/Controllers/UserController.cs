@@ -15,8 +15,10 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Home()
         {
-            return View();
+            List<Models.Partners> ls = PartnersBusiness.GetAllPartners();
+            return View(ls);
         }
+
         public ActionResult Notify()
         {
             return View();
@@ -165,7 +167,7 @@ namespace NGOWebsite.Controllers
 
 
 
-        public ActionResult Profile()
+        public ActionResult UserInfo()
         {
             Models.Member ad = new Models.Member();
             ad = (Member)Session["user_login"];
@@ -220,11 +222,11 @@ namespace NGOWebsite.Controllers
 
             if (kt > 0)
             {
-                return RedirectToAction("Profile", "User", new { update = "success" });
+                return RedirectToAction("UserInfo", "User", new { update = "success" });
             }
             else
             {
-                return RedirectToAction("Profile", "User", new { update = "error" });
+                return RedirectToAction("UserInfo", "User", new { update = "error" });
             }
         }
 
