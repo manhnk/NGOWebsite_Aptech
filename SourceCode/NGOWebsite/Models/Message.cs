@@ -32,7 +32,7 @@ namespace Models
         public int Status { get; set; }
         public int IsDeleted { get; set; }
 
-        public int ReplierId { get; set; }
+        public Nullable<int> ReplierId { get; set; }
 
         public string Replier { get; set; }
     }

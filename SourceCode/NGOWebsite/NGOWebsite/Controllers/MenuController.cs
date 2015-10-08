@@ -16,10 +16,11 @@ namespace NGOWebsite.Controllers
         public ActionResult Index()
         {
             List<Models.Menu> ls = MenuBusiness.GetAllMenuPostionNotNull();
+            //List<Models.Menu> ls = MenuBusiness.GetAllMenu();
             List<Models.Informations> ls1 = InformationsBusiness.GetAllInformations();
-            
+
             ViewData["submenu"] = ls1;
-            
+
             return PartialView(ls);
 
 

@@ -47,7 +47,6 @@ namespace NGOWebsite.Controllers
                     SenderEmail = frm["SenderEmail"],
                     Messages = frm["Messages"],
                     Status = 0,
-                    ReplierId = 0,
                     IsDeleted = 0
                 };
 
