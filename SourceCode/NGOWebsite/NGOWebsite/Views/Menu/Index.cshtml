@@ -4,6 +4,7 @@
 @{
     
     Models.Member ad = new Models.Member();
+
     ad = (Models.Member)Session["user_login"];
     //============== Menu for VISITORs============
     if (Session["user_login"] == null)
@@ -21,7 +22,22 @@
                 }
                 else if (str.Equals("About"))
                 {
-    <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
+                    List<Models.Informations> info;
+
+                    info = ViewData["submenu"] as List<Models.Informations>;
+                   
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">About Us<b class="caret"></b></a>
+        <ul class="dropdown-menu navfix">
+            @foreach (var i in info)
+            {
+
+                {
+                <li><a href="@Url.Action(str, str)">@i.Subject</a></li>
+                }
+            }
+        </ul>
+    </li>
                 }
                 else if (str.Equals("Contact"))
                 {
@@ -84,7 +100,22 @@
                 }
                 else if (str.Equals("About"))
                 {
-    <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
+                    List<Models.Informations> info;
+
+                    info = ViewData["submenu"] as List<Models.Informations>;
+                   
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">About Us<b class="caret"></b></a>
+        <ul class="dropdown-menu navfix">
+            @foreach (var i in info)
+            {
+
+                {
+                <li><a href="@Url.Action(str, str)">@i.Subject</a></li>
+                }
+            }
+        </ul>
+    </li>
                 }
                 else if (str.Equals("Contact"))
                 {
