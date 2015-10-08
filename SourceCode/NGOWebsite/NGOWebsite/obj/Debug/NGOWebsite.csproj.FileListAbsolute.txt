@@ -143,3 +143,34 @@ D:\E-project 3\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\NGOWebsite\bin\Syst
 D:\E-project 3\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\NGOWebsite\obj\Debug\NGOWebsite.csprojResolveAssemblyReference.cache
 D:\E-project 3\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\NGOWebsite\obj\Debug\NGOWebsite.dll
 D:\E-project 3\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\NGOWebsite\obj\Debug\NGOWebsite.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\NGOWebsite.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\NGOWebsite.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\Antlr3.Runtime.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\BusinessLogicLayer.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\DataAccessLayer.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\EntityFramework.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\Models.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\Newtonsoft.Json.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.Mvc.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.Optimization.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.Providers.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.Razor.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.WebPages.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.WebPages.Razor.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\WebGrease.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\BusinessLogicLayer.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\DataAccessLayer.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\Models.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\EntityFramework.xml
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\Newtonsoft.Json.xml
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.Mvc.xml
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.Razor.xml
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.WebPages.xml
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\bin\System.Web.WebPages.Razor.xml
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\obj\Debug\NGOWebsite.csprojResolveAssemblyReference.cache
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\obj\Debug\NGOWebsite.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\NGOWebsite\obj\Debug\NGOWebsite.pdb
