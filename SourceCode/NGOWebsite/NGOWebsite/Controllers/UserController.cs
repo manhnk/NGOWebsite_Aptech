@@ -154,7 +154,7 @@ namespace NGOWebsite.Controllers
 
             if (kt > 0)
             {
-                return RedirectToAction("Register", "User", new { add = "success" });
+                return RedirectToAction("Login", "User", new { regis = "success" });
             }
             else
             {
@@ -188,28 +188,29 @@ namespace NGOWebsite.Controllers
         [HttpPost]
         public ActionResult EditProcess(FormCollection frm)
         {
+            Models.Member mb = new Models.Member();
+            mb = (Member)Session["user_login"];
             int kt = 0;
             try
             {
-                bool actived = false;
-                if (frm["cbIsActived"].ToString().Contains("rmb"))
-                {
-                    actived = true;
-                }
+                
                 // TODO: Add insert logic here
-                Models.Admin ad = new Models.Admin()
+                Models.Member ad = new Models.Member()
                 {
-                    Id = int.Parse(frm["Id"]),
+                    Id = mb.Id,
                     UserName = frm["UserName"],
+                    Password = frm["Password"],
                     FullName = frm["FullName"],
                     Gender = frm["Gender"],
                     Phone = frm["Phone"],
                     Address = frm["Address"],
                     Email = frm["Email"],
-                    IsActived = actived,
+                    IsMemberOfTeam = 0,
+                    IsDeleted = 0,
+                    Image = frm["Image"]
                 };
 
-                kt = AdminBusiness.EditAdmin(ad);
+                kt = MemberBusiness.EditMember(ad);
 
             }
             catch

@@ -9,12 +9,12 @@
 <div class="contact-bg parallax" id="contact">
     <div class="contact">
         <div class="container">
-            @if (Request.QueryString["add"] != null)
+            @if (Request.QueryString["update"] != null)
             {
-                if (Request.QueryString["add"].Equals("error"))
+                if (Request.QueryString["update"].Equals("error"))
                 {
                 <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
-                    <img src='~/Content/View_components/images/error.png' alt="img">Register Fail !
+                    <img src='~/Content/View_components/images/error.png' alt="img">Update Info Fail !
 
                 </div>
                 
@@ -22,7 +22,7 @@
                 else
                 {
                 <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
-                    <img src='~/Content/View_components/images/success.png' alt="img">Register Successfull !
+                    <img src='~/Content/View_components/images/success.png' alt="img">Update Info Successfull !
 
                 </div>
                 }
@@ -48,9 +48,7 @@
 
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Password)
-                            @Html.TextBoxFor(model => model.Password, new { @type = "password", @placeholder = "Enter text", @class = "form-control", @disabled = "disabled" })
-                            @Html.ValidationMessageFor(model => model.Password)
+                            @Html.HiddenFor(model=> model.Password)
 
                         <h3><a href='@Url.Action("ChangePassword", "User")'>Change your password</a></h3>
 
@@ -87,6 +85,7 @@
                             @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
                             @Html.ValidationMessageFor(model => model.Email)
                         </div>
+                        @Html.HiddenFor(model => model.Image)
                         @*<div>
                             @if (Model.IsMemberOfTeam == 1)
                             {
