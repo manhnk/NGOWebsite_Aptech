@@ -103,6 +103,21 @@ namespace BusinessLogicLayer
             return upt;
         }
 
+        public static int UpdatePostionDesc(int parentId, int position)
+        {
+            int upt = 0;
+            try
+            {
+                upt = DataAccessLayer.InformationsDA.UpdatePostionDesc(parentId, position);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return upt;
+        }
+
+
         public static int AddInformations(Informations ad)
         {
             int ins = 0;
@@ -117,11 +132,7 @@ namespace BusinessLogicLayer
                     }
                     else
                     {
-                        if (ad.Position == null)
-                        {
-                            ad.Position = maxPos + 1;
-                        }
-                        else
+                        if (ad.Position != null)
                         {
                             if (ad.Position > maxPos)
                             {
@@ -151,6 +162,33 @@ namespace BusinessLogicLayer
             int upt = 0;
             try
             {
+                Informations inforOld = InformationsBusiness.GetInformationsById(ad.Id)[0];
+
+                if (ad.ParentId != null)
+                {
+                    int? maxPos = GetMaxPositionBaseOnParent((int)(ad.ParentId));
+
+                    if (maxPos == null)
+                    {
+                        ad.Position = 1;
+                    }
+                    else
+                    {
+                        if (ad.Position != null)
+                        {
+                            if (ad.Position > maxPos)
+                            {
+                                ad.Position = maxPos + 1;
+                            }
+                            else
+                            {
+                                int kt = UpdatePostion((int)ad.ParentId, (int)ad.Position);
+                            }
+
+                        }
+                    }
+
+                }
                 upt = DataAccessLayer.InformationsDA.EditInfor(ad);
             }
             catch (Exception)
@@ -165,7 +203,15 @@ namespace BusinessLogicLayer
             int del = 0;
             try
             {
+                Informations infor=InformationsBusiness.GetInformationsById(id)[0];
                 del = DataAccessLayer.InformationsDA.DeleteInfor(id);
+                if (del > 0)
+                {
+                    if (infor.Position != null)
+                    {
+                        UpdatePostionDesc((int)infor.ParentId, (int)infor.Position);
+                    }
+                }
             }
             catch (Exception)
             {

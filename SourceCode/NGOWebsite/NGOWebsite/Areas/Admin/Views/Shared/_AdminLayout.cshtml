@@ -299,9 +299,9 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","HomeAdmin")"><i class="fa fa-home fa-fw"></i> Home Admin </a>
+                            <a href="@Url.Action("Index","HomeAdmin")"><i class="fa fa-home fa-fw"></i> Home </a>
                         </li>
-                       
+
                         <li>
                             <a href="#"><i class="fa fa-cubes  fa-fw"></i> Donation<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -363,6 +363,15 @@
                             </ul>
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-user  fa-fw"></i> Member Management <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                
+                                <li>
+                                    <a href="@Url.Action("ListMember","Member")"><i class="fa fa-caret-right  fa-fw"></i> List Member</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-user  fa-fw"></i> Admin Management <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 
@@ -381,7 +390,7 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
@@ -483,8 +492,8 @@
     <script src="@Url.Content("~/Areas/Admin/Contents/bower_components/datatables/media/js/jquery.dataTables.min.js")"></script>
     <script src="@Url.Content("~/Areas/Admin/Contents/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js")"></script>
 
-    
-    
+
+
 
     @RenderSection("scripts", required: false)
 </body>

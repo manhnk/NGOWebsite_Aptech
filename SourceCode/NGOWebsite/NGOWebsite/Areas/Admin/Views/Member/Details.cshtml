@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@model Models.Member
+
+@{ Models.Admin ad = new Models.Admin();}
+
+@if (Session["mvc_user"] != null)
+{
+    ad = Session["mvc_user"] as Models.Admin;
+}
+<!-- /.row -->
+<div class="row" style="margin-top:30px">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-weight:bold">
+                <i class="fa fa-user  fa-fw"></i> Member Details
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img src="~/@Model.Image" width="300px" height="300px" />
+                    </div>
+                    <div class="col-lg-8">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <tr>
+                                <th>
+                                    @Html.LabelFor(model => model.UserName)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.UserName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.LabelFor(model => model.FullName)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.FullName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.LabelFor(model => model.Gender)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Gender)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.LabelFor(model => model.Phone)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Phone)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.LabelFor(model => model.Address)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Address)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.LabelFor(model => model.Email)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Email)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.LabelFor(model => model.IsMemberOfTeam)
+                                </th>
+                                <td>
+                                    @if (Model.IsMemberOfTeam == 1)
+                                    {
+                                        @Html.DisplayName("Joined")
+                                    }
+                                    else if (Model.IsMemberOfTeam == 0)
+                                    {
+                                        @Html.DisplayName("Waiting Approve")
+                                    }
+                                    else
+                                    {
+                                        @Html.DisplayName("")
+                                    }
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    @if (ad.IsSuperAdmin)
+                    {
+                        if (Model.IsMemberOfTeam == 0)
+                        {
+                            <a class="btn btn-primary" style="margin-top: 25px" href="@Url.Action("ProcessJoin", "Member", new { id = Model.Id, flag = "jointeam" })"><i class="fa fa-edit  fa-fw"></i> Approve Join Team </a>
+                        }
+                        else if (Model.IsMemberOfTeam == 1)
+                        {
+                            <a class="btn btn-primary" style="margin-top:25px" href="@Url.Action("ProcessJoin", "Member", new { id = Model.Id, flag = "outteam" })"><i class="fa fa-edit  fa-fw"></i> Out Team </a>
+                        }
+                        if (Model.IsMemberOfTeam == -1 || Model.IsMemberOfTeam == 0)
+                        {
+                            <a class="btn btn-danger" style="margin-top:25px;margin-left:20px;width:120px" href="@Url.Action("Delete", "Member", new { @id = Model.Id })" onclick="return confirm('Are you sure?');"><i class="fa fa-times-circle  fa-fw"></i> Delete </a>
+                        }
+                    }
+                    <a class="btn btn-success" style="margin-top: 25px; margin-left: 20px; width: 120px" href="@Url.Action("ListMember", "Member")"><i class="fa fa-mail-reply  fa-fw"></i> Back to list </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

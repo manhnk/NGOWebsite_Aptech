@@ -69,7 +69,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
             try
             {
                 int ? parentId = null;
-                if (frm["ParentId"] != "")
+                if (frm["ParentId"] != "" && frm["ParentId"]!=null)
                 {
                     parentId = int.Parse(frm["ParentId"]);
                 }
@@ -113,8 +113,10 @@ namespace NGOWebsite.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             List<Menu> lsMenu = MenuBusiness.GetAllMenu();
-            ViewData["lsMenu"] = new SelectList(lsMenu, "Id", "Subject"); 
-            return View();
+            ViewData["lsMenu"] = new SelectList(lsMenu, "Id", "Subject");
+
+            List<Informations> ls = InformationsBusiness.GetInformationsById(id);
+            return View(ls[0]);
         }
 
         //
@@ -123,17 +125,48 @@ namespace NGOWebsite.Areas.Admin.Controllers
         [HttpPost]
         [ValidateInput(false)]
 
-        public ActionResult EditProcess(int id, FormCollection collection)
+        public ActionResult EditProcess(int id, FormCollection frm)
         {
+            int kt = 0;
             try
             {
-                // TODO: Add update logic here
+                int? parentId = null;
+                if (frm["ParentId"] != "" && frm["ParentId"] != null)
+                {
+                    parentId = int.Parse(frm["ParentId"]);
+                }
 
-                return RedirectToAction("Index");
+                int? postion = null;
+                if (frm["Position"] != null && frm["Position"] != "")
+                {
+                    postion = int.Parse(frm["Position"]);
+                }
+                // TODO: Add insert logic here
+                Models.Informations ad = new Models.Informations()
+                {
+                    Id=int.Parse(frm["Id"]),
+                    Subject = frm["Subject"],
+                    TextTooltip = frm["TextTooltip"],
+                    Contents = frm["Contents"],
+                    Links = frm["Links"],
+                    ParentId = parentId,
+                    Position = postion
+                };
+
+                kt = InformationsBusiness.EditInformations(ad);
             }
             catch
             {
-                return View();
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListInformations", "Informations", new { update = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListInformations", "Informations", new { update = "error" });
             }
         }
 
@@ -142,25 +175,25 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/Informations/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
+            int kt = 0;
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                kt = InformationsBusiness.DeleteInformations(id);
             }
             catch
             {
-                return View();
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListInformations", "Informations", new { delete = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListInformations", "Informations", new { delete = "error" });
             }
         }
+
     }
 }

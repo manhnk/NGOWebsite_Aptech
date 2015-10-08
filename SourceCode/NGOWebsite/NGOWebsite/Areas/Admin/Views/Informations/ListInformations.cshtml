@@ -61,6 +61,7 @@
                             <tr>
                                 <th>@Html.DisplayNameFor(model => model.Id)</th>
                                 <th>@Html.DisplayNameFor(model => model.Subject)</th>
+                                <th>@Html.DisplayNameFor(model => model.Links)</th>
                                 <th>@Html.DisplayNameFor(model => model.TextTooltip)</th>
                                 <th>@Html.DisplayNameFor(model => model.ParentName)</th>
                                 <th></th>
@@ -69,10 +70,10 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Subject)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Links)</td>
                                     <td>@Html.DisplayFor(modelItem => item.TextTooltip)</td>
                                     <td>@Html.DisplayFor(modelItem => item.ParentName)</td>
                                     <td style="text-align:center">

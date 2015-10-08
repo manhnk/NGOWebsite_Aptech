@@ -1,5 +1,99 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="mask">
+    <div id="intro-loader">
+    </div>
+</div>
+
+<div id="slides">
+    <div class="slides-container">
+        <img src="~/Content/View_components/images/slider/slider1.jpg" alt="slider1">
+        <img src="~/Content/View_components/images/slider/slider2.jpg" alt="slider2">
+        <img src="~/Content/View_components/images/slider/slider3.jpg" alt="slider3">
+    </div>
+</div>
+<div id="top" class="top">
+    <div class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 text-center animate_left">
+                    <div class="logo">
+                        <img src="~/Content/View_components/images/logo.png" alt="logo">
+                    </div>
+                    <span class="subtitle">Education for all.</span>
+                </div>
+                <div class="col-md-9 slider_title">
+                    <h2 class="animate_top">Supporting <span id="pageLoad">0</span> child education, and counting...</h2>
+                    <a class="top_btn" href="@Url.Action("Donation","User")">Donate Now</a>
+
+                    @*<div class="animate_bottom">
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_donations">
+                                <input type="hidden" name="business" value="eh.rajib@gmail.com">
+                                <input type="hidden" name="lc" value="US">
+                                <input type="hidden" name="item_name" value="theweblab">
+                                <input type="hidden" name="no_note" value="0">
+                                <input type="hidden" name="currency_code" value="USD">
+                                <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+                                <input type="submit" class="top_btn" value="Donate Now">
+                            </form>
+                        </div>*@
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 welcome_txt text-center animate_bottom">
+                <p>
+                    Lorem Ipsum has been the industry's standard dummy text ever since the <span>1500s</span>, when an unknown <span>printer</span> took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining unchanged. It was <span>popularised</span> in the 1960s.
+                </p>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>*@
+<!-- Subscribe -->
+<div class="subscribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center heading newsletter animate_top">
+                Join Our <span>Mailing</span> List
+            </div>
+        </div>
+
+        <form id="signup" action="index.html" method="get" class="animate_bottom">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 text-center">
+                    <span id="response"></span>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-5 text-center nopadding">
+                    <input type="text" name="email" id="email" placeholder="Your email address..." class="form-control" />
+                </div>
+                <div class="col-md-3 text-center nopadding">
+                    <input type="submit" name="submit" value="Subscribe" id="subscribe_button" class="button " />
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 text-center">
+                    <div id="no-spam">We'll never spam or give this address away</div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </form>
+    </div>
+</div>

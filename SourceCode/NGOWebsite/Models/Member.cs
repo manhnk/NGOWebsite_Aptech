@@ -66,7 +66,7 @@ namespace Models
         [RegularExpression("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", ErrorMessage = "Email address is not valid!")]        
         public string Email { get; set; }
 
-
+        [Display(Name="Joined Team")]
         public int IsMemberOfTeam { get; set; }
         public int IsDeleted { get; set; }
 

@@ -14,7 +14,7 @@ namespace Models
         public int Id { get; set; }
 
         [Display(Name="Subject")]
-        [Remote("CheckSubjectExisted","Informations",HttpMethod="POST",ErrorMessage="Subject is existed ! Please type again !")]
+        [Remote("CheckSubjectExisted","Informations",HttpMethod="POST",ErrorMessage="Subject is existed ! Please type again !",AdditionalFields="Id")]
         [Required(ErrorMessage="Please type Subject!")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 50 charactes !")]
         public string Subject { get; set; }

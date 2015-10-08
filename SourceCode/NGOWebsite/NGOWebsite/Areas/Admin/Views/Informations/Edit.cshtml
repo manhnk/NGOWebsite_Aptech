@@ -16,13 +16,14 @@
     <div class="col-lg-12">
         <div class="panel panel-primary">
             <div class="panel-heading" style="font-weight:bold">
-                <i class="fa fa-info  fa-fw"></i> Add New Informations
+                <i class="fa fa-info  fa-fw"></i> Update Informations
             </div>
             <div class="panel-body">
                 <div class="row">
 
-                    @using (Html.BeginForm("CreateProcess", "Informations", FormMethod.Post))
+                    @using (Html.BeginForm("EditProcess", "Informations", FormMethod.Post))
                     {
+                        @Html.HiddenFor(model => model.Id)
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
                         <div class="col-lg-12">
@@ -41,22 +42,42 @@
                                 @Html.TextAreaFor(model => model.Contents, new { @class = "form-control ckeditor", @placeholder = "Enter text", @id = "ckeditorId" })
                                 @Html.ValidationMessageFor(model => model.Contents)
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Links)
-                                @Html.TextBoxFor(model => model.Links, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
-                                @Html.ValidationMessageFor(model => model.Links)
-                            </div>
+
 
                             @if (ad.IsSuperAdmin)
                             {
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Links)
+                                    @Html.TextBoxFor(model => model.Links, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.Links)
+                                </div>
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.ParentName)
                                     @Html.DropDownListFor(model => model.ParentId, (SelectList)ViewData["lsMenu"], "** Select **", new { @class = "form-control" })
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Position)
-                                    @Html.TextBoxFor(model => model.Position, new { @class = "form-control", @placeholder = "Enter number", @disabled = "disabled", @maxlength = "2" })
+                                    @if (Model.ParentId != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.Position, new { @class = "form-control", @placeholder = "Enter number", @maxlength = "2" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.Position, new { @class = "form-control", @placeholder = "Enter number", @disabled = "disabled", @maxlength = "2" })
+                                    }
                                     @Html.ValidationMessageFor(model => model.Position)
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.Links)
+                                </div>
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.ParentId)
+                                </div>
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.Position)
                                 </div>
                             }
 

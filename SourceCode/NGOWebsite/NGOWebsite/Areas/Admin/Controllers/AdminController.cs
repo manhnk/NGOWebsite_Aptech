@@ -11,6 +11,13 @@ namespace NGOWebsite.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Admin");
+
+        }
+
         [AllowAnonymous]
         public ActionResult Login()
         {

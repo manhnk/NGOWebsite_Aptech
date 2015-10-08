@@ -71,12 +71,13 @@ namespace DataAccessLayer
                 string sql = "sp_editInformation";
                 List<string> param = new List<string>();
                 param.Add("@id");
+                param.Add("@subject");
                 param.Add("@textTooltip");
                 param.Add("@content");
                 param.Add("@parentId");
                 param.Add("@position");
-                param.Add("@isDeleted");
                 param.Add("@links");
+                param.Add("@isDeleted");
 
                 List<object> value = new List<object>();
                 value.Add(info.Id);
@@ -85,8 +86,8 @@ namespace DataAccessLayer
                 value.Add(info.Contents);
                 value.Add(info.ParentId);
                 value.Add(info.Position);
-                value.Add(info.IsDeleted);
                 value.Add(info.Links);
+                value.Add(info.IsDeleted);
 
                 kt = DataConnect.CRUDData(sql, param, value);
             }
@@ -124,6 +125,29 @@ namespace DataAccessLayer
             try
             {
                 string sql = "sp_UpdatePosition";
+                List<string> param = new List<string>();
+                param.Add("@parentId");
+                param.Add("@position");
+
+                List<object> value = new List<object>();
+                value.Add(parentId);
+                value.Add(position);
+
+                kt = DataConnect.CRUDData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return kt;
+        }
+
+        public static int UpdatePostionDesc(int parentId, int position)
+        {
+            int kt = 0;
+            try
+            {
+                string sql = "sp_UpdatePositionDesc";
                 List<string> param = new List<string>();
                 param.Add("@parentId");
                 param.Add("@position");
