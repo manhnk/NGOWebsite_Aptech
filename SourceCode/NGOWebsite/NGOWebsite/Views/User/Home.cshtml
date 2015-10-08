@@ -54,48 +54,47 @@
                         flag++;
                         if (flag % 2 != 0)
                         {
-                    <div class="row t1">
-                        <div class="col-md-3 animate_left">
+                    
+                    <img src="~/Content/View_components/images/activity/act4.jpg" alt="img" class="animate_top">
 
-                            @*<img src="@item.Logo" alt="img">*@
-                        </div>
-                        <div class="col-md-9 animate_right">
-                            <h4>@item.Name</h4>
+                @*<img src="@item.Logo" alt="img">*@
+                       
+                    <h1>@item.Name</h1>
 
-                            @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
-                               if (arrListStr.Count() > 2)
-                               {
-                                <h4>@String.Concat(arrListStr[0], arrListStr[1])</h4>
-                               }
-                               else
-                               {
-                                <h4>@item.Contents</h4>
-                               }
+                            string[] arrListStr = item.Contents.Split(new char[] { '.' });
+                            if (arrListStr.Count() > 2)
+                            {
+                    <h3>@String.Concat(arrListStr[0], arrListStr[1])</h3>
                             }
-                        </div>
-                    </div> 
+                            else
+                            {
+                    <h3>@item.Contents</h3>
+                            }
+
+
                         }
                         else
                         {
                     <div class="row t1">
                         <div class="col-md-9 animate_right">
-                            <h4>@item.Name</h4>
+                            <h1>@item.Name</h1>
 
                             @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
                                if (arrListStr.Count() > 2)
                                {
-                                <h4>@String.Concat(arrListStr[0], arrListStr[1])</h4>
+                                <h3>@String.Concat(arrListStr[0], arrListStr[1])</h3>
                                }
                                else
                                {
-                                <h4>@item.Contents</h4>
+                                <h3>@item.Contents</h3>
                                }
                             }
+
                         </div>
 
 
                         <div class="col-md-3 animate_left">
-                            <img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">
+                            @*<img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">*@
                         </div>
                     </div>
                         }
