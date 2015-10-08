@@ -30,21 +30,6 @@
                     <h2 class="animate_top">Supporting <span id="pageLoad">0</span> child education, and counting...</h2>
                     <a class="top_btn" href="@Url.Action("Donation", "User")">Donate Now</a>
 
-                    @*<div class="animate_bottom">
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_donations">
-                            <input type="hidden" name="business" value="eh.rajib@gmail.com">
-                            <input type="hidden" name="lc" value="US">
-                            <input type="hidden" name="item_name" value="theweblab">
-                            <input type="hidden" name="no_note" value="0">
-                            <input type="hidden" name="currency_code" value="USD">
-                            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
-                            <input type="submit" class="top_btn" value="Donate Now">
-                        </form>
-                    </div>*@
-
-
-
                 </div>
             </div>
         </div>
@@ -55,58 +40,93 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 text-center animate_left">
-                <h1>RECENT PROGRAMS</h1>
-                @{IEnumerable<Models.Programs> prolist;
-                  prolist = ViewData["programs"] as IEnumerable<Models.Programs>;
-                }
-
-                @foreach (var item in prolist)
-                {
-                    <div class="col-md-3">
-                        @*<img src="@item." alt="img">*@
-                        <img src="~/Content/View_components/images/activity/act4.jpg" alt="img" class="animate_top">
-                        <div class="animate_bottom s1">
-                            <h4>@item.Name</h4>
-
-
-                            @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
-                               if (arrListStr.Count() > 2)
-                               {
-                                <p>@String.Concat(arrListStr[0], arrListStr[1])</p>
-                               }
-                               else
-                               {
-                                <p>@item.Contents</p>
-                               }
-                            }
-                            <p class="readmore"><a href="@Url.Action("RecentProgram", "Programs", new { @id = item.Id })" class="ajax-popup-link">...read more</a></p>
-                        </div>
-                    </div>  
-                }
-            </div>
-            <div class="col-md-4 slider_title">
-                <h1>NEWS</h1>
-                @{IEnumerable<Models.Informations> news;
-                  news = ViewData["infor"] as IEnumerable<Models.Informations>;
-                }
-                @if (news != null)
-                {
-                    foreach (var i in news)
-                    {
-                    <h1>@i.Subject</h1>
-                    <h3>Content</h3>
-                    <p>@i.Contents</p>
-                                       
-                    }
-                }
-                
-
+            <div class="col-md-8 text-center animate_top">
+                RECENT <span>PROGRAMS</span>
             </div>
         </div>
-    </div>
+        @{IEnumerable<Models.Programs> prolist;
+          prolist = ViewData["programs"] as IEnumerable<Models.Programs>;
+        }
+        @{var flag = 0;}
+        @if (prolist != null)
+        {
+            foreach (var item in prolist)
+            {
+                flag++;
+                if (flag % 2 != 0)
+                {
+            <div class="row t1">
+                <div class="col-md-3 animate_left">
+                    <img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">
+                    @*<img src="@item.Logo" alt="img">*@
+                </div>
+                <div class="col-md-9 animate_right">
+                    <h4>@item.Name</h4>
 
+                    @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
+                       if (arrListStr.Count() > 2)
+                       {
+                        <h4>@String.Concat(arrListStr[0], arrListStr[1])</h4>
+                       }
+                       else
+                       {
+                        <h4>@item.Contents</h4>
+                       }
+                    }
+                </div>
+            </div> 
+                }
+                else
+                {
+            <div class="row t1">
+                <div class="col-md-9 animate_right">
+                    <h4>@item.Name</h4>
+
+                    @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
+                       if (arrListStr.Count() > 2)
+                       {
+                        <h4>@String.Concat(arrListStr[0], arrListStr[1])</h4>
+                       }
+                       else
+                       {
+                        <h4>@item.Contents</h4>
+                       }
+                    }
+                </div>
+
+
+                <div class="col-md-3 animate_left">
+                    <img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">
+                </div>
+            </div>
+                }
+            }
+        }
+            @*<div class="col-md-8 text-center animate_left">
+                
+            </div>*@
+        <div class="col-md-4 slider_title">
+            <h1>NEWS</h1>
+            @{IEnumerable<Models.Informations> news;
+              news = ViewData["infor"] as IEnumerable<Models.Informations>;
+            }
+            @if (news != null)
+            {
+                foreach (var i in news)
+                {
+                <h1>@i.Subject</h1>
+                <h3>Content</h3>
+                <p>@i.Contents</p>
+                                       
+                }
+            }
+            
+
+        </div>
+    </div>
 </div>
+
+
 @*<div class="container">
         <div class="row">
             <div class="col-md-1"></div>

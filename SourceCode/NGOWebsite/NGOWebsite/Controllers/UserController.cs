@@ -40,15 +40,22 @@ namespace NGOWebsite.Controllers
             {
                 ViewData["programs"] = program;
             }
+            else
+            {
+                ViewData["programs"] = ls1;
+                //ViewData["programs"] = null;
+            }
             if (infor.Count > 0)
             {
                 ViewData["infor"] = infor;
             }
             else
             {
-                ViewData["infor"] = null;
+                ViewData["infor"] = ls2;
+                //ViewData["infor"] = null;
+
             }
-            
+
             return View(ls);
         }
 
