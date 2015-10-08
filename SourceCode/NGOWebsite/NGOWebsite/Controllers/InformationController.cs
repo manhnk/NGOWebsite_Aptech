@@ -18,6 +18,10 @@ namespace NGOWebsite.Controllers
             return View();
         }
 
-        
+        public ActionResult Stories()
+        {
+            return View();
+        }
+
     }
 }
