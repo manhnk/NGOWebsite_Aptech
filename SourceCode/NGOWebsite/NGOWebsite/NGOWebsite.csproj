@@ -1625,6 +1625,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\ImageUpload\Users\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -120,7 +120,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
                     Address = frm["Address"],
                     Email = frm["Email"],
                     IsMemberOfTeam = join,
-                    Image = "ImageUpload/Users/Hydrangeas.jpg",
+                    Image = "Content/ImageUpload/Users/Hydrangeas.jpg",
                     IsDeleted = 0
                 };
 

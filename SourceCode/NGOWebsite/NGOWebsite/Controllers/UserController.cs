@@ -141,7 +141,7 @@ namespace NGOWebsite.Controllers
                     Email = frm["Email"],
                     IsMemberOfTeam = -1,
                     IsDeleted = 0,
-                    Image = frm["Image"]
+                    Image = "Content/ImageUpload/Users/Hydrangeas.jpg"
                 };
                 // In error, need to be fixed!
                 kt = MemberBusiness.AddMember(ad);

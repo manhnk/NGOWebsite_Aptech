@@ -66,8 +66,8 @@ namespace NGOWebsite.Areas.Admin.Controllers
                     /*Geting the file name*/
                     string filename = System.IO.Path.GetFileName(file.FileName);
                     /*Saving the file in server folder*/
-                    file.SaveAs(Server.MapPath(@"~/ImageUpload/" + filename));
-                    string filepathtosave = "ImageUpload/" + filename;
+                    file.SaveAs(Server.MapPath(@"~/Content/ImageUpload/" + filename));
+                    string filepathtosave = "Content/ImageUpload/" + filename;
 
                     Nullable<int> isTopicImg = null;
 
