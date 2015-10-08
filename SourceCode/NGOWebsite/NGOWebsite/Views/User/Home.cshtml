@@ -40,88 +40,87 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 text-center animate_top">
-                RECENT <span>PROGRAMS</span>
-            </div>
-        </div>
-        @{IEnumerable<Models.Programs> prolist;
-          prolist = ViewData["programs"] as IEnumerable<Models.Programs>;
-        }
-        @{var flag = 0;}
-        @if (prolist != null)
-        {
-            foreach (var item in prolist)
-            {
-                flag++;
-                if (flag % 2 != 0)
-                {
-            <div class="row t1">
-                <div class="col-md-3 animate_left">
-                    <img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">
-                    @*<img src="@item.Logo" alt="img">*@
-                </div>
-                <div class="col-md-9 animate_right">
-                    <h4>@item.Name</h4>
+            <div class="col-md-8 text-center heading animate_top">
+                <span>PROGRAMS</span>
 
-                    @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
-                       if (arrListStr.Count() > 2)
-                       {
-                        <h4>@String.Concat(arrListStr[0], arrListStr[1])</h4>
-                       }
-                       else
-                       {
-                        <h4>@item.Contents</h4>
-                       }
-                    }
-                </div>
-            </div> 
+                @{IEnumerable<Models.Programs> prolist;
+                  prolist = ViewData["programs"] as IEnumerable<Models.Programs>;
                 }
-                else
+                @{var flag = 0;}
+                @if (prolist != null)
                 {
-            <div class="row t1">
-                <div class="col-md-9 animate_right">
-                    <h4>@item.Name</h4>
+                    foreach (var item in prolist)
+                    {
+                        flag++;
+                        if (flag % 2 != 0)
+                        {
+                    <div class="row t1">
+                        <div class="col-md-3 animate_left">
 
-                    @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
-                       if (arrListStr.Count() > 2)
-                       {
-                        <h4>@String.Concat(arrListStr[0], arrListStr[1])</h4>
-                       }
-                       else
-                       {
-                        <h4>@item.Contents</h4>
-                       }
+                            @*<img src="@item.Logo" alt="img">*@
+                        </div>
+                        <div class="col-md-9 animate_right">
+                            <h4>@item.Name</h4>
+
+                            @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
+                               if (arrListStr.Count() > 2)
+                               {
+                                <h4>@String.Concat(arrListStr[0], arrListStr[1])</h4>
+                               }
+                               else
+                               {
+                                <h4>@item.Contents</h4>
+                               }
+                            }
+                        </div>
+                    </div> 
+                        }
+                        else
+                        {
+                    <div class="row t1">
+                        <div class="col-md-9 animate_right">
+                            <h4>@item.Name</h4>
+
+                            @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
+                               if (arrListStr.Count() > 2)
+                               {
+                                <h4>@String.Concat(arrListStr[0], arrListStr[1])</h4>
+                               }
+                               else
+                               {
+                                <h4>@item.Contents</h4>
+                               }
+                            }
+                        </div>
+
+
+                        <div class="col-md-3 animate_left">
+                            <img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">
+                        </div>
+                    </div>
+                        }
                     }
-                </div>
-
-
-                <div class="col-md-3 animate_left">
-                    <img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">
-                </div>
-            </div>
                 }
-            }
-        }
-            @*<div class="col-md-8 text-center animate_left">
-                
-            </div>*@
-        <div class="col-md-4 slider_title">
-            <h1>NEWS</h1>
-            @{IEnumerable<Models.Informations> news;
-              news = ViewData["infor"] as IEnumerable<Models.Informations>;
-            }
-            @if (news != null)
-            {
-                foreach (var i in news)
+            </div>
+
+
+            <div class="col-md-4 slider_title">
+                <h1>NEWS</h1>
+                @{IEnumerable<Models.Informations> news;
+                  news = ViewData["infor"] as IEnumerable<Models.Informations>;
+                }
+                @if (news != null)
                 {
-                <h1>@i.Subject</h1>
-                <h3>Content</h3>
-                <p>@i.Contents</p>
+                    foreach (var i in news)
+                    {
+                    <h1>@i.Subject</h1>
+                    <h3>Content</h3>
+                    <p>@i.Contents</p>
                                        
+                    }
                 }
-            }
-            
 
+            </div>
         </div>
     </div>
 </div>
