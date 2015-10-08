@@ -26,6 +26,79 @@ namespace DataAccessLayer
             return dt;
         }
 
+        public static DataTable GetAllMenuPostionNotNull()
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getAllMenuWithPositionNotNull";
+                dt = DataConnect.GetAllData(sql);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetMaxPostion()
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getMaxPositionMenu";
+                dt = DataConnect.FindData(sql, null, null);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+
+        public static int UpdatePostion(int position)
+        {
+            int kt = 0;
+            try
+            {
+                string sql = "sp_UpdatePositionMenu";
+                List<string> param = new List<string>();
+                param.Add("@position");
+
+                List<object> value = new List<object>();
+                value.Add(position);
+
+                kt = DataConnect.CRUDData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return kt;
+        }
+
+        public static int UpdatePostionDesc(int position)
+        {
+            int kt = 0;
+            try
+            {
+                string sql = "sp_UpdatePositionMenuDesc";
+                List<string> param = new List<string>();
+                param.Add("@position");
+
+                List<object> value = new List<object>();
+                value.Add(position);
+
+                kt = DataConnect.CRUDData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return kt;
+        }
       
 
         public static int AddMenu(Models.Menu menu)
@@ -65,6 +138,7 @@ namespace DataAccessLayer
             {
                 string sql = "sp_editMenu";
                 List<string> param = new List<string>();
+                param.Add("@id");
                 param.Add("@subject");
                 param.Add("@textTooltip");
                 param.Add("@position ");
@@ -72,6 +146,7 @@ namespace DataAccessLayer
                 param.Add("@links");
 
                 List<object> value = new List<object>();
+                value.Add(menu.Id);
                 value.Add(menu.Subject);
                 value.Add(menu.TextTooltip);
                 value.Add(menu.Position);

@@ -15,7 +15,7 @@ namespace NGOWebsite.Controllers
         [ChildActionOnly]
         public ActionResult Index()
         {
-            List<Models.Menu> ls = MenuBusiness.GetAllMenu();
+            List<Models.Menu> ls = MenuBusiness.GetAllMenuPostionNotNull();
             List<Models.Informations> ls1 = InformationsBusiness.GetAllInformations();
             
             ViewData["submenu"] = ls1;

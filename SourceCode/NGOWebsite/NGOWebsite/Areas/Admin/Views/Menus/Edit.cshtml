@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Models.Menu
+
+<div class="row" style="margin-top:30px">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-weight:bold">
+                <i class="fa fa-th-list  fa-fw"></i> Add New Menu Item
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    @using (Html.BeginForm("EditProcess", "Menus", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Subject)
+                                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
+                                @Html.ValidationMessageFor(model => model.Subject)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TextTooltip)
+                                @Html.TextBoxFor(model => model.TextTooltip, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
+                                @Html.ValidationMessageFor(model => model.TextTooltip)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Links)
+                                @Html.TextBoxFor(model => model.Links, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
+                                @Html.ValidationMessageFor(model => model.Links)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Position)
+                                @Html.TextBoxFor(model => model.Position, new { @class = "form-control", @placeholder = "Enter number", @maxlength = "2" })
+                                @Html.ValidationMessageFor(model => model.Position)
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="submit" class="btn btn-primary" style="margin-top:25px;width:120px"><i class="fa fa-edit  fa-fw"></i> Update </button><br/>
+                            <a class="btn btn-primary" style="margin-top: 15px;margin-left:30px; width: 120px" href="@Url.Action("ListMenu","Menus")"><i class="fa  fa-mail-reply fa-fw"></i> Cancel </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

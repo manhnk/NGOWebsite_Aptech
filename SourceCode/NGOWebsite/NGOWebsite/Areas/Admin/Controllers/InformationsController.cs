@@ -23,6 +23,16 @@ namespace NGOWebsite.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult Submenu(int parentId)
+        {
+            List<Informations> ls = InformationsBusiness.GetSubmenu(parentId);
+            if (ls.Count > 0)
+            {
+                return View("ListInformations",ls);
+            }
+            return View("ListInformations");
+        }
+
         //
         // GET: /Admin/Informations/Details/5
 
@@ -88,6 +98,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
                     Links = frm["Links"],
                     ParentId = parentId,
                     Position= postion
+                 
                 };
 
                 kt = InformationsBusiness.AddInformations(ad);

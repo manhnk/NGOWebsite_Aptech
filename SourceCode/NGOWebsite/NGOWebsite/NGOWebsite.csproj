@@ -135,6 +135,7 @@
     <Compile Include="Areas\Admin\Controllers\ImageGalleryController.cs" />
     <Compile Include="Areas\Admin\Controllers\InformationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -1574,6 +1575,10 @@
     <Content Include="Areas\Admin\Views\Member\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Member\ListMember.cshtml" />
     <Content Include="Areas\Admin\Views\Member\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Menus\ListMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Menus\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Menus\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Menus\Edit.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

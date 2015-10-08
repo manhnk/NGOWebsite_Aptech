@@ -186,6 +186,27 @@ namespace DataAccessLayer
             return dt;
         }
 
+        public static DataTable GetSubmenu(int parentId)
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getSubmenuByParent";
+                List<string> param = new List<string>();
+                param.Add("@parent");
+
+                List<object> value = new List<object>();
+                value.Add(parentId);
+                dt = DataConnect.FindData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+
         public static DataTable GetMaxPositionBaseOnParent(int parentId)
         {
             DataTable dt = null;

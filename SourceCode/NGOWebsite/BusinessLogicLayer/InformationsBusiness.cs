@@ -60,6 +60,12 @@ namespace BusinessLogicLayer
             return AddInformationToList(dt);
         }
 
+        public static List<Informations> GetSubmenu(int parentId)
+        {
+            DataTable dt = DataAccessLayer.InformationsDA.GetSubmenu(parentId);
+            return AddInformationToList(dt);
+        }
+
         public static List<Informations> SearchInformations(string value)
         {
             DataTable dt = DataAccessLayer.InformationsDA.SearchInfor(value);
@@ -126,13 +132,15 @@ namespace BusinessLogicLayer
                 if (ad.ParentId != null)
                 {
                     int? maxPos = GetMaxPositionBaseOnParent((int)(ad.ParentId));
-                    if (maxPos == null)
+
+
+                    if (ad.Position != null)
                     {
-                        ad.Position = 1;
-                    }
-                    else
-                    {
-                        if (ad.Position != null)
+                        if (maxPos == null)
+                        {
+                            ad.Position = 1;
+                        }
+                        else
                         {
                             if (ad.Position > maxPos)
                             {
@@ -160,6 +168,7 @@ namespace BusinessLogicLayer
         public static int EditInformations(Informations ad)
         {
             int upt = 0;
+            int check = 0;
             try
             {
                 Informations inforOld = InformationsBusiness.GetInformationsById(ad.Id)[0];
@@ -168,28 +177,51 @@ namespace BusinessLogicLayer
                 {
                     int? maxPos = GetMaxPositionBaseOnParent((int)(ad.ParentId));
 
-                    if (maxPos == null)
+
+                    if (ad.Position != null)
                     {
-                        ad.Position = 1;
-                    }
-                    else
-                    {
-                        if (ad.Position != null)
+                        if (maxPos == null)
                         {
-                            if (ad.Position > maxPos)
+                            ad.Position = 1;
+                        }
+                        else
+                        {
+                            if (inforOld.Position != null)
                             {
-                                ad.Position = maxPos + 1;
+                                if (ad.Position > maxPos)
+                                {
+                                    UpdatePostionDesc((int)ad.ParentId, (int)inforOld.Position);
+                                    ad.Position = maxPos;
+                                }
+                                else
+                                {
+                                    UpdatePostion((int)ad.ParentId, (int)ad.Position);
+                                    if(ad.ParentId==inforOld.ParentId)
+                                    {
+                                        check = 1;
+                                    }
+                                }
                             }
                             else
                             {
-                                int kt = UpdatePostion((int)ad.ParentId, (int)ad.Position);
+                                if (ad.Position > maxPos)
+                                {
+                                    ad.Position = maxPos + 1;
+                                }
+                                else
+                                {
+                                    int kt = UpdatePostion((int)ad.ParentId, (int)ad.Position);
+                                }
                             }
-
                         }
                     }
 
                 }
                 upt = DataAccessLayer.InformationsDA.EditInfor(ad);
+                if (upt > 0 && check == 1)
+                {
+                    UpdatePostionDesc((int)ad.ParentId, (int)inforOld.Position);
+                }
             }
             catch (Exception)
             {
@@ -203,7 +235,7 @@ namespace BusinessLogicLayer
             int del = 0;
             try
             {
-                Informations infor=InformationsBusiness.GetInformationsById(id)[0];
+                Informations infor = InformationsBusiness.GetInformationsById(id)[0];
                 del = DataAccessLayer.InformationsDA.DeleteInfor(id);
                 if (del > 0)
                 {

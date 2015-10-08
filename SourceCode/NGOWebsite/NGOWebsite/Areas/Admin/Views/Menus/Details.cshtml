@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Models.Menu
+
+<div class="row" style="margin-top:30px">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-weight:bold">
+                <i class="fa fa-th-list  fa-fw"></i> Menu Item Details
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <tr>
+                                <th style="width:20%">
+                                    @Html.LabelFor(model => model.Subject)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Subject)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="width:20%">
+                                    @Html.LabelFor(model => model.TextTooltip)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.TextTooltip)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="width:20%">
+                                    @Html.LabelFor(model => model.Position)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Position)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="width:20%">
+                                    @Html.LabelFor(model => model.Links)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Links)
+                                </td>
+                            </tr>
+                            
+                        </table>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <a class="btn btn-primary" style="margin-top: 15px; width: 120px" href="@Url.Action("Edit", "Menus", new { id = Model.Id })"><i class="fa fa-edit  fa-fw"></i> Update </a><br/>
+                        <a class="btn btn-danger" style="margin-top:15px;width:120px" href="@Url.Action("Delete", "Menus", new { @id = Model.Id })" onclick="return confirm('Are you sure?');"><i class="fa fa-times-circle  fa-fw"></i> Delete </a><br/>
+                        <a class="btn btn-success" style="margin-top:15px;width:120px" href="@Url.Action("ListMenu", "Menus")"><i class="fa fa-mail-reply  fa-fw"></i> Back to list </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
