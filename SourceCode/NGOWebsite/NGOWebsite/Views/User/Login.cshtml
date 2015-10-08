@@ -17,6 +17,13 @@
                 
                 }
             }
+            @if (Request.QueryString["change"] != null)
+            {
+                <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                    <img src='~/Content/View_components/images/success.png' alt="img">You've changed your password! Please re-Login !
+
+                </div>
+            }
             <div class="row">
 
                 <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;Login</span>&nbsp;&nbsp;&nbsp     Form</div>

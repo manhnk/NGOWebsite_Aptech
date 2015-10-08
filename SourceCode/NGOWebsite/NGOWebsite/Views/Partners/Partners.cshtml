@@ -1,67 +1,77 @@
-﻿
-
+﻿@model IEnumerable<Models.Partners>
 @{
     ViewBag.Title = "Partners";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
 <div class="team">
-        <div class="container">
+    <div class="container">
 
-            <div class="row">
-                <div class="col-md-12 text-center heading dark animate_top">
-                    Who are behind <span>Borno</span>
-                </div>
+        <div class="row">
+            <div class="col-md-12 text-center heading dark animate_top">
+                Who are behind <span>NGO</span>
             </div>
-
+        </div>
+        @{var flag = 0;}
+        @foreach (var item in Model)
+        {
+            flag++;
+            if (flag % 2 != 0)
+            {
             <div class="row t1">
                 <div class="col-md-3 animate_left">
                     <img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">
                 </div>
                 <div class="col-md-9 animate_right">
-                    <h3>Richard Roe</h3>
-                    <p>President, Borno, Inc.</p>
-                    <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte. Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
+                    <h1>@item.Name</h1>
+                    <h3>E-mail</h3>
+                    <p>@item.Email</p>
+                    <h3>Address</h3>
+                    <p>@item.Address</p>
+                    <h3>Phone</h3>
+                    <p>@item.Phone</p>
+                    <h3>Profile</h3>
+                    <p>@item.Profile</p>
                     <ul>
                         <li><a href=""><i class="fa fa-twitter"></i></a></li>
                         <li><a href=""><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
-            </div>
+            </div> 
+            }
+            else
+            {
             <div class="row t1">
-
-                <div class="col-md-9 animate_left">
-                    <h3>Janny Roe</h3>
-                    <p>Organizer, Borno, Inc.</p>
-                    <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte. Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
-                    <ul>
-                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 animate_right">
-                    <img src="~/Content/View_components/images/organizers/org2.jpg" alt="img">
-                </div>
-            </div>
-            <div class="row t1">
-                <div class="col-md-3 animate_left">
-                    <img src="~/Content/View_components/images/organizers/org3.jpg" alt="img">
-                </div>
                 <div class="col-md-9 animate_right">
-                    <h3>Jane Doe</h3>
-                    <p>Organizer, Borno, Inc.</p>
-                    <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte. Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
+                    <h1>@item.Name</h1>
+                    <h3>E-mail</h3>
+                    <p>@item.Email</p>
+                    <h3>Address</h3>
+                    <p>@item.Address</p>
+                    <h3>Phone</h3>
+                    <p>@item.Phone</p>
+                    <h3>Profile</h3>
+                    <p>@item.Profile</p>
                     <ul>
                         <li><a href=""><i class="fa fa-twitter"></i></a></li>
                         <li><a href=""><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    
+
+                <div class="col-md-3 animate_left">
+                    <img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">
+                </div>
+            </div>
+            }
+
+        }
+
+       
+    </div>
+</div>
+
+
 
 
 

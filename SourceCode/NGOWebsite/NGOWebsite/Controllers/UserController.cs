@@ -256,11 +256,14 @@ namespace NGOWebsite.Controllers
 
             if (kt > 0)
             {
-                return RedirectToAction("Profile", "User", new { change = "success" });
+                Session.Abandon();
+                return RedirectToAction("Login", "User", new { change = "success" });
             }
             else
             {
+
                 return RedirectToAction("ChangePassword", "User", new { change = "error" });
+
             }
         }
 
