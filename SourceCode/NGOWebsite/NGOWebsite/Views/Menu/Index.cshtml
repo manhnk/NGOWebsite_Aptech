@@ -2,7 +2,7 @@
 
 @model IEnumerable<Models.Menu>
 @{
-    
+
     Models.Member ad = new Models.Member();
 
     ad = (Models.Member)Session["user_login"];
@@ -18,56 +18,55 @@
                 str = str.Split(new char[] { ' ' })[0];
                 if (str.Equals("Home") || str.Equals("Login") || str.Equals("Register") || str.Equals("Join"))
                 {
-    <li><a href="@Url.Action(str, "User")">@item.Subject</a></li>
+                    <li><a href="@Url.Action(str, "User")">@item.Subject</a></li>
                 }
                 else if (str.Equals("About"))
                 {
                     List<Models.Informations> info;
 
                     info = ViewData["submenu"] as List<Models.Informations>;
-                   
-    <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">About Us<b class="caret"></b></a>
-        <ul class="dropdown-menu navfix">
-            @foreach (var i in info)
-            {
 
-                {
-                <li><a href="@Url.Action(str, str)">@i.Subject</a></li>
-                }
-            }
-        </ul>
-    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">About Us<b class="caret"></b></a>
+                        <ul class="dropdown-menu navfix">
+                            @foreach (var i in info)
+                            {
+                                {
+                                    <li><a href="@Url.Action(str, str)">@i.Subject</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
                 }
                 else if (str.Equals("Contact"))
                 {
-    <li><a href="@Url.Action("Message", "Message")">@item.Subject</a></li>
+                    <li><a href="@Url.Action("Message", "Message")">@item.Subject</a></li>
                 }
                 else
                 {
-    <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
+                    <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
                 }
             }
 
-@*<li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">More Info <b class="caret"></b></a>
-        <ul class="dropdown-menu navfix">
-            @foreach (var item in Model)
-            {
-                string str = item.Subject;
-                str = str.Split(new char[] { ' ' })[0];
-                if (str.Equals("About") || str.Equals("Help"))
-                {
-                <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
-                <li class="divider"></li>
-                }
-                else if (str.Equals("Contact"))
-                {
-                <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
-                }
-            }
-        </ul>
-    </li>*@
+            @*<li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">More Info <b class="caret"></b></a>
+                    <ul class="dropdown-menu navfix">
+                        @foreach (var item in Model)
+                        {
+                            string str = item.Subject;
+                            str = str.Split(new char[] { ' ' })[0];
+                            if (str.Equals("About") || str.Equals("Help"))
+                            {
+                            <li><a href="@Url.Action(str, "Information")">@item.Subject</a></li>
+                            <li class="divider"></li>
+                            }
+                            else if (str.Equals("Contact"))
+                            {
+                            <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
+                            }
+                        }
+                    </ul>
+                </li>*@
 
         }
     }
@@ -85,41 +84,40 @@
                 {
                     if (ad.IsMemberOfTeam == 1 || ad.IsMemberOfTeam == 0)
                     {
-    <li><a href="@Url.Action("Notify", "User")" class="ajax-popup-link" >@item.Subject</a></li>
+                        <li><a href="@Url.Action("Notify", "User")" class="ajax-popup-link">@item.Subject</a></li>
                     }
                     else
                     {
-    <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
-                        
+                        <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
+
                     }
                 }
                 else if (str.Equals("Home"))
                 {
-    <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
-                    
+                    <li class="active"><a href="@Url.Action(str, "User")">@item.Subject</a></li>
                 }
                 else if (str.Equals("About"))
                 {
                     List<Models.Informations> info;
 
                     info = ViewData["submenu"] as List<Models.Informations>;
-                   
-    <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">About Us<b class="caret"></b></a>
-        <ul class="dropdown-menu navfix">
-            @foreach (var i in info)
-            {
 
-                {
-                <li><a href="@Url.Action(str, str)">@i.Subject</a></li>
-                }
-            }
-        </ul>
-    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">About Us<b class="caret"></b></a>
+                        <ul class="dropdown-menu navfix">
+                            @foreach (var i in info)
+                            {
+
+                                {
+                                    <li><a href="@Url.Action(str, str)">@i.Subject</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
                 }
                 else if (str.Equals("Contact"))
                 {
-    <li><a href="@Url.Action("Message", "Message")">@item.Subject</a></li>
+                    <li><a href="@Url.Action("Message", "Message")">@item.Subject</a></li>
                 }
                 else if (str.Equals("Login"))
                 {
@@ -129,30 +127,30 @@
                 }
                 else
                 {
-    <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
+                    <li><a href="@Url.Action(str, str)">@item.Subject</a></li>
                 }
             }
-    
-    
-    <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">@ad.UserName <b class="caret"></b></a>
-        <ul class="dropdown-menu navfix">
-            @foreach (var item in Model)
-            {
-                string str = item.Subject;
-                str = str.Split(new char[] { ' ' })[0];
-                if (str.Equals("Login"))
-                {
-                <li><a href="@Url.Action("Logout", "User")">Log out</a></li>	                
-                }
-                else if (str.Equals("Register"))
-                {
-                <li><a href="@Url.Action("Profile", "User")">Profile</a></li>  
-                <li class="divider"></li>                            		 
-                }
-            }
-        </ul>
-    </li>
+
+
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">@ad.UserName <b class="caret"></b></a>
+                <ul class="dropdown-menu navfix">
+                    @foreach (var item in Model)
+                    {
+                        string str = item.Subject;
+                        str = str.Split(new char[] { ' ' })[0];
+                        if (str.Equals("Login"))
+                        {
+                            <li><a href="@Url.Action("Logout", "User")">Log out</a></li>
+                        }
+                        else if (str.Equals("Register"))
+                        {
+                            <li><a href="@Url.Action("Profile", "User")">Profile</a></li>
+                            <li class="divider"></li>
+                        }
+                    }
+                </ul>
+            </li>
         }
     }
 }

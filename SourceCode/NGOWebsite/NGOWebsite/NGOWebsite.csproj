@@ -136,6 +136,7 @@
     <Compile Include="Areas\Admin\Controllers\InformationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
