@@ -16,6 +16,39 @@ namespace NGOWebsite.Controllers
         public ActionResult Home()
         {
             List<Models.Partners> ls = PartnersBusiness.GetAllPartners();
+            List<Models.Programs> ls1 = ProgramsBusiness.GetAllPrograms();
+            List<Models.Programs> program = new List<Programs>();
+
+            foreach (var item in ls1)
+            {
+                if (item.Status == 1)
+                {
+                    program.Add(item);
+                }
+            }
+            List<Models.Informations> ls2 = InformationsBusiness.GetAllInformations();
+            List<Models.Informations> infor = new List<Informations>();
+            foreach (var item in ls2)
+            {
+                if (item.ParentId == null)
+                {
+                    infor.Add(item);
+                }
+            }
+
+            if (program.Count > 0)
+            {
+                ViewData["programs"] = program;
+            }
+            if (infor.Count > 0)
+            {
+                ViewData["infor"] = infor;
+            }
+            else
+            {
+                ViewData["infor"] = ls2;
+            }
+            
             return View(ls);
         }
 
@@ -195,7 +228,7 @@ namespace NGOWebsite.Controllers
             int kt = 0;
             try
             {
-                
+
                 // TODO: Add insert logic here
                 Models.Member ad = new Models.Member()
                 {

@@ -40,7 +40,7 @@ jQuery(function () {
         jQuery('.bxslider_story').bxSlider({
             controls: false,
             minSlides: 1,
-            maxSlides: 3,
+            maxSlides: 4,
             slideWidth: 360,
             moveSlides: 1,
             slideMargin: 30

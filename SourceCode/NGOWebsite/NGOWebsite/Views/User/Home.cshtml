@@ -50,6 +50,63 @@
         </div>
     </div>
 </div>
+@* ============================================== *@
+<div id="middle" class="middle">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 text-center animate_left">
+                <h1>RECENT PROGRAMS</h1>
+                @{IEnumerable<Models.Programs> prolist;
+                  prolist = ViewData["programs"] as IEnumerable<Models.Programs>;
+                }
+
+                @foreach (var item in prolist)
+                {
+                    <div class="col-md-3">
+                        @*<img src="@item." alt="img">*@
+                        <img src="~/Content/View_components/images/activity/act4.jpg" alt="img" class="animate_top">
+                        <div class="animate_bottom s1">
+                            <h4>@item.Name</h4>
+
+
+                            @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
+                               if (arrListStr.Count() > 2)
+                               {
+                                <p>@String.Concat(arrListStr[0], arrListStr[1])</p>
+                               }
+                               else
+                               {
+                                <p>@item.Contents</p>
+                               }
+                            }
+                            <p class="readmore"><a href="@Url.Action("RecentProgram", "Programs", new { @id = item.Id })" class="ajax-popup-link">...read more</a></p>
+                        </div>
+                    </div>  
+                }
+            </div>
+            <div class="col-md-4 slider_title">
+                <h1>NEWS</h1>
+                @{IEnumerable<Models.Informations> news;
+                  news = ViewData["infor"] as IEnumerable<Models.Informations>;
+                }
+                @if (news != null)
+                {
+                    foreach (var i in news)
+                    {
+                    <h1>@i.Subject</h1>
+                    <h3>Content</h3>
+                    <p>@i.Contents</p>
+                                       
+                    }
+                }
+                
+
+            </div>
+        </div>
+    </div>
+
+</div>
 @*<div class="container">
         <div class="row">
             <div class="col-md-1"></div>
@@ -69,17 +126,16 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="bxslider_story">
-                    
-                        @foreach (var item in Model)
-                        {
-                            <li class="s1">
-                            <img src="~/Content/View_components/images/students/1.jpg" alt="img">
+
+                    @foreach (var item in Model)
+                    {
+                        <li class="s1">
+                            <img src="~/Content/View_components/images/students/1.jpg" alt="img" data-toggle="tooltip" title="@item.Name">
                             @*<img src="@item.Logo" alt="img">*@
-                            <h3 class="animate_top">@item.Name</h3>
                             @*<p class="animate_bottom">@item.Email</p>*@
-                            </li>
+                        </li>
                    
-                        }
+                    }
 
                 </ul>
             </div>
