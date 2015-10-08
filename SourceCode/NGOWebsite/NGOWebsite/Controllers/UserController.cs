@@ -270,14 +270,15 @@ namespace NGOWebsite.Controllers
             {
 
                 Models.Member ad = Session["user_login"] as Models.Member;
-                if (ad.IsMemberOfTeam == 0 || ad.IsMemberOfTeam == 1)
-                {
-                    return View(ad);
-                }
-                else
-                {
-                    return null;
-                }
+                return View(ad);
+                //if (ad.IsMemberOfTeam == 0 || ad.IsMemberOfTeam == 1)
+                //{
+                //    return View(ad);
+                //}
+                //else
+                //{
+                //    return null;
+                //}
             }
             else
             {
