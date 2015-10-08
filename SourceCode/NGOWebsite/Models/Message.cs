@@ -27,7 +27,7 @@ namespace Models
         public string SenderEmail { get; set; }
 
         [Required(ErrorMessage = "Please type content!")]
-        [Display(Name = "Content")]
+        [Display(Name = "Message")]
         public string Messages { get; set; }
         public int Status { get; set; }
         public int IsDeleted { get; set; }

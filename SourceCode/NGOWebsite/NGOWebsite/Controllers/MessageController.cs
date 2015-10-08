@@ -15,7 +15,21 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Message()
         {
-            return View();
+            if (Session["user_login"] != null)
+            {
+
+                Models.Member ad = Session["user_login"] as Models.Member;
+                Models.Message msg = new Models.Message();
+                msg.SenderName = ad.UserName;
+                msg.SenderEmail = ad.Email;
+                return View(msg);
+                
+            }
+            else
+            {
+                return View();
+
+            }
         }
         // POST: /Admin/Message/Create
 
@@ -28,7 +42,7 @@ namespace NGOWebsite.Controllers
                 // TODO: Add insert logic here
                 Models.Message ad = new Models.Message()
                 {
-                    ProgramId = int.Parse(frm[""]),
+                    ProgramId = 0,
                     SenderName = frm["SenderName"],
                     SenderEmail = frm["SenderEmail"],
                     Messages = frm["Messages"],

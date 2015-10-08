@@ -8,6 +8,24 @@
 <div class="contact-bg parallax" id="contact">
     <div class="contact">
         <div class="container">
+            @if (Request.QueryString["add"] != null)
+            {
+                if (Request.QueryString["add"].Equals("error"))
+                {
+                <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                    <img src='~/Content/View_components/images/error.png' alt="img">Send Message Fail !
+                    
+                </div>
+                
+                }
+                else
+                {
+                <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                    <img src='~/Content/View_components/images/success.png' alt="img">Send Message Successfully !
+
+                </div>
+                }
+            }
             <div class="row">
                 <div class="col-md-12 text-center heading animate_top"><span class="brd">Contact </span>with us</div>
             </div>
@@ -43,7 +61,7 @@
 
                         </div>
                         
-                        <button class="bttn" id='send_message' type="submit">Send</button>
+                        <button class="bttn" id='send' type="submit">Send</button>
                         <button class="bttn" id='cancel' type="reset">Reset</button>
                     }
                     @*<form name="contactForm" id='contact_form' method="post" action='lib/ajax-html-contact-form/email.php'>*@
