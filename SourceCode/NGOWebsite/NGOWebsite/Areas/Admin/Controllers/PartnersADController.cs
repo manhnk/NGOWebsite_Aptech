@@ -120,17 +120,57 @@ namespace NGOWebsite.Areas.Admin.Controllers
         // POST: /Admin/Partners/Edit/5
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditProcess(int id, FormCollection frm)
         {
+            int kt = 0;
             try
             {
-                // TODO: Add update logic here
+                string filepathtosave = "";
+                if (Request.Files[0].ContentLength > 0)
+                {
+                    HttpPostedFileBase file = Request.Files[0];
+                    /*Geting the file name*/
+                    string filename = System.IO.Path.GetFileName(file.FileName);
+                    /*Saving the file in server folder*/
+                    file.SaveAs(Server.MapPath(@"~/Content/ImageUpload/Partners/" + filename));
+                    filepathtosave = "Content/ImageUpload/Partners/" + filename;
+                }
+                else
+                {
+                    filepathtosave = frm["Logo"];
+                }
 
-                return RedirectToAction("Index");
+                Models.Partners ad = new Models.Partners()
+                {
+                    Id=int.Parse(frm["Id"]),
+                    Name = frm["Name"],
+                    Address = frm["Address"],
+                    Email = frm["Email"],
+                    Profile = frm["Profile"],
+                    Phone = frm["Phone"],
+                    Logo = filepathtosave,
+                };
+
+                int check = PartnersBusiness.EditPartners(ad);
+                if (check > 0)
+                {
+                    kt++;
+                }
+
             }
             catch
             {
-                return View();
+                kt = 0;
+            }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListPartner", "PartnersAD", new { update = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListPartner", "PartnersAD", new { update = "error" });
             }
         }
 

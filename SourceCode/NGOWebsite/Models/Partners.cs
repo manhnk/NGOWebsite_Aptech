@@ -14,7 +14,7 @@ namespace Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please type name!")]
-        //[Remote("CheckNameExist", "Book", HttpMethod = "POST", ErrorMessage = "Book name already exists. Please enter a different user name.", AdditionalFields = "ID")]
+        [Remote("CheckNameExist", "PartnersAD", HttpMethod = "POST", ErrorMessage = "Partner is existed. Please enter a different name.", AdditionalFields = "Id")]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 100 charactes !")]
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -23,7 +23,8 @@ namespace Models
         [Required(ErrorMessage = "Please type phone number!")]
         [Display(Name = "Phone number")]
         [DataType(DataType.PhoneNumber)]
-        [StringLength(15, MinimumLength = 9, ErrorMessage = "Length must be between 9 and 15 charactes !")]        
+        [StringLength(15, MinimumLength = 9, ErrorMessage = "Length must be between 9 and 15 charactes !")]
+        [RegularExpression("^\\d{1,15}$", ErrorMessage = "Phone number is not valid !")]
         public string Phone { get; set; }
 
 
@@ -35,15 +36,16 @@ namespace Models
         [Required(ErrorMessage = "Please type email!")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", ErrorMessage = "Email address is not valid!")]        
+        [RegularExpression("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", ErrorMessage = "Email address is not valid!")]
         public string Email { get; set; }
 
-        [Display(Name="Logo")]
+        [Display(Name = "Logo")]
         public string Logo { get; set; }
 
         public string Profile { get; set; }
 
         public int IsDeleted { get; set; }
+
 
     }
 }
