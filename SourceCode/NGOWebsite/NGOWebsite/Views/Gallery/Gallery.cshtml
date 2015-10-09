@@ -2,7 +2,123 @@
     ViewBag.Title = "Gallery";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-<div class="gallery-bg parallax" id="gallery">
+@model IEnumerable<Models.ImageGallery>
+@using Models;
+<style type="text/css">
+    .containerImg ul {
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+    }
+
+        .containerImg ul li {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+            .containerImg ul li img {
+                cursor: pointer;
+                width: 150px;
+                height: 100px;
+            }
+
+    .modal-body {
+        padding: 5px !important;
+    }
+
+    .modal-content {
+        border-radius: 0;
+    }
+
+    .modal-dialog img {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .controls {
+        width: 50px;
+        display: block;
+        font-size: 11px;
+        padding-top: 8px;
+        font-weight: bold;
+    }
+
+    .next {
+        float: right;
+        text-align: right;
+    }
+
+    .previous {
+        float: left;
+        text-align: left;
+    }
+
+    /*override modal for demo only*/
+    .modal-dialog {
+        max-width: 500px;
+        padding-top: 90px;
+    }
+</style>
+<div class="row" style="margin-top: 30px">
+    <div class="col-lg-12">
+        @*<a class="btn btn-primary" href="@Url.Action("Create", "ImageGallery", new { proId = (ViewData["program"] as Models.ImageGallery).ProgramId })"><i class="fa fa-plus-circle  fa-fw"></i>Add New Image</a>*@
+    </div>
+</div>
+<div class="row" style="margin-top: 10px">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-weight: bold">
+                @*<i class="fa fa-image  fa-fw"></i> Gallery for @Html.DisplayName((ViewData["program"] as Models.ImageGallery).ProgramName)*@
+                <i class="fa fa-image  fa-fw"></i>Gallery Album
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="containerImg">
+                    <ul class="row">
+                        @{List<Models.ImageGallery> images;
+                          images = ViewData["lsProgram"] as List<Models.ImageGallery>;
+                        }
+
+                        @if (images != null)
+                        {
+                            foreach (ImageGallery img in images)
+                            {
+                            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                                <img id="@img.Id" class="img-responsive" src="~/@img.ImagePath" />
+                            </li>
+                            }
+                        }
+                        else
+                        {
+                            <li>
+                                <h3 class="heading">No image to display!</h3>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <!-- /containerImg -->
+
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Areas/Admin/Contents/js/photo-gallery.js")" type="text/javascript"></script>
+}
+@*<div class="gallery-bg parallax" id="gallery">
         <div class="gallery">
             <div class="container">
                 <div class="row">
@@ -83,4 +199,4 @@
                 </div>
             </section>
         </div>
-    </div>
+    </div>*@

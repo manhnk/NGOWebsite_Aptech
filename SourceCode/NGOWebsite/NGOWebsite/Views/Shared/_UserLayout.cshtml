@@ -129,5 +129,20 @@
 
 <script src="~/Content/View_components/js/custom.js"></script>
 <script src="~/Content/View_components/lib/3DGridEffect/js/modernizr.custom.js"></script>
+@*<script>
+function initialize() {
+  var mapProp = {
+    center:new google.maps.LatLng(51.508742,-0.120850),
+    zoom:5,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArWB4yJ4SiY8HLVVUJoRQbaacZ8hsNvU0&callback=initMap">
+    </script>*@
 
 @RenderSection("scripts", required: false)
