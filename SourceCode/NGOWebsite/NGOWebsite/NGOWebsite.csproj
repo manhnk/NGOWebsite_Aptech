@@ -138,6 +138,7 @@
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\MessagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PartnersADController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProgramsADController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -1590,6 +1591,10 @@
     <Content Include="Areas\Admin\Views\PartnersAD\Create.cshtml" />
     <Content Include="Areas\Admin\Views\PartnersAD\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PartnersAD\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProgramsAD\ListProgram.cshtml" />
+    <Content Include="Areas\Admin\Views\ProgramsAD\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProgramsAD\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProgramsAD\Edit.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

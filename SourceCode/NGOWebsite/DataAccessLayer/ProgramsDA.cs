@@ -131,6 +131,28 @@ namespace DataAccessLayer
             return dt;
         }
 
+        public static DataTable CheckNameExisted(string text,int? id)
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_checkProgramExisted";
+                List<string> param = new List<string>();
+                param.Add("@value");
+                param.Add("@id");
+
+                List<object> value = new List<object>();
+                value.Add(text);
+                value.Add(id);
+                dt = DataConnect.FindData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
         public static DataTable GetProgramById(int id)
         {
             DataTable dt = null;
@@ -152,6 +174,6 @@ namespace DataAccessLayer
             return dt;
         }
 
-     
+
     }
 }

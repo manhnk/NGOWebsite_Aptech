@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Models.Programs
+
+<div class="row" style="margin-top:30px">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-weight:bold">
+                <i class="fa fa-sitemap  fa-fw"></i> Program Details
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <tr>
+                                <th style="width:20%">@Html.LabelFor(model => model.Status)</th>
+                                @if (Model.Status == 0)
+                                {
+                                    <td style="font-weight:bold;color:red">
+                                        @Html.DisplayName("Upcoming")
+                                    </td>
+                                }
+                                else if (Model.Status == 1)
+                                {
+                                    <td style="font-weight:bold;color:orange">
+                                        @Html.DisplayName("Recent")
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="font-weight:bold;color:green">
+                                        @Html.DisplayName("Complete")
+                                    </td>
+                                }
+                            </tr>
+                            <tr>
+
+                                <th style="width:20%">
+                                    @Html.LabelFor(model => model.Name)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Name)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="width:20%">
+                                    @Html.LabelFor(model => model.Cause)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Cause)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="width:20%">
+                                    @Html.LabelFor(model => model.Contents)
+                                </th>
+                                <td>
+                                    @Html.DisplayTextFor(model => model.Contents)
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="col-lg-4">
+                        @{
+                            int imgCount = int.Parse(ViewData["image"].ToString());
+                            if (imgCount > 0)
+                            {
+                                <a class="btn btn-primary" style="margin-top: 25px; margin-left: 20px;width: 120px" href="@Url.Action("ProgramImages", "ImageGallery", new { id = Model.Id })"><i class="fa fa-image  fa-fw"></i> Gallery </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-primary" style="margin-top: 25px; margin-left: 20px;width: 120px" href="@Url.Action("Create", "ImageGallery", new { proId = Model.Id })"><i class="fa fa-image  fa-fw"></i> Add Gallery </a>
+                            }
+                        }
+                        <a class="btn btn-primary" style="margin-top: 25px; margin-left: 20px; width: 120px" href="@Url.Action("Edit", "ProgramsAD", new { id = Model.Id })"><i class="fa fa-edit  fa-fw"></i> Update </a>
+                        <a class="btn btn-danger" style="margin-top:25px;margin-left:20px;width:120px" href="@Url.Action("Delete", "ProgramsAD", new { @id = Model.Id })" onclick="return confirm('Are you sure?');"><i class="fa fa-times-circle  fa-fw"></i> Delete </a>
+                        <a class="btn btn-success" style="margin-top: 25px; margin-left: 20px; width: 120px" href="@Url.Action("ListProgram", "ProgramsAD")"><i class="fa fa-mail-reply  fa-fw"></i> Back to list </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

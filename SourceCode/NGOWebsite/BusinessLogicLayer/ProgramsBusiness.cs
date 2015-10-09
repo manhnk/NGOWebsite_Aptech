@@ -59,8 +59,17 @@ namespace BusinessLogicLayer
             return AddProgramsToList(dt);
         }
 
+        public static int CheckNameExisted(string text, int? id)
+        {
+            DataTable dt = DataAccessLayer.ProgramsDA.CheckNameExisted(text, id);
+            if (dt.Rows.Count > 0)
+            {
+                return 1;
+            }
+            return 0;
+        }
 
-        public int AddPrograms(Programs ad)
+        public static int AddPrograms(Programs ad)
         {
             int ins = 0;
             try
@@ -76,7 +85,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditPrograms(Programs ad)
+        public static int EditPrograms(Programs ad)
         {
             int upt = 0;
             try
@@ -90,7 +99,7 @@ namespace BusinessLogicLayer
             return upt;
         }
 
-        public int DeletePrograms(int id)
+        public static int DeletePrograms(int id)
         {
             int del = 0;
             try

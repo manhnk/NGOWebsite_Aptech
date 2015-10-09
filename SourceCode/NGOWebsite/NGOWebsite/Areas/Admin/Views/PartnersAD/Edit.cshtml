@@ -21,7 +21,7 @@
                         @Html.HiddenFor(model=>model.Logo)
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
-                        <div class="col-lg-6">
+                        <div class="col-lg-7">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Name)
                                 @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
@@ -55,7 +55,7 @@
                                 @Html.TextBoxFor(model => model.Logo, new {@style="width:200px", @class = "form-control", @type = "file", @accept = ".png,.gif,.jpg" })
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-2">
                             <button type="submit" class="btn btn-primary" style="margin-top:25px;width:120px"><i class="fa fa-edit fa-fw"></i> Update </button><br />
                             <a class="btn btn-primary" style="margin-top: 15px; width: 120px" href="@Url.Action("ListPartner","PartnersAD")"><i class="fa  fa-mail-reply fa-fw"></i> Cancel </a>
                          </div>

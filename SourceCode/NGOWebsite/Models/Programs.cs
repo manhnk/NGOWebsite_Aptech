@@ -14,7 +14,7 @@ namespace Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please type name!")]
-        //[Remote("CheckNameExist", "Book", HttpMethod = "POST", ErrorMessage = "Book name already exists. Please enter a different user name.", AdditionalFields = "ID")]
+        [Remote("CheckNameExisted", "ProgramsAD", HttpMethod = "POST", ErrorMessage = "Program name is existed. Please enter a different name.", AdditionalFields = "Id")]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Length must be between 6 and 100 charactes !")]
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -26,6 +26,7 @@ namespace Models
 
         public int Status { get; set; }
 
+        [Required(ErrorMessage = "Please select field !")]        
         public int CauseId { get; set; }
 
         [Display(Name="Field")]

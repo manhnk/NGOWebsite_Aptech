@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Models.Programs
+
+<div class="row" style="margin-top:30px">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-weight:bold">
+                <i class="fa fa-sitemap  fa-fw"></i> Update Program
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    @using (Html.BeginForm("EditProcess", "ProgramsAD", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="col-lg-10">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name)
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
+                                @Html.ValidationMessageFor(model => model.Name)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cause)
+                                @Html.DropDownListFor(model => model.CauseId, (SelectList)ViewData["lsCause"], "** Select **", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CauseId)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Status)
+                                @Html.DropDownListFor(model => model.Status, (SelectList)ViewData["lsStatus"], null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Contents)
+                                @Html.TextAreaFor(model => model.Contents, new { @class = "form-control ckeditor", @placeholder = "Enter text", @id = "ckeditorId", @rows = "10" })
+                                @Html.ValidationMessageFor(model => model.Contents)
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-primary" style="margin-top: 25px; margin-left: 10px; width: 120px"><i class="fa fa-edit  fa-fw"></i> Update </button><br />
+                            @{
+                        int imgCount = int.Parse(ViewData["image"].ToString());
+                        if (imgCount > 0)
+                        {
+                            <a class="btn btn-primary" style="margin-top: 15px; margin-left: 10px;width: 120px" href="@Url.Action("ProgramImages", "ImageGallery", new { id = Model.Id })"><i class="fa fa-image  fa-fw"></i> Gallery </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary" style="margin-top: 15px; margin-left: 10px;width: 120px" href="@Url.Action("Create", "ImageGallery", new { proId = Model.Id })"><i class="fa fa-image  fa-fw"></i> Add Gallery </a>
+                        }
+                            }
+                            <a class="btn btn-success" style="margin-top: 15px; margin-left: 10px; width: 120px" href="@Url.Action("ListProgram", "ProgramsAD")"><i class="fa fa-mail-reply  fa-fw"></i> Cancel </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Areas/Admin/Contents/ckeditor/ckeditor.js")" type="text/javascript"></script>
+
+}
+
+
+
+
+
+
+
+
