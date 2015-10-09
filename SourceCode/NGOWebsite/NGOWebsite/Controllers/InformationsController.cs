@@ -8,7 +8,7 @@ using BusinessLogicLayer;
 
 namespace NGOWebsite.Controllers
 {
-    public class InformationController : Controller
+    public class InformationsController : Controller
     {
         //
         // GET: /Information/

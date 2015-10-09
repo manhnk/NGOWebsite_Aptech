@@ -142,7 +142,7 @@
     <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InformationController.cs" />
+    <Compile Include="Controllers\InformationsController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PartnersController.cs" />
