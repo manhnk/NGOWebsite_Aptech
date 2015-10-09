@@ -1624,8 +1624,8 @@
     <Content Include="Views\Partners\Partners.cshtml" />
     <Content Include="Views\Programs\Programs.cshtml" />
     <Content Include="Views\Information\WhatWeDo.cshtml" />
-    <Content Include="Views\Information\About.cshtml" />
-    <Content Include="Views\Information\Stories.cshtml" />
+    <Content Include="Views\Information\ReadAboutUs.cshtml" />
+    <Content Include="Views\Information\OurAchievements.cshtml" />
     <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
@@ -1633,6 +1633,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Join.cshtml" />
     <Content Include="Views\User\Notify.cshtml" />
+    <Content Include="Views\Information\OurMission.cshtml" />
+    <Content Include="Views\Information\OurTeam.cshtml" />
+    <Content Include="Views\Information\OurSupporters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

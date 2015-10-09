@@ -13,15 +13,31 @@ namespace NGOWebsite.Controllers
         //
         // GET: /Information/
 
-        public ActionResult Index()
+        
+
+        public ActionResult ReadAboutUs()
         {
             return View();
         }
-
-        public ActionResult Stories()
+        public ActionResult WhatWeDo()
         {
             return View();
         }
-
+        public ActionResult OurMission()
+        {
+            return View();
+        }
+        public ActionResult OurTeam()
+        {
+            return View();
+        }
+        public ActionResult OurAchievements()
+        {
+            return View();
+        }
+        public ActionResult OurSupporters()
+        {
+            return View();
+        }
     }
 }
