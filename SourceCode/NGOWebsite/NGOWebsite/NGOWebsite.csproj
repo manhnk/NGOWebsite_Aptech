@@ -137,6 +137,7 @@
     <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\MessagesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PartnersADController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -1580,6 +1581,12 @@
     <Content Include="Areas\Admin\Views\Menus\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Menus\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Menus\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Messages\ListProgramMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\Messages\ListOtherMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\Messages\ProgramMessageDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Messages\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Messages\Reply.cshtml" />
+    <Content Include="Areas\Admin\Views\PartnersAD\ListPartner.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -1630,6 +1637,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\ImageUpload\Partners\" />
     <Folder Include="Content\ImageUpload\Users\" />
     <Folder Include="Models\" />
   </ItemGroup>

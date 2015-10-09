@@ -19,3 +19,10 @@ D:\E-project 3\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\DataAccessLayer\bin
 D:\E-project 3\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 D:\E-project 3\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\E-project 3\NGOWebsite_Aptech\trunk\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\Models.dll
+D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\Models.pdb
+D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

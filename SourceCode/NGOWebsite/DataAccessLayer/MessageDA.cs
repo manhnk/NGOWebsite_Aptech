@@ -138,19 +138,49 @@ namespace DataAccessLayer
             return dt;
         }
 
-
-        public static DataTable FindMessage(int isProgram)
+        public static DataTable GetMessageByProgram(int programId)
         {
             DataTable dt = null;
             try
             {
-                string sql = "sp_findMessage";
+                string sql = "sp_getMessageByProgram";
                 List<string> param = new List<string>();
-                param.Add("@isProgram");
+                param.Add("@programId");
 
                 List<object> value = new List<object>();
-                value.Add(isProgram);
+                value.Add(programId);
                 dt = DataConnect.FindData(sql, param, value);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+        public static DataTable GetOtherMessage()
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getOtherMessage";
+                dt = DataConnect.FindData(sql, null, null);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetProgramMessage()
+        {
+            DataTable dt = null;
+            try
+            {
+                string sql = "sp_getProgramMessage";
+                dt = DataConnect.FindData(sql, null, null);
             }
             catch (Exception)
             {

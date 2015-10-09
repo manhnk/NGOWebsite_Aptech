@@ -363,6 +363,28 @@
                             </ul>
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-envelope  fa-fw"></i> Message <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="@Url.Action("ListMessage", "Messages", new { @type="pro"})"><i class="fa fa-caret-right  fa-fw"></i> Programs Message</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("ListMessage", "Messages", new { @type = "other" })"><i class="fa fa-caret-right  fa-fw"></i> Others Message </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-group  fa-fw"></i> Partners <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="@Url.Action("Create", "PartnersAD")"><i class="fa fa-caret-right  fa-fw"></i> Add Partner</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("ListPartner", "PartnersAD")"><i class="fa fa-caret-right  fa-fw"></i> List Partners</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-user  fa-fw"></i> Member Management <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 

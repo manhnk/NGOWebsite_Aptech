@@ -35,5 +35,14 @@ namespace Models
         public Nullable<int> ReplierId { get; set; }
 
         public string Replier { get; set; }
+
+        [Display(Name="Total Message")]
+        public int TotalMessage { get; set; }
+        [Display(Name = "Total New Message")]
+        public int TotalNewMessage { get; set; }
+        [Display(Name = "Total Read Message")]
+        public int TotalReadMessage { get; set; }
+        [Display(Name = "Total Replied Message")]
+        public int TotalRepliedMessage { get; set; }
     }
 }

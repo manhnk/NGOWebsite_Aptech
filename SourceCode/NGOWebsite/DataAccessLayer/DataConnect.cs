@@ -146,5 +146,28 @@ namespace DataAccessLayer
         }
         #endregion
 
+
+        public static string SubStringText(string text)
+        {
+            StringBuilder mes = new StringBuilder();
+            string[] mesStr = text.Split(' ');
+            if (mesStr.Length > 15)
+            {
+                for (int i = 0; i <= 15; i++)
+                {
+                    mes.Append(mesStr[i] + " ");
+                }
+            }
+            else
+            {
+                for (int i = 0; i < mesStr.Length; i++)
+                {
+                    mes.Append(mesStr[i] + " ");
+                }
+            }
+
+            return mes.ToString()+"...";
+        }
+
     }
 }
