@@ -18,7 +18,7 @@
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
-                        <div class="col-lg-8">
+                        <div class="col-lg-10">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Name)
                                 @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
@@ -49,7 +49,7 @@
                                 @Html.ValidationMessageFor(model => model.Profile)
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                             <button type="submit" class="btn btn-primary" style="margin-top:25px;width:120px"><i class="fa fa-plus-circle  fa-fw"></i> Add New </button><br />
                             <button type="reset" class="btn btn-primary" style="margin-top: 15px; width: 120px"><i class="fa  fa-refresh  fa-fw"></i> Reset </button>
                         </div>
