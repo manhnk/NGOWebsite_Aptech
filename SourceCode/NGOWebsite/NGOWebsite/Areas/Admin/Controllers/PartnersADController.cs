@@ -24,7 +24,8 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            List<Partners> ls = PartnersBusiness.GetPartnersById(id);
+            return View(ls[0]);
         }
 
         //
@@ -179,25 +180,27 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/Partners/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
+            int kt = 0;
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                kt = PartnersBusiness.DeletePartners(id);
             }
             catch
             {
-                return View();
+                kt = 0;                
             }
+
+            if (kt > 0)
+            {
+                return RedirectToAction("ListPartner", "PartnersAD", new { delete = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListPartner", "PartnersAD", new { delete = "error" });
+            }
+            return View();
         }
+
+     
     }
 }
