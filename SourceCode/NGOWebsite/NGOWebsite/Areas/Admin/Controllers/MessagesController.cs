@@ -107,22 +107,27 @@ namespace NGOWebsite.Areas.Admin.Controllers
             int kt = 0;
             try
             {
-                string from = "ngowebsite4@gmail.com";
-                string to = frm["SenderEmail"];
-                MailMessage mail = new MailMessage(from, to);
-                mail.Subject = "[Reply] From N.G.O Website";
-                mail.Body = "Dear Mr/Mrs." + frm["SenderName"] + " ,\n" + frm["Content"];
-                mail.IsBodyHtml = false;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.EnableSsl = true;
-                NetworkCredential networkCre = new NetworkCredential(from, "project4");
-                smtp.UseDefaultCredentials = true;
-                smtp.Credentials = networkCre;
-                smtp.Port = 587;
-                smtp.Host = "localhost";
-                smtp.Send(mail);
+                if (ModelState.IsValid)
+                {
 
+                    string from = "ngowebsite4@gmail.com";
+                    string to = frm["SenderEmail"];
+                    using (MailMessage mail = new MailMessage(from, to))
+                    {
+                        mail.IsBodyHtml = true;
+                        mail.Subject = "[Reply] From N.G.O Website";
+                        mail.Body = string.Format("Dear Mr/Mrs.{0},\r\n{1}", frm["SenderName"], frm["MessageReply"]);
+                        SmtpClient smtp = new SmtpClient();
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.EnableSsl = true;
+                        NetworkCredential networkCre = new NetworkCredential(from, "project4");
+                        smtp.UseDefaultCredentials = true;
+                        smtp.Credentials = networkCre;
+                        smtp.Port = 25;
+                       // smtp.Send(mail);
+                    }
+
+                }
                 kt = 1;
             }
             catch
@@ -163,7 +168,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
                 }
             }
 
-        
+
 
 
         }

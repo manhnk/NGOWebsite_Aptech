@@ -44,5 +44,9 @@ namespace Models
         public int TotalReadMessage { get; set; }
         [Display(Name = "Total Replied Message")]
         public int TotalRepliedMessage { get; set; }
+
+        [Required(ErrorMessage = "Please type content!")]
+        [Display(Name = "Content")]
+        public string MessageReply { get; set; }
     }
 }

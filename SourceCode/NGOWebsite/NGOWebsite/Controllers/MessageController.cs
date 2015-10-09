@@ -19,7 +19,7 @@ namespace NGOWebsite.Controllers
             {
                 Models.Member ad = Session["user_login"] as Models.Member;
                 Models.Message msg = new Models.Message();
-                msg.SenderName = ad.UserName;
+                msg.SenderName = ad.FullName;
                 msg.SenderEmail = ad.Email;
                 return View(msg);
                 

@@ -56,7 +56,7 @@
                         
                         <div class="form-group">
                             @Html.LabelFor(model => model.Messages)
-                            @Html.TextAreaFor(model => model.Messages, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "150" })
+                            @Html.TextAreaFor(model => model.Messages, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "300" })
                             @Html.ValidationMessageFor(model => model.Messages)
 
                         </div>
