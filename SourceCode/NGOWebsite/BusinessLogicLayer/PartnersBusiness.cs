@@ -66,7 +66,7 @@ namespace BusinessLogicLayer
             return AddPartnerToList(dt);
         }
 
-        public int AddPartners(Partners ad)
+        public static int AddPartners(Partners ad)
         {
             int ins = 0;
             try
@@ -82,7 +82,7 @@ namespace BusinessLogicLayer
 
         }
 
-        public int EditPartners(Partners ad)
+        public static int EditPartners(Partners ad)
         {
             int upt = 0;
             try
@@ -96,7 +96,7 @@ namespace BusinessLogicLayer
             return upt;
         }
 
-        public int DeletePartners(int id)
+        public static int DeletePartners(int id)
         {
             int del = 0;
             try
