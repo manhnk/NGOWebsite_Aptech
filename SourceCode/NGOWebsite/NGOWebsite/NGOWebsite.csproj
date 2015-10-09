@@ -997,6 +997,7 @@
     <Content Include="Content\View_components\js\inviewport.jquery.js" />
     <Content Include="Content\View_components\js\jquery.animateNumbers.js" />
     <Content Include="Content\View_components\js\jquery.js" />
+    <Content Include="Content\View_components\js\photo-gallery.js" />
     <Content Include="Content\View_components\js\respond.min.js" />
     <Content Include="Content\View_components\js\responsive-tabs.js" />
     <Content Include="Content\View_components\lib\3DGridEffect\css\component.css" />
