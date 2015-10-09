@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLogicLayer;
+using Models;
 
 namespace NGOWebsite.Controllers
 {
@@ -13,27 +15,33 @@ namespace NGOWebsite.Controllers
 
         public ActionResult OurAchievements()
         {
-            return View();
+            List<Models.Informations> about = InformationsBusiness.GetInformationsById(5);
+            return View(about);
         }
         public ActionResult OurMission()
         {
-            return View();
+            List<Models.Informations> about = InformationsBusiness.GetInformationsById(2);
+            return View(about);
         }
         public ActionResult OurSupporters()
         {
-            return View();
+            List<Models.Informations> about = InformationsBusiness.GetInformationsById(6);
+            return View(about);
         }
         public ActionResult OurTeam()
         {
-            return View();
+            List<Models.Informations> about = InformationsBusiness.GetInformationsById(3);
+            return View(about);
         }
         public ActionResult ReadAboutUs()
         {
-            return View();
+            List<Models.Informations> about = InformationsBusiness.GetInformationsById(7);
+            return View(about);
         }
         public ActionResult WhatWeDo()
         {
-            return View();
+            List<Models.Informations> about = InformationsBusiness.GetInformationsById(1);
+            return View(about);
         }
     }
 }

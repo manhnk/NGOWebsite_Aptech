@@ -9,7 +9,11 @@ header, footer, nav, section {
     display: block;
 }
 
-
+/*.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}*/
 /* Styles for basic forms
 -----------------------------------------------------------*/
 fieldset {

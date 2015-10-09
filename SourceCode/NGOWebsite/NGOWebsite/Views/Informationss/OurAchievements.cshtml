@@ -1,53 +1,20 @@
-﻿@{
+﻿@model IEnumerable<Models.Informations>
+@{
     ViewBag.Title = "OurAchievements";
 }
 
-<!-- Stories -->
-	<div class="stories" id="stories">
-		<div class="container text-center">
+<div class="container">
 			<div class="row">
-				<div class="col-md-12 heading dark animate_top">Our <span>Achievements</span></div>
-			</div>	
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="bxslider_story">
-						<li class="s1">
-							<img src="~/Content/View_components/images/students/1.jpg" alt="img">
-							<h3 class="animate_top">Shoriful Hasan</h3>
-							<p class="animate_bottom">Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
-						</li>
-					
-						<li class="s1">
-							<img src="~/Content/View_components/images/students/2.jpg" alt="img">
-							<h3 class="animate_top">Sharifa Haq</h3>
-							<p class="animate_bottom">Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
-						</li>			
-					
-						<li class="s1">
-							<img src="~/Content/View_components/images/students/4.jpg" alt="img">
-							<h3 class="animate_top">Salma Khatun</h3>
-							<p class="animate_bottom">Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
-						</li>
-					
-						<li class="s1">
-							<img src="~/Content/View_components/images/students/3.jpg" alt="img">
-							<h3 class="animate_top">Shoriful Hasan</h3>
-							<p class="animate_bottom">Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
-						</li>
-					
-						<li class="s1">
-							<img src="~/Content/View_components/images/students/5.jpg" alt="img">
-							<h3 class="animate_top">Karuk Khan</h3>
-							<p class="animate_bottom">Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
-						</li>			
-					
-						<li class="s1">
-							<img src="~/Content/View_components/images/students/1.jpg" alt="img">
-							<h3 class="animate_top">Shorif Hasan</h3>
-							<p class="animate_bottom">Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nulla ornare port titor diam, a accumsan justo laoreet.Lorem ipsum dolor sit amet, consecte.</p>
-						</li>
-					</ul>	
-				</div>		
+            <div class="col-md-12 heading dark text-center animate_top">Our Achievements</div>
+                 @foreach (var item in Model)
+                    {
+				<div class="col-md-1"></div>
+				<div class="col-md-10 welcome_txt text-center animate_bottom">
+					<p>Lorem Ipsum has been the industry's standard dummy text ever since the <span>1500s</span>, when an unknown <span>printer</span> took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining unchanged. It was <span>popularised</span> in the 1960s.
+					</p>
+                    <p>@item.Contents</p>
+				</div>
+				<div class="col-md-1"></div>
+                 }
 			</div>
-		</div>	  
-	</div>
+		</div>
