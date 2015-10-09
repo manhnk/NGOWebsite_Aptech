@@ -142,7 +142,7 @@
     <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InformationsController.cs" />
+    <Compile Include="Controllers\InformationssController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PartnersController.cs" />
@@ -1623,9 +1623,6 @@
     <Content Include="Views\Gallery\Gallery.cshtml" />
     <Content Include="Views\Partners\Partners.cshtml" />
     <Content Include="Views\Programs\Programs.cshtml" />
-    <Content Include="Views\Information\WhatWeDo.cshtml" />
-    <Content Include="Views\Information\ReadAboutUs.cshtml" />
-    <Content Include="Views\Information\OurAchievements.cshtml" />
     <Content Include="Views\User\UserInfo.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
@@ -1633,9 +1630,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Join.cshtml" />
     <Content Include="Views\User\Notify.cshtml" />
-    <Content Include="Views\Information\OurMission.cshtml" />
-    <Content Include="Views\Information\OurTeam.cshtml" />
-    <Content Include="Views\Information\OurSupporters.cshtml" />
+    <Content Include="Views\Informationss\ReadAboutUs.cshtml" />
+    <Content Include="Views\Informationss\WhatWeDo.cshtml" />
+    <Content Include="Views\Informationss\OurMission.cshtml" />
+    <Content Include="Views\Informationss\OurTeam.cshtml" />
+    <Content Include="Views\Informationss\OurAchievements.cshtml" />
+    <Content Include="Views\Informationss\OurSupporters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
