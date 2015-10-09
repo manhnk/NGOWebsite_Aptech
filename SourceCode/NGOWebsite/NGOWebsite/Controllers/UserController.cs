@@ -38,7 +38,7 @@ namespace NGOWebsite.Controllers
 
             if (program.Count > 0)
             {
-                ViewData["programs"] = program;
+                ViewData["programs"] = ls1;
             }
             else
             {

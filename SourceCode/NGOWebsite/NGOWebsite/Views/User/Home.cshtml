@@ -40,64 +40,41 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 text-center heading animate_top">
-                <span>PROGRAMS</span>
-
+            <div class="col-md-8 animate_top">
+                <div class="text-center heading">
+                    <span>PROGRAMS</span>
+                </div>
                 @{IEnumerable<Models.Programs> prolist;
                   prolist = ViewData["programs"] as IEnumerable<Models.Programs>;
                 }
-                @{var flag = 0;}
+
                 @if (prolist != null)
                 {
                     foreach (var item in prolist)
                     {
-                        flag++;
-                        if (flag % 2 != 0)
-                        {
+                        
                     
                     <img src="~/Content/View_components/images/activity/act4.jpg" alt="img" class="animate_top">
 
-                @*<img src="@item.Logo" alt="img">*@
+@*<img src="@item.Logo" alt="img">*@
                        
                     <h1>@item.Name</h1>
 
-                            string[] arrListStr = item.Contents.Split(new char[] { '.' });
-                            if (arrListStr.Count() > 2)
-                            {
+                        string[] arrListStr = item.Contents.Split(new char[] { '.' });
+                        if (arrListStr.Count() > 2)
+                        {
                     <h3>@String.Concat(arrListStr[0], arrListStr[1])</h3>
-                            }
-                            else
-                            {
-                    <h3>@item.Contents</h3>
-                            }
-
-
                         }
                         else
                         {
-                    <div class="row t1">
-                        <div class="col-md-9 animate_right">
-                            <h1>@item.Name</h1>
-
-                            @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
-                               if (arrListStr.Count() > 2)
-                               {
-                                <h3>@String.Concat(arrListStr[0], arrListStr[1])</h3>
-                               }
-                               else
-                               {
-                                <h3>@item.Contents</h3>
-                               }
-                            }
-
-                        </div>
-
-
-                        <div class="col-md-3 animate_left">
-                            @*<img src="~/Content/View_components/images/organizers/org1.jpg" alt="img">*@
-                        </div>
-                    </div>
+                    <h3>@item.Contents</h3>
                         }
+
+                        
+                        <hr style="height:2px;border-width:0;background-color:gray">
+                        
+                       
+                    
                     }
                 }
             </div>
