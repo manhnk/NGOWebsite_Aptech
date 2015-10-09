@@ -17,3 +17,8 @@ D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\Models\bin\Debug\
 D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\Models\bin\Debug\Models.pdb
 D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\Models\obj\Debug\Models.dll
 D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\Models\obj\Debug\Models.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\Models\bin\Debug\Models.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\Models\bin\Debug\Models.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\Models\obj\Debug\Models.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\Models\obj\Debug\Models.pdb

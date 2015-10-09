@@ -26,3 +26,10 @@ D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\b
 D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\Aptech\Project Sem 3\Version\20151008\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\Models.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\DataAccessLayer\bin\Debug\Models.pdb
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\Mr.Nguyen\Documents\Visual Studio 2012\Projects\NGOWebsite\SourceCode\NGOWebsite\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
