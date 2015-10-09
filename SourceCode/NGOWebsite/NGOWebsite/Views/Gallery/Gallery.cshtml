@@ -58,41 +58,30 @@
         padding-top: 90px;
     }
 </style>
-<div class="row" style="margin-top: 30px">
-    <div class="col-lg-12">
-        @*<a class="btn btn-primary" href="@Url.Action("Create", "ImageGallery", new { proId = (ViewData["program"] as Models.ImageGallery).ProgramId })"><i class="fa fa-plus-circle  fa-fw"></i>Add New Image</a>*@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center heading dark animate_top">Image <span>Gallery</span></div>
     </div>
 </div>
 <div class="row" style="margin-top: 10px">
     <div class="col-lg-12">
         <div class="panel panel-primary">
-            <div class="panel-heading" style="font-weight: bold">
-                @*<i class="fa fa-image  fa-fw"></i> Gallery for @Html.DisplayName((ViewData["program"] as Models.ImageGallery).ProgramName)*@
-                <i class="fa fa-image  fa-fw"></i>Gallery Album
-
-            </div>
+            @*<div class="panel-heading" style="font-weight: bold">
+                <i class="fa fa-image  fa-fw"></i>Gallery Others
+            </div>*@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="containerImg">
                     <ul class="row">
-                        @{List<Models.ImageGallery> images;
-                          images = ViewData["lsProgram"] as List<Models.ImageGallery>;
-                        }
-
-                        @if (images != null)
+                        @if (ViewData["lsOthers"] != null)
                         {
-                            foreach (ImageGallery img in images)
+                            List<Models.ImageGallery> lsOthers = ViewData["lsOthers"] as List<Models.ImageGallery>;
+                            foreach (ImageGallery img in lsOthers)
                             {
                             <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
                                 <img id="@img.Id" class="img-responsive" src="~/@img.ImagePath" />
                             </li>
                             }
-                        }
-                        else
-                        {
-                            <li>
-                                <h3 class="heading">No image to display!</h3>
-                            </li>
                         }
                     </ul>
                 </div>
