@@ -11,7 +11,7 @@
         <div class="row act">
             @{List<Models.ImageGallery> listImg;
               listImg = ViewData["lsTopicPrograms"] as List<Models.ImageGallery>;
-              }
+            }
             @foreach (var item in Model)
             {
                 <div class="col-md-3">
@@ -19,12 +19,12 @@
                     {
                         if (i.ProgramName == @item.Name)
                         {
-                    <img src="~/@i.ImagePath" alt="img" class="animate_top" width="300px" height="300px"/>                                                    
+                        <img src="~/@i.ImagePath" alt="img" class="animate_top" width="300px" height="300px"/>                                                    
                         }
                     }
-                    
+
                     <div class="animate_bottom s1">
-                        <h4>@item.Name</h4>
+                        <h4><a href="@Url.Action("RecentProgram", "Programs", new { @id = item.Id })">@item.Name</a></h4>
                         <p class="date">Issie 18 - 24 October 2013</p>
                         <p class="meta">
                             <i class="fa fa-calendar"></i>August 5, 2013<br>
@@ -35,20 +35,24 @@
                         @{ string[] arrListStr = item.Contents.Split(new char[] { '.' });
                            if (arrListStr.Count() > 2)
                            {
-                               <p>@String.Concat(arrListStr[0], arrListStr[1])</p>
+                            <p>@String.Concat(arrListStr[0], arrListStr[1])</p>
                            }
                            else
                            {
-                               <p>@item.Contents</p>
+                            <p>@item.Contents</p>
                            }
                         }
-                        <p class="readmore"><a href="@Url.Action("RecentProgram", "Programs", new { @id = item.Id })" class="ajax-popup-link">...read more</a></p>
+                        <p class="readmore"><a href="@Url.Action("RecentProgram", "Programs", new { @id = item.Id })">...read more</a></p>
                     </div>
                 </div>  
                      
             }
 
-            
+
         </div>
     </div>
 </div>
+@section Scripts 
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

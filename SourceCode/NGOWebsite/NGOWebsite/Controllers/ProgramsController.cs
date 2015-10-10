@@ -33,20 +33,33 @@ namespace NGOWebsite.Controllers
             {
                 if (item.ProgramId == id)
                 {
-                    
+
                     ViewData["ls1"] = item;
                 }
             }
-            
-            List<Models.Programs> ls = ProgramsBusiness.GetProgramsById(id);
-            if (ls.Count > 0)
+            if (Session["user_login"] != null)
             {
-                return View(ls[0]);
+
+                List<Models.Programs> ls = ProgramsBusiness.GetProgramsById(id);
+                ViewData["program"] = ls[0];
+                Models.Member ad = Session["user_login"] as Models.Member;
+                Models.Message msg = new Models.Message();
+                msg.SenderName = ad.FullName;
+                msg.SenderEmail = ad.Email;
+                return View(msg);
+
             }
             else
             {
-                return null;
+                List<Models.Programs> ls = ProgramsBusiness.GetProgramsById(id);
+                ViewData["program"] = ls[0];
+                return View();
             }
+            
+
+            
+            
+            
         }
 
     }

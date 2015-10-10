@@ -15,7 +15,7 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Message()
         {
-            
+
             List<Models.Programs> lsPro = BusinessLogicLayer.ProgramsBusiness.GetAllPrograms();
             ViewData["Program"] = new SelectList(lsPro, "Id", "Name");
             if (Session["user_login"] != null)
@@ -25,7 +25,7 @@ namespace NGOWebsite.Controllers
                 msg.SenderName = ad.FullName;
                 msg.SenderEmail = ad.Email;
                 return View(msg);
-                
+
             }
             else
             {
@@ -62,11 +62,21 @@ namespace NGOWebsite.Controllers
 
             if (kt > 0)
             {
-                return RedirectToAction("Message", "Message", new { add = "success" });
+                if (frm["sender"] != null)
+                {
+                    return RedirectToAction("RecentProgram", "Programs", new { add = "success", @id = int.Parse(frm["ProgramId"]) });
+                }
+                else
+                    return RedirectToAction("Message", "Message", new { add = "success" });
             }
             else
             {
-                return RedirectToAction("Message", "Message", new { add = "error" });
+                if (frm["sender"] != null)
+                {
+                    return RedirectToAction("RecentProgram", "Programs", new { add = "error", @id = int.Parse(frm["ProgramId"]) });
+                }
+                else
+                    return RedirectToAction("Message", "Message", new { add = "error" });
             }
         }
     }
