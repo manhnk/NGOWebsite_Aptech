@@ -60,9 +60,9 @@
     }
 </style>
 <div class="container">
-    <div class="row">
+    @*<div class="row">
         <div class="col-md-12 text-center heading dark animate_top">Image <span>Gallery</span></div>
-    </div>
+    </div>*@
 </div>
 <div class="row" style="margin-top: 10px">
     <div class="col-lg-12">
@@ -76,37 +76,38 @@
 
                 @if (ViewData["lsProgram"] != null)
                 {
-                    List<Models.ImageGallery> ls = ViewData["lsProgram"] as List<Models.ImageGallery>;
+                    List<Models.ImageGallery> lsProgram = ViewData["lsProgram"] as List<Models.ImageGallery>;
 
-                    foreach (var item in ls)
-                    {<div class="containerImg">
+
+                    for (int i = 0; i < lsProgram.Count; i++)
+                    {
+                    <div class="containerImg">
                         <div class="row text-center">
-                            <div class="col-md-12 text-center heading dark animate_top">Images of <span>@item.ProgramName</span></div>
+                            <div class="col-md-12 text-center heading dark animate_top">Images of <span>@lsProgram[i].ProgramName</span></div>
                             <ul>
-                                @if (item.ProgramId != null)
+
+                                @{List<Models.ImageGallery> ls1 = ImageGalleryBusiness.GetImageGalleryByProgram(lsProgram[i].ProgramId.Value);}
+                                @foreach (var item in ls1)
                                 {
-                                    List<Models.ImageGallery> ls1 = ImageGalleryBusiness.GetImageGalleryByProgram(1);
-                                    foreach (var i in ls1)
-                                    {
                                     <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                                        <img id="@i.Id" class="img-responsive" src="~/@i.ImagePath"/>
+                                        <img id="@item.Id" class="img-responsive" src="~/@item.ImagePath"/>
                                     </li>
 
-                                    }
                                 }
-
 
                             </ul>
                         </div>
+
                         <hr style="height: 2px; border-width: 0; background-color: gray">
                     </div>
                     }
                 }
+
                 <div class="containerImg">
 
+                    <div class="col-md-12 text-center heading dark animate_top">Other <span>Programs</span></div>
 
                     <ul class="row text-center">
-                        <div class="col-md-12 text-center heading dark animate_top">Other <span>Programs</span></div>
                         @if (ViewData["lsOthers"] != null)
                         {
                             List<Models.ImageGallery> lsOthers = ViewData["lsOthers"] as List<Models.ImageGallery>;
@@ -118,10 +119,7 @@
                             }
                         }
 
-
-
                     </ul>
-                    <hr style="height: 2px; border-width: 0; background-color: gray">
                 </div>
                 <!-- /containerImg -->
 
