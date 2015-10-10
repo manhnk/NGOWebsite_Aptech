@@ -56,13 +56,15 @@
                     @using (Html.BeginForm("EditProcess", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.Image)
+                        @Html.HiddenFor(model => model.UserName)
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
                           
 @*<div class="col-lg-6">*@
                         <div class="form-group">
                             @Html.Label("Update your avatar")
-                            @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @type = "file", @multiple = "multiple", @accept = ".png,.gif,.jpg" })
+                            @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @type = "file", @accept = ".png,.gif,.jpg" })
                             @Html.ValidationMessageFor(model => model.Image)
                         </div>
                         <div class="form-group">

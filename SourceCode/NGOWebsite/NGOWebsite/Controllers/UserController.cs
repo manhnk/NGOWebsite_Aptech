@@ -231,54 +231,35 @@ namespace NGOWebsite.Controllers
         [HttpPost]
         public ActionResult EditProcess(FormCollection frm)
         {
-            Models.Member mb = new Models.Member();
-            mb = (Member)Session["user_login"];
-            int kt = 0;
-            int flag = 0;
+            int kt=0;
             try
             {
-
-                // TODO: Add insert logic here
-                if (frm["Image"] != null)
+                string imagePath = "";
+                if (Request.Files[0].ContentLength > 0)
                 {
+                    HttpPostedFileBase file = Request.Files[0];
+                    /*Geting the file name*/
+                    string filename = System.IO.Path.GetFileName(file.FileName);
+                    /*Saving the file in server folder*/
+                    file.SaveAs(Server.MapPath(@"~/Content/ImageUpload/Users/" + filename));
+                    imagePath = "Content/ImageUpload/Users/" + filename;
+                }else{
+                    imagePath=frm["Image"];
+                }
                     Models.Member ad = new Models.Member()
                     {
-                        Id = mb.Id,
+                        Id = int.Parse(frm["Id"]),
+                        UserName=frm["UserName"],
+                        Password=frm["Password"],
                         Gender = frm["Gender"],
                         FullName = frm["FullName"],
                         Phone = frm["Phone"],
                         Address = frm["Address"],
                         Email = frm["Email"],
                         IsMemberOfTeam = int.Parse(frm["IsMemberOfTeam"]),
-                        IsDeleted = int.Parse(frm["IsDeleted"]),
-                        Image = "~/" + frm["Image"]
-
-
+                        Image = imagePath
                     };
                     kt = MemberBusiness.EditMember(ad);
-
-                }
-                else
-                {
-                    Models.Member ad = new Models.Member()
-                    {
-                        Id = mb.Id,
-                        Gender = frm["Gender"],
-                        FullName = frm["FullName"],
-                        Phone = frm["Phone"],
-                        Address = frm["Address"],
-                        Email = frm["Email"],
-                        IsMemberOfTeam = int.Parse(frm["IsMemberOfTeam"]),
-                        IsDeleted = int.Parse(frm["IsDeleted"]),
-
-                        Image = mb.Image
-
-                    };
-                    kt = MemberBusiness.EditMember(ad);
-                    flag++;
-                }
-
-
 
             }
             catch
@@ -288,11 +269,6 @@ namespace NGOWebsite.Controllers
 
             if (kt > 0)
             {
-                if (flag > 0)
-                {
-                    return RedirectToAction("UserInfo", "User", new { update = "notchange" });
-                }
-                else
                     return RedirectToAction("UserInfo", "User", new { update = "success" });
             }
             else
