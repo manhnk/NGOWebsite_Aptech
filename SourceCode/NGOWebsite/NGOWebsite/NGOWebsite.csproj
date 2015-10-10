@@ -867,6 +867,10 @@
     <Content Include="Areas\Admin\Contents\js\flot-data.js" />
     <Content Include="Areas\Admin\Contents\js\morris-data.js" />
     <Content Include="Areas\Admin\Contents\js\photo-gallery.js" />
+    <Content Include="Content\ImageUpload\CreditCards\American-Express.png" />
+    <Content Include="Content\ImageUpload\CreditCards\Discover.png" />
+    <Content Include="Content\ImageUpload\CreditCards\Mastercard.png" />
+    <Content Include="Content\ImageUpload\CreditCards\Visa.png" />
     <Content Include="Content\ImageUpload\Partners\ambootia.jpg" />
     <Content Include="Content\ImageUpload\Partners\gls_bank.jpg" />
     <Content Include="Content\ImageUpload\Partners\LEBENSBAUM.jpg" />
@@ -1641,7 +1645,6 @@
     <Content Include="Views\Programs\RecentProgram.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\Donate\Donate.cshtml" />
     <Content Include="Views\Gallery\Gallery.cshtml" />
     <Content Include="Views\Partners\Partners.cshtml" />
     <Content Include="Views\Programs\Programs.cshtml" />
@@ -1658,6 +1661,7 @@
     <Content Include="Views\Informationss\OurTeam.cshtml" />
     <Content Include="Views\Informationss\OurAchievements.cshtml" />
     <Content Include="Views\Informationss\OurSupporters.cshtml" />
+    <Content Include="Views\Donate\Donate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

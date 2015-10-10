@@ -3,149 +3,143 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
- <div class="how_can_you_help_bg parallax" id="help">
-        <div class="how_can_you_help">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center heading animate_top">How can you<span class="brd"> help?</span></div>
-                </div>
+@model Models.Donation
 
+@{
+    Models.Member mb = new Models.Member();
+    if (Session["user_login"] != null)
+    {
+        mb = Session["user_login"] as Models.Member;
+    }
 
-                <ul class="nav nav-tabs responsive second text-center" id="myTab">
-                    <li class="active"><a href="#tab1">Become a volunteer</a></li>
-                    <li><a href="#tab2">Donate</a></li>
-                    <li><a href="#tab3">Take responsibility of one student</a></li>
-                </ul>
-
-                <div class="tab-content responsive">
-                    <div class="tab-pane active in fade" id="tab1">
-
-                        <div class="row">
-                            <div class="col-md-6 animate_top">
-                                <h3><i class="fa fa-question-circle"></i>Lorem Ipsum has been the industry's standard?</h3>
-
-                                <p class="animate_bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
-                            </div>
-                            <div class="col-md-6 animate_top">
-                                <h3><i class="fa fa-question-circle"></i>Lorem Ipsum has been the industry's standard?</h3>
-
-                                <p class="animate_bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 animate_top">
-                                <h3><i class="fa fa-question-circle"></i>Lorem Ipsum has been the industry's standard?</h3>
-
-                                <p class="animate_bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                            </div>
-                            <div class="col-md-6 animate_top">
-                                <h3><i class="fa fa-question-circle"></i>Lorem Ipsum has been the industry's standard?</h3>
-
-                                <p class="animate_bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                            </div>
-                        </div>
+    Models.Programs pro = null;
+    if (ViewData["program"] != null)
+    {
+        pro = (Models.Programs)ViewData["program"];
+    }
+}
+<div class="contact-bg parallax" id="contact">
+    <div class="contact">
+        <div class="container">
+            @if (Request.QueryString["add"] != null)
+            {
+                if (Request.QueryString["add"].Equals("error"))
+                {
+                    <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                        <img src='~/Content/View_components/images/error.png' alt="img">Donate Fail !
 
                     </div>
 
-                    <div class="tab-pane fade" id="tab2">
-                        <div class="row">
-                            <div class="col-md-6 animate_left">
-                                <img src="~/Content/View_components/images/donate.jpg" alt="img" />
-                            </div>
-                            <div class="col-md-6 left_con animate_right">
-                                <h3>Lorem ipsum dolor sit amet</h3>
-                                <p>Consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Donec quam felis, ultricis nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis.</p>
+                }
+                else
+                {
+                    <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                        <img src='~/Content/View_components/images/success.png' alt="img">Donate Successfull !
 
-                                <!--<a class="donate_btn" href="#">Donate Now</a>-->
-
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_donations">
-                                    <input type="hidden" name="business" value="eh.rajib@gmail.com">
-                                    <input type="hidden" name="lc" value="US">
-                                    <input type="hidden" name="item_name" value="theweblab">
-                                    <input type="hidden" name="no_note" value="0">
-                                    <input type="hidden" name="currency_code" value="USD">
-                                    <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
-                                    <input type="submit" class="top_btn2" value="Donate Now">
-                                </form>
-
-                            </div>
-                        </div>
                     </div>
+                }
+            }
+            <div class="row">
+                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donate</span>&nbsp;&nbsp;&nbspForm</div>
+            </div>
 
-                    <div class="tab-pane fade" id="tab3">
-                        <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-10 text-center animate_top">
-                                <p>Lorem ipsum dolor sit ametSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
-                            </div>
-                            <div class="col-md-1"></div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-5 contact_form animate_left">
+
+                    @using (Html.BeginForm("DonateProcess", "Donate", FormMethod.Post))
+                    {
+                        if (pro != null)
+                        {
+                            @Html.Hidden("ProgramId",pro.Id)
+                            <span>Donate for </span><span style="font-weight:bold;color:white">@pro.Name</span>
+                        }
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FullNameDonator)
+                            @Html.TextBoxFor(model => model.FullNameDonator, new { @class = "form-control", @Value = mb.FullName, @placeholder = "Enter text", @maxlength = "50" })
+                            @Html.ValidationMessageFor(model => model.FullNameDonator)
                         </div>
-
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="panel panel-danger animate_left">
-                                    <div class="panel-heading">
-                                        <h3 class="text-center"><b>Well wisher</b><br>
-                                            -One student for 1 year-</h3>
-                                    </div>
-                                    <div class="panel-body text-center">
-                                        <p class="lead"><strong>$10 / month</strong></p>
-                                    </div>
-                                    <ul class="list-group list-group-flush text-center">
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
-                                    </ul>
-                                    <div class="panel-footer">
-                                        <a class="btn btn-lg btn-block btn-danger" href="#">Become a well wisher</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="panel panel-info animate_bottom">
-                                    <div class="panel-heading">
-                                        <h3 class="text-center"><b>Guardian</b><br>
-                                            -One student for 2 year-</h3>
-                                    </div>
-                                    <div class="panel-body text-center">
-                                        <p class="lead"><strong>$10 / month</strong></p>
-                                    </div>
-                                    <ul class="list-group list-group-flush text-center">
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
-                                    </ul>
-                                    <div class="panel-footer">
-                                        <a class="btn btn-lg btn-block btn-danger" href="#">Become a guardian</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="panel panel-success animate_right">
-                                    <div class="panel-heading">
-                                        <h3 class="text-center"><b>Angel</b><br>
-                                            -One student for 3 year-</h3>
-                                    </div>
-                                    <div class="panel-body text-center">
-                                        <p class="lead"><strong>$10 / month</strong></p>
-                                    </div>
-                                    <ul class="list-group list-group-flush text-center">
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                                        <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
-                                    </ul>
-                                    <div class="panel-footer">
-                                        <a class="btn btn-lg btn-block btn-danger" href="#">Become an angel</a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmailDonator)
+                            @Html.TextBoxFor(model => model.EmailDonator, new { @class = "form-control", @Value = mb.Email, @placeholder = "Enter text" })
+                            @Html.ValidationMessageFor(model => model.EmailDonator)
                         </div>
-                    </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.GenderDonator) &nbsp; &nbsp; &nbsp; &nbsp;
+                            <label class="radio-inline">
+                                @if (mb.Gender == "Male")
+                                {
+                                    @Html.RadioButtonFor(model => model.GenderDonator, "Male", new { @checked = "checked" }) @Html.DisplayName("Male")
+                                }
+                                else
+                                {
+                                    @Html.RadioButtonFor(model => model.GenderDonator, "Male") @Html.DisplayName("Male")
+                                }
+                            </label>
+                            <label class="radio-inline">
+                                @if (mb.Gender == "Female")
+                                {
+                                    @Html.RadioButtonFor(model => model.GenderDonator, "Female", new { @checked = "checked" }) @Html.DisplayName("Female")
+                                }
+                                else
+                                {
+                                    @Html.RadioButtonFor(model => model.GenderDonator, "Female") @Html.DisplayName("Female")
+                                }
+                            </label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;@Html.ValidationMessageFor(model => model.GenderDonator)
+                        </div>
+                        if (pro == null)
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CauseOfDonation)
+                                @Html.DropDownListFor(model => model.CauseOfDonation, (SelectList)ViewData["lsCause"], null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CauseOfDonation)
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Amount)
+                            @Html.TextBoxFor(model => model.Amount, new { @class = "form-control", @placeholder = "Enter amount" })
+                            @Html.ValidationMessageFor(model => model.Amount)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CreditType) &nbsp; &nbsp; &nbsp; &nbsp;
+                            <span>
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => model.CreditType, "American Express") <img src="~/Content/ImageUpload/CreditCards/American-Express.png" width="50px" height="30px" />
+                                </label>
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => model.CreditType, "Master Card") <img src="~/Content/ImageUpload/CreditCards/Mastercard.png" width="50px" height="30px" />
+                                </label>
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => model.CreditType, "Discover") <img src="~/Content/ImageUpload/CreditCards/Discover.png" width="50px" height="30px" />
+                                </label>
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => model.CreditType, "Visa") <img src="~/Content/ImageUpload/CreditCards/Visa.png" width="50px" height="30px" />
+                                </label>
+                            </span>
+                            &nbsp; &nbsp; &nbsp; &nbsp;@Html.ValidationMessageFor(model => model.CreditType)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CardNumber)
+                            @Html.TextBoxFor(model => model.CardNumber, new { @class = "form-control", @placeholder = "Enter card number" })
+                            @Html.ValidationMessageFor(model => model.CardNumber)
+                        </div>
+                        <button type="submit" class="bttn" style="font-size:25px">Donate</button>
+                    }
                 </div>
             </div>
         </div>
     </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
+
+
 

@@ -36,7 +36,8 @@ namespace Models
         [Display(Name="Amount")]
         [Required(ErrorMessage="Please type Amount!")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:#,##0.00}")]
+        [DisplayFormat(DataFormatString = "{0:#,##0.00}",ApplyFormatInEditMode=true)]
+        [RegularExpression("^\\d*$",ErrorMessage="Amount number is not valid !")]
         public double Amount { get; set; }
 
         [Display(Name = "Credit Type")]
@@ -46,6 +47,7 @@ namespace Models
         [Display(Name = "Card Number")]
         [Required(ErrorMessage = "Please type Card Number!")]
         [DataType(DataType.CreditCard)]
+        [RegularExpression("^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12})$",ErrorMessage="Format of card number is not valid !")]
         public string CardNumber { get; set; }
 
         public Nullable<int> CauseId { get; set; }
