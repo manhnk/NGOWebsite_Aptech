@@ -439,5 +439,10 @@ namespace BusinessLogicLayer
 
             return del;
         }
+
+        public static List<ImageGallery> GetImageGalleryByProgram(int? nullable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

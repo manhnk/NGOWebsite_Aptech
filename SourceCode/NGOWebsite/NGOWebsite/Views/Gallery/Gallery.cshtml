@@ -72,8 +72,41 @@
             </div>*@
             <!-- /.panel-heading -->
             <div class="panel-body">
+
+
+                @if (ViewData["lsProgram"] != null)
+                {
+                    List<Models.ImageGallery> ls = ViewData["lsProgram"] as List<Models.ImageGallery>;
+
+                    foreach (var item in ls)
+                    {<div class="containerImg">
+                        <div class="row text-center">
+                            <div class="col-md-12 text-center heading dark animate_top">Images of <span>@item.ProgramName</span></div>
+                            <ul>
+                                @if (item.ProgramId != null)
+                                {
+                                    List<Models.ImageGallery> ls1 = ImageGalleryBusiness.GetImageGalleryByProgram(1);
+                                    foreach (var i in ls1)
+                                    {
+                                    <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                                        <img id="@i.Id" class="img-responsive" src="~/@i.ImagePath"/>
+                                    </li>
+
+                                    }
+                                }
+
+
+                            </ul>
+                        </div>
+                        <hr style="height: 2px; border-width: 0; background-color: gray">
+                    </div>
+                    }
+                }
                 <div class="containerImg">
-                    <ul class="row">
+
+
+                    <ul class="row text-center">
+                        <div class="col-md-12 text-center heading dark animate_top">Other <span>Programs</span></div>
                         @if (ViewData["lsOthers"] != null)
                         {
                             List<Models.ImageGallery> lsOthers = ViewData["lsOthers"] as List<Models.ImageGallery>;
@@ -85,27 +118,10 @@
                             }
                         }
 
-                        @if (ViewData["lsProgram"] != null)
-                        {
-                            List<Models.ImageGallery> ls = ViewData["lsProgram"] as List<Models.ImageGallery>;
 
-                            foreach (var item in ls)
-                            {
-                                List<Models.ImageGallery> ls1 = ImageGalleryBusiness.GetImageGalleryByProgram(item.Id);
-                                foreach (var i in ls1)
-                                {
-                                    <h3>@i.ProgramName</h3>
-                            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                                <img id="@i.Id" class="img-responsive" src="~/@i.ImagePath"/>
-                            </li>
-
-                                }
-
-                            }
-                        }
 
                     </ul>
-                   
+                    <hr style="height: 2px; border-width: 0; background-color: gray">
                 </div>
                 <!-- /containerImg -->
 
