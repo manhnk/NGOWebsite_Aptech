@@ -88,12 +88,12 @@ namespace BusinessLogicLayer
             return AddMenuToList(dt);
         }
 
-        public static int UpdatePostion(int position)
+        public static int UpdatePostion(int position,int? oldPosition,string flag)
         {
             int upt = 0;
             try
             {
-                upt = DataAccessLayer.MenuDA.UpdatePostion(position);
+                upt = DataAccessLayer.MenuDA.UpdatePostion(position,oldPosition,flag);
             }
             catch (Exception)
             {
@@ -135,7 +135,7 @@ namespace BusinessLogicLayer
                             ad.Position = maxPos + 1;
                         }
                         else {
-                            UpdatePostion((int)ad.Position);
+                            UpdatePostion((int)ad.Position,null,"asc");
                         }
                     }
                 }
@@ -169,16 +169,22 @@ namespace BusinessLogicLayer
                     {
                         if (mOld.Position != null)
                         {
-
-                            if (ad.Position > maxPos)
+                            if (ad.Position >= maxPos)
                             {
                                 UpdatePostionDesc((int)mOld.Position);
                                 ad.Position = maxPos;
                             }
                             else
                             {
-                                UpdatePostion((int)ad.Position);
-                                check = 1;
+                                if (ad.Position < mOld.Position)
+                                {
+                                    UpdatePostion((int)ad.Position,null,"asc");
+                                    check = 1;
+                                }
+                                else
+                                {
+                                    UpdatePostion((int)ad.Position, mOld.Position, "desc");
+                                }
                             }
                         }
                         else
@@ -189,10 +195,14 @@ namespace BusinessLogicLayer
                             }
                             else
                             {
-                                int kt = UpdatePostion((int)ad.Position);
+                                int kt = UpdatePostion((int)ad.Position,null,"asc");
                             }
                         }
                     }
+                }
+                else if (ad.Position == null && mOld.Position!= null)
+                {
+                    UpdatePostionDesc((int)mOld.Position);
                 }
                 upt = DataAccessLayer.MenuDA.EditMenu(ad);
                 if (upt > 0 && check == 1)

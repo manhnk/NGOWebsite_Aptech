@@ -119,7 +119,7 @@ namespace DataAccessLayer
             return kt;
         }
 
-        public static int UpdatePostion(int parentId,int position)
+        public static int UpdatePostion(int parentId,int position,int? oldPosition,string flag)
         {
             int kt = 0;
             try
@@ -128,10 +128,14 @@ namespace DataAccessLayer
                 List<string> param = new List<string>();
                 param.Add("@parentId");
                 param.Add("@position");
+                param.Add("@oldPosition");
+                param.Add("@flag");
 
                 List<object> value = new List<object>();
                 value.Add(parentId);
                 value.Add(position);
+                value.Add(oldPosition);
+                value.Add(flag);
 
                 kt = DataConnect.CRUDData(sql, param, value);
             }

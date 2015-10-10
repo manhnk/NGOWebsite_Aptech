@@ -95,12 +95,12 @@ namespace BusinessLogicLayer
             return AddInformationToList(dt);
         }
 
-        public static int UpdatePostion(int parentId, int position)
+        public static int UpdatePostion(int parentId, int position,int? oldPosition,string flag)
         {
             int upt = 0;
             try
             {
-                upt = DataAccessLayer.InformationsDA.UpdatePostion(parentId, position);
+                upt = DataAccessLayer.InformationsDA.UpdatePostion(parentId, position,oldPosition,flag);
             }
             catch (Exception)
             {
@@ -148,7 +148,7 @@ namespace BusinessLogicLayer
                             }
                             else
                             {
-                                int kt = UpdatePostion((int)ad.ParentId, (int)ad.Position);
+                                int kt = UpdatePostion((int)ad.ParentId, (int)ad.Position,null,"asc");
                             }
                         }
                     }
@@ -188,17 +188,24 @@ namespace BusinessLogicLayer
                         {
                             if (inforOld.Position != null)
                             {
-                                if (ad.Position > maxPos)
+                                if (ad.Position >= maxPos)
                                 {
                                     UpdatePostionDesc((int)ad.ParentId, (int)inforOld.Position);
                                     ad.Position = maxPos;
                                 }
                                 else
                                 {
-                                    UpdatePostion((int)ad.ParentId, (int)ad.Position);
-                                    if(ad.ParentId==inforOld.ParentId)
+                                    if (ad.Position < inforOld.Position)
                                     {
-                                        check = 1;
+                                        UpdatePostion((int)ad.ParentId, (int)ad.Position,null,"asc");
+                                        if (ad.ParentId == inforOld.ParentId)
+                                        {
+                                            check = 1;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        UpdatePostion((int)ad.ParentId, (int)ad.Position,inforOld.Position,"dessc");
                                     }
                                 }
                             }
@@ -210,12 +217,22 @@ namespace BusinessLogicLayer
                                 }
                                 else
                                 {
-                                    int kt = UpdatePostion((int)ad.ParentId, (int)ad.Position);
+                                    int kt = UpdatePostion((int)ad.ParentId, (int)ad.Position,null,"asc");
                                 }
                             }
                         }
                     }
-
+                    else if (ad.Position == null && inforOld.Position!= null)
+                    {
+                        if (ad.ParentId != inforOld.ParentId)
+                        {
+                            UpdatePostionDesc((int)inforOld.ParentId, (int)inforOld.Position);
+                        }
+                        else
+                        {
+                            UpdatePostionDesc((int)ad.ParentId,(int)inforOld.Position);
+                        }
+                    }
                 }
                 upt = DataAccessLayer.InformationsDA.EditInfor(ad);
                 if (upt > 0 && check == 1)

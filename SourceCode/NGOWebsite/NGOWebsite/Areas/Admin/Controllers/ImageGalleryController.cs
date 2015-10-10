@@ -344,8 +344,19 @@ namespace NGOWebsite.Areas.Admin.Controllers
             {
                 return RedirectToAction("ListSlide", "ImageGallery", new { update = "error" });
             }
+        }
 
-
+        public ActionResult SlideDelete(int id)
+        {
+            int kt=ImageGalleryBusiness.DeleteImageSlide(id);
+            if (kt > 0)
+            {
+                return RedirectToAction("ListSlide", "ImageGallery", new { delete = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListSlide", "ImageGallery", new { delete = "error" });
+            }
         }
     }
 }

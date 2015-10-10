@@ -58,7 +58,7 @@ namespace DataAccessLayer
             return dt;
         }
 
-        public static int UpdatePostion(int position)
+        public static int UpdatePostion(int position,int? oldPostion,string flag)
         {
             int kt = 0;
             try
@@ -66,9 +66,13 @@ namespace DataAccessLayer
                 string sql = "sp_UpdatePositionMenu";
                 List<string> param = new List<string>();
                 param.Add("@position");
+                param.Add("@oldPosition");
+                param.Add("@flag");
 
                 List<object> value = new List<object>();
                 value.Add(position);
+                value.Add(oldPostion);
+                value.Add(flag);
 
                 kt = DataConnect.CRUDData(sql, param, value);
             }

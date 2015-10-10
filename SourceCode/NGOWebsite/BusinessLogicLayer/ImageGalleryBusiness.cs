@@ -257,12 +257,12 @@ namespace BusinessLogicLayer
             return ins;
         }
 
-        public static int UpdatePostion(int position)
+        public static int UpdatePostion(int position,int? oldPosition,string flag)
         {
             int upt = 0;
             try
             {
-                upt = DataAccessLayer.ImageGalleryDA.UpdatePostion(position);
+                upt = DataAccessLayer.ImageGalleryDA.UpdatePostion(position,oldPosition,flag);
             }
             catch (Exception)
             {
@@ -305,16 +305,23 @@ namespace BusinessLogicLayer
                     {
                         if (mOld.PositionInSilde != null)
                         {
-
-                            if (ad.PositionInSilde > maxPos)
+                            if (ad.PositionInSilde >= maxPos)
                             {
                                 UpdatePostionDesc((int)mOld.PositionInSilde);
                                 ad.PositionInSilde = maxPos;
                             }
                             else
                             {
-                                UpdatePostion((int)ad.PositionInSilde);
-                                check = 1;
+                                if (ad.PositionInSilde < mOld.PositionInSilde)
+                                {
+                                    UpdatePostion((int)ad.PositionInSilde, null, "asc");
+                                    check = 1;
+                                }
+                                else
+                                {
+                                    UpdatePostion((int)ad.PositionInSilde, mOld.PositionInSilde, "desc");
+                                }
+
                             }
                         }
                         else
@@ -325,13 +332,14 @@ namespace BusinessLogicLayer
                             }
                             else
                             {
-                                int kt = UpdatePostion((int)ad.PositionInSilde);
+                                int kt = UpdatePostion((int)ad.PositionInSilde,null,"asc");
                             }
                         }
                     }
                 }
-                else if(ad.PositionInSilde==null){
-                    UpdatePostionDesc((int)mOld.PositionInSilde);                    
+                else if (ad.PositionInSilde == null && mOld.PositionInSilde != null)
+                {
+                    UpdatePostionDesc((int)mOld.PositionInSilde);
                 }
                 upt = DataAccessLayer.ImageGalleryDA.EditImage(ad);
                 if (upt > 0 && check == 1)
@@ -400,6 +408,29 @@ namespace BusinessLogicLayer
                     int kt = UpdateIsTopicImageForOldProgram((int)imgOld.ProgramId, imgOld.Id);
                 }
                 del = DataAccessLayer.ImageGalleryDA.DeleteImage(id);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+
+            return del;
+        }
+
+        public static int DeleteImageSlide(int id)
+        {
+            int del = 0;
+            try
+            {
+                ImageGallery infor = ImageGalleryBusiness.GetImageGalleryById(id)[0];
+                del = DataAccessLayer.ImageGalleryDA.DeleteImage(id);
+                if (del > 0)
+                {
+                    if (infor.PositionInSilde != null)
+                    {
+                        UpdatePostionDesc((int)infor.PositionInSilde);
+                    }
+                }
             }
             catch (Exception)
             {
