@@ -4,6 +4,7 @@
 }
 @model IEnumerable<Models.ImageGallery>
 @using Models;
+@using BusinessLogicLayer;
 <style type="text/css">
     .containerImg ul {
         padding: 0 0 0 0;
@@ -83,6 +84,26 @@
                             </li>
                             }
                         }
+
+                        @if (ViewData["ls"] != null)
+                        {
+                            List<Models.ImageGallery> ls = ViewData["lsProgram"] as List<Models.ImageGallery>;
+
+                            foreach (var item in ls)
+                            {
+                                List<Models.ImageGallery> ls1 = ImageGalleryBusiness.GetImageGalleryByProgram(item.Id);
+                                foreach (var i in ls1)
+                                {
+                                    <h3>@i.ProgramName</h3>
+                            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                                <img id="@i.Id" class="img-responsive" src="~/@i.ImagePath" />
+                            </li>
+
+                                }
+
+                            }
+                        }
+
                     </ul>
                 </div>
                 <!-- /containerImg -->

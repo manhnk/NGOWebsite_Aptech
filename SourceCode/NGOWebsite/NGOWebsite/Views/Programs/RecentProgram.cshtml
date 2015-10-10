@@ -3,8 +3,12 @@
     </style>
 @model Models.Programs
 <div id="custom-content" class="white-popup-block recent_news" style="max-width:600px; margin: 20px auto;">
-   
-	<img src="~/Content/View_components/images/activity/act2.jpg" alt="img" >
+   @{Models.ImageGallery ls1;
+     ls1 = ViewData["ls1"] as Models.ImageGallery;
+     }
+    
+	<img src="~/@ls1.ImagePath" alt="img" >		 
+	
 
 	<h4>@Html.DisplayFor(model => model.Name)</h4>
 	<p class="date"> 18 - 24 October 2015</p>

@@ -15,6 +15,9 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Programs()
         {
+            List<Models.ImageGallery> lsTopic = ImageGalleryBusiness.GetImageTopicPrograms();
+            ViewData["lsTopicPrograms"] = lsTopic;
+            
             List<Models.Programs> ls = ProgramsBusiness.GetAllPrograms();
             if (ls.Count > 0)
             {
@@ -25,7 +28,16 @@ namespace NGOWebsite.Controllers
         }
         public ActionResult RecentProgram(int id)
         {
-
+            List<Models.ImageGallery> lsTopic = ImageGalleryBusiness.GetImageTopicPrograms();
+            foreach (var item in lsTopic)
+            {
+                if (item.ProgramId == id)
+                {
+                    
+                    ViewData["ls1"] = item;
+                }
+            }
+            
             List<Models.Programs> ls = ProgramsBusiness.GetProgramsById(id);
             if (ls.Count > 0)
             {

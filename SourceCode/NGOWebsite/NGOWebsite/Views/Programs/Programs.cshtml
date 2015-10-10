@@ -9,11 +9,19 @@
             <div class="col-md-12 heading dark animate_top">Recent <span>Programs</span></div>
         </div>
         <div class="row act">
+            @{List<Models.ImageGallery> listImg;
+              listImg = ViewData["lsTopicPrograms"] as List<Models.ImageGallery>;
+              }
             @foreach (var item in Model)
             {
                 <div class="col-md-3">
-                    @*<img src="@item." alt="img">*@
-                    <img src="~/Content/View_components/images/activity/act4.jpg" alt="img" class="animate_top">
+                    @foreach (var i in listImg)
+                    {
+                        if (i.ProgramName == @item.Name)
+                        {
+                    <img src="~/@i.ImagePath" alt="img" class="animate_top">                                                    
+                        }
+                    }
                     <div class="animate_bottom s1">
                         <h4>@item.Name</h4>
                         <p class="date">Issie 18 - 24 October 2013</p>
@@ -38,48 +46,7 @@
                 </div>  
             }
 
-            @*<div class="col-md-3">
-                    <img src="~/Content/View_components/images/activity/act2.jpg" alt="img" class="animate_top">
-                    <div class="animate_bottom s1">
-                        <h4>Sed ut perspiciatis</h4>
-                        <p class="date">Issie 18 - 24 October 2013</p>
-                        <!--p class="meta">
-							<i class="fa fa-calendar"></i>August 5, 2013<br>
-							<i class="fa fa-clock-o"></i>9:00am - 1:00pm<br>
-							<i class="fa fa-map-marker"></i>TheWebLab
-						</p-->
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aper. </p>
-                        <p class="readmore"><a href="@Url.Action("RecentProgram","Programs")" class="ajax-popup-link">...read more</a></p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <img src="~/Content/View_components/images/activity/act3.jpg" alt="img" class="animate_top">
-                    <div class="animate_bottom s1">
-                        <h4>Lorem ipsum dolor sit</h4>
-                        <p class="date">Issie 18 - 24 October 2013</p>
-                        <!--p class="meta">
-							<i class="fa fa-calendar"></i>August 5, 2013<br>
-							<i class="fa fa-clock-o"></i>9:00am - 1:00pm<br>
-							<i class="fa fa-map-marker"></i>TheWebLab
-						</p-->
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aper. </p>
-                        <p class="readmore"><a href="@Url.Action("RecentProgram","Programs")" class="ajax-popup-link">...read more</a></p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <img src="~/Content/View_components/images/activity/act3.jpg" alt="img" class="animate_top">
-                    <div class="animate_bottom s1">
-                        <h4>Lorem ipsum dolor sit</h4>
-                        <p class="date">Issie 18 - 24 October 2013</p>
-                        <!--p class="meta">
-							<i class="fa fa-calendar"></i>August 5, 2013<br>
-							<i class="fa fa-clock-o"></i>9:00am - 1:00pm<br>
-							<i class="fa fa-map-marker"></i>TheWebLab
-						</p-->
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aper. </p>
-                        <p class="readmore"><a href="@Url.Action("RecentProgram","Programs")">...read more</a></p>
-                    </div>
-                </div>*@
+            
         </div>
     </div>
 </div>
