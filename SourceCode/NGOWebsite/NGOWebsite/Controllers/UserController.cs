@@ -226,7 +226,7 @@ namespace NGOWebsite.Controllers
         }
 
         //
-        // POST: /Admin/Admin/Edit/5
+        // POST: /Member/Member/Edit/5
 
         [HttpPost]
         public ActionResult EditProcess(FormCollection frm)
@@ -241,10 +241,8 @@ namespace NGOWebsite.Controllers
                 Models.Member ad = new Models.Member()
                 {
                     Id = mb.Id,
-                    UserName = frm["UserName"],
-                    Password = frm["Password"],
-                    FullName = frm["FullName"],
                     Gender = frm["Gender"],
+                    FullName = frm["FullName"],
                     Phone = frm["Phone"],
                     Address = frm["Address"],
                     Email = frm["Email"],
