@@ -23,13 +23,13 @@
                     info = ViewData["submenu"] as List<Models.Informations>;
 
     <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">About Us<b class="caret"></b></a>
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle" title="@item.TextTooltip">About Us<b class="caret"></b></a>
         <ul class="dropdown-menu navfix">
             @foreach (var i in info)
             {
                 {
                     
-                <li><a href="~/@i.Links">@i.Subject</a></li>
+                <li><a href="~/@i.Links" data-toggle="tooltip" title="@i.TextTooltip">@i.Subject</a></li>
                
                 }
             }
@@ -39,7 +39,7 @@
 
                 else
                 {
-    <li><a href="~/@item.Links">@item.Subject</a></li>
+    <li><a href="~/@item.Links" data-toggle="tooltip" title="@item.TextTooltip">@item.Subject</a></li>
                     
                 }
             }
@@ -74,17 +74,17 @@
                 {
                     if (ad.IsMemberOfTeam == 1 || ad.IsMemberOfTeam == 0)
                     {
-                <li><a href="@Url.Action("Notify", "User")" class="ajax-popup-link">@i.Subject</a></li>
+                <li><a href="@Url.Action("Notify", "User")" class="ajax-popup-link"  data-toggle="tooltip" title="@i.TextTooltip">@i.Subject</a></li>
                     }
                     else
                     {
-                <li><a href="~/@i.Links">@i.Subject</a></li>
+                <li><a href="~/@i.Links" data-toggle="tooltip" title="@i.TextTooltip">@i.Subject</a></li>
 
                     }
                 }
                 else
                 {
-                <li><a href="~/@i.Links">@i.Subject</a></li>
+                <li><a href="~/@i.Links" data-toggle="tooltip" title="@i.TextTooltip">@i.Subject</a></li>
                 }
 
             }
@@ -97,7 +97,7 @@
                 }
                 else
                 {
-    <li><a href="~/@item.Links">@item.Subject</a></li>
+    <li><a href="~/@item.Links" data-toggle="tooltip" title="@item.TextTooltip">@item.Subject</a></li>
 
                 }
             }
@@ -112,11 +112,11 @@
                 str = str.Split(new char[] { ' ' })[0];
                 if (str.Equals("Login"))
                 {
-                <li><a href="@Url.Action("Logout", "User")">Log out</a></li>
+                <li><a href="@Url.Action("Logout", "User")" data-toggle="tooltip" title="Log out">Log out</a></li>
                 }
                 else if (str.Equals("Register"))
                 {
-                <li><a href="@Url.Action("UserInfo", "User")">UserInfo</a></li>
+                <li><a href="@Url.Action("UserInfo", "User")"  data-toggle="tooltip" title="User profile">UserInfo</a></li>
                 <li class="divider"></li>
                 }
             }

@@ -15,12 +15,19 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Home()
         {
-            List<Models.Partners> lsPartners = PartnersBusiness.GetAllPartners();
-            ViewData["lsPartners"] = lsPartners;
+            //Get slides for Slider
+            List<ImageGallery> lsSlide = ImageGalleryBusiness.GetImageSlide();
+            ViewData["slides"] = lsSlide;
 
+            //Get partners
+            List<Models.Partners> ls = PartnersBusiness.GetAllPartners();
+            
+
+            //Get Image for Home's programs
             List<Models.ImageGallery> lsTopic = ImageGalleryBusiness.GetImageTopicPrograms();
             ViewData["lsTopicPrograms"] = lsTopic;
-            List<Models.Partners> ls = PartnersBusiness.GetAllPartners();
+
+            //Get recent programs which have status = 1
             List<Models.Programs> ls1 = ProgramsBusiness.GetAllPrograms();
             List<Models.Programs> program = new List<Programs>();
 
@@ -31,6 +38,17 @@ namespace NGOWebsite.Controllers
                     program.Add(item);
                 }
             }
+            if (program.Count > 0)
+            {
+                ViewData["programs"] = program;
+            }
+            else
+            {
+                ViewData["programs"] = ls1;
+                //ViewData["programs"] = null;
+            }
+
+            //Get NEWS from Information
             List<Models.Informations> ls2 = InformationsBusiness.GetAllInformations();
             List<Models.Informations> infor = new List<Informations>();
             foreach (var item in ls2)
@@ -41,15 +59,7 @@ namespace NGOWebsite.Controllers
                 }
             }
 
-            if (program.Count > 0)
-            {
-                ViewData["programs"] = program;
-            }
-            else
-            {
-                ViewData["programs"] = ls1;
-                //ViewData["programs"] = null;
-            }
+            
             if (infor.Count > 0)
             {
                 ViewData["infor"] = infor;
@@ -64,10 +74,12 @@ namespace NGOWebsite.Controllers
             return View(ls);
         }
 
+        // Notify that User has joined our team!
         public ActionResult Notify()
         {
             return View();
         }
+
         [HttpPost]
         public JsonResult CheckNameExist(string username, int? id)
         {
