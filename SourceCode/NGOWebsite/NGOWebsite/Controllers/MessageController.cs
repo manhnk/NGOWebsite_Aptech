@@ -15,6 +15,9 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Message()
         {
+            
+            List<Models.Programs> lsPro = BusinessLogicLayer.ProgramsBusiness.GetAllPrograms();
+            ViewData["Program"] = new SelectList(lsPro, "Id", "Name");
             if (Session["user_login"] != null)
             {
                 Models.Member ad = Session["user_login"] as Models.Member;
@@ -41,6 +44,7 @@ namespace NGOWebsite.Controllers
                 // TODO: Add insert logic here
                 Models.Message ad = new Models.Message()
                 {
+                    ProgramId = int.Parse(frm["ProgramId"]),
                     SenderName = frm["SenderName"],
                     SenderEmail = frm["SenderEmail"],
                     Messages = frm["Messages"],
