@@ -15,6 +15,11 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Home()
         {
+            List<Models.Partners> lsPartners = PartnersBusiness.GetAllPartners();
+            ViewData["lsPartners"] = lsPartners;
+
+            List<Models.ImageGallery> lsTopic = ImageGalleryBusiness.GetImageTopicPrograms();
+            ViewData["lsTopicPrograms"] = lsTopic;
             List<Models.Partners> ls = PartnersBusiness.GetAllPartners();
             List<Models.Programs> ls1 = ProgramsBusiness.GetAllPrograms();
             List<Models.Programs> program = new List<Programs>();

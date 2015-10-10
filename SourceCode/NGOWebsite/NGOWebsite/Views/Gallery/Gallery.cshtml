@@ -80,12 +80,12 @@
                             foreach (ImageGallery img in lsOthers)
                             {
                             <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                                <img id="@img.Id" class="img-responsive" src="~/@img.ImagePath" />
+                                <img id="@img.Id" class="img-responsive" src="~/@img.ImagePath" width="300px" height="300px"/>
                             </li>
                             }
                         }
 
-                        @if (ViewData["ls"] != null)
+                        @if (ViewData["lsProgram"] != null)
                         {
                             List<Models.ImageGallery> ls = ViewData["lsProgram"] as List<Models.ImageGallery>;
 
@@ -96,7 +96,7 @@
                                 {
                                     <h3>@i.ProgramName</h3>
                             <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                                <img id="@i.Id" class="img-responsive" src="~/@i.ImagePath" />
+                                <img id="@i.Id" class="img-responsive" src="~/@i.ImagePath"/>
                             </li>
 
                                 }
@@ -105,6 +105,7 @@
                         }
 
                     </ul>
+                   
                 </div>
                 <!-- /containerImg -->
 

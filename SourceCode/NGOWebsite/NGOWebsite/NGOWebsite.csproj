@@ -867,6 +867,13 @@
     <Content Include="Areas\Admin\Contents\js\flot-data.js" />
     <Content Include="Areas\Admin\Contents\js\morris-data.js" />
     <Content Include="Areas\Admin\Contents\js\photo-gallery.js" />
+    <Content Include="Content\ImageUpload\Partners\ambootia.jpg" />
+    <Content Include="Content\ImageUpload\Partners\gls_bank.jpg" />
+    <Content Include="Content\ImageUpload\Partners\LEBENSBAUM.jpg" />
+    <Content Include="Content\ImageUpload\Partners\naturemore.jpg" />
+    <Content Include="Content\ImageUpload\Partners\partners.jpg" />
+    <Content Include="Content\ImageUpload\Partners\Progreso.jpg" />
+    <Content Include="Content\ImageUpload\Partners\zukunftsstiftung-landwirtschaft.jpg" />
     <Content Include="Content\ImageUpload\Users\default.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -1655,7 +1662,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Content\ImageUpload\Partners\" />
     <Folder Include="Content\ImageUpload\Slider\" />
     <Folder Include="Models\" />
   </ItemGroup>

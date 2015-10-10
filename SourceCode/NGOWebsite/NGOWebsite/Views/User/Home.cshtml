@@ -47,16 +47,22 @@
                 @{IEnumerable<Models.Programs> prolist;
                   prolist = ViewData["programs"] as IEnumerable<Models.Programs>;
                 }
-
+                @{List<Models.ImageGallery> listImg;
+              listImg = ViewData["lsTopicPrograms"] as List<Models.ImageGallery>;
+              }
                 @if (prolist != null)
                 {
                     foreach (var item in prolist)
                     {
                         
-                    
-                    <img src="~/Content/View_components/images/activity/act4.jpg" alt="img" class="animate_top">
+                    foreach (var i in listImg)
+                    {
+                        if (i.ProgramName == @item.Name)
+                        {
+                    <img src="~/@i.ImagePath" alt="img" class="animate_top" width="300px" height="300px">                                                    
+                        }
+                    }
 
-@*<img src="@item.Logo" alt="img">*@
                        
                     <h1>@item.Name</h1>
 
@@ -101,7 +107,6 @@
     </div>
 </div>
 
-
 @*<div class="container">
         <div class="row">
             <div class="col-md-1"></div>
@@ -125,13 +130,31 @@
                     @foreach (var item in Model)
                     {
                         <li class="s1">
-                            <img src="~/Content/View_components/images/students/1.jpg" alt="img" data-toggle="tooltip" title="@item.Name">
-                            @*<img src="@item.Logo" alt="img">*@
+                            @*<img src="~/Content/View_components/images/students/1.jpg" >*@
+                            <img src="@item.Logo" alt="img" data-toggle="tooltip" title="@item.Name" width="300px" height="300px">
                             @*<p class="animate_bottom">@item.Email</p>*@
                         </li>
                    
                     }
 
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="social-icons">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12 text-center heading animate_top"><span>Spread </span>the word</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="animate_bottom">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                 </ul>
             </div>
         </div>
