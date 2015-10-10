@@ -867,6 +867,7 @@
     <Content Include="Areas\Admin\Contents\js\flot-data.js" />
     <Content Include="Areas\Admin\Contents\js\morris-data.js" />
     <Content Include="Areas\Admin\Contents\js\photo-gallery.js" />
+    <Content Include="Content\ImageUpload\Users\default.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -1655,7 +1656,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\ImageUpload\Partners\" />
     <Folder Include="Content\ImageUpload\Slider\" />
-    <Folder Include="Content\ImageUpload\Users\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
