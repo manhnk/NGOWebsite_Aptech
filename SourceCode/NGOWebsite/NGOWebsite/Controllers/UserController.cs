@@ -250,7 +250,7 @@ namespace NGOWebsite.Controllers
                         Email = frm["Email"],
                         IsMemberOfTeam = int.Parse(frm["IsMemberOfTeam"]),
                         IsDeleted = int.Parse(frm["IsDeleted"]),
-                        Image = frm["Image"]
+                        Image = "~/"+frm["Image"]
 
 
                     };
@@ -259,21 +259,22 @@ namespace NGOWebsite.Controllers
                 }
                 else
                 {
-                    Models.Member ad = new Models.Member()
-                    {
-                        Id = mb.Id,
-                        Gender = frm["Gender"],
-                        FullName = frm["FullName"],
-                        Phone = frm["Phone"],
-                        Address = frm["Address"],
-                        Email = frm["Email"],
-                        IsMemberOfTeam = int.Parse(frm["IsMemberOfTeam"]),
-                        IsDeleted = int.Parse(frm["IsDeleted"]),
+                    //Models.Member ad = new Models.Member()
+                    //{
+                    //    Id = mb.Id,
+                    //    Gender = frm["Gender"],
+                    //    FullName = frm["FullName"],
+                    //    Phone = frm["Phone"],
+                    //    Address = frm["Address"],
+                    //    Email = frm["Email"],
+                    //    IsMemberOfTeam = int.Parse(frm["IsMemberOfTeam"]),
+                    //    IsDeleted = int.Parse(frm["IsDeleted"]),
 
-                        Image = "Content/ImageUpload/Users/Default.png"
+                    //    Image = "Content/ImageUpload/Users/Default.png"
 
-                    };
-                    kt = MemberBusiness.EditMember(ad);
+                    //};
+                    //kt = MemberBusiness.EditMember(ad);
+                    kt = 0;
 
                 }
 
