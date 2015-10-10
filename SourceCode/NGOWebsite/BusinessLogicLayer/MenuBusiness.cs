@@ -159,7 +159,7 @@ namespace BusinessLogicLayer
                 Menu mOld=MenuBusiness.GetMenuById(ad.Id)[0];
                 int? maxPos = GetMaxPosition();
 
-                if (ad.Position != null)
+                if (ad.Position != null && mOld.Position!=ad.Position)
                 {
                     if (maxPos == null)
                     {

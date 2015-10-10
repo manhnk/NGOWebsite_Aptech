@@ -1596,6 +1596,10 @@
     <Content Include="Areas\Admin\Views\ProgramsAD\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProgramsAD\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ProgramsAD\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageGallery\ListSlide.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageGallery\SlideDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageGallery\SlideCreate.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageGallery\SlideEdit.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -1650,6 +1654,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\ImageUpload\Partners\" />
+    <Folder Include="Content\ImageUpload\Slider\" />
     <Folder Include="Content\ImageUpload\Users\" />
     <Folder Include="Models\" />
   </ItemGroup>

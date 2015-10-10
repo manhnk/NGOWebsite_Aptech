@@ -28,6 +28,8 @@ namespace Models
        [Display(Name="Is Topic Imgae")]
         public Nullable<int> IsTopicImage { get; set; }
         public Nullable<int> IsSildeImage { get; set; }
+
+        [RegularExpression("^[1-9][0-9]?$", ErrorMessage = "Position must be a number greater than 0 !")]
         public Nullable<int> PositionInSilde { get; set; }
         public int IsDeleted { get; set; }
 

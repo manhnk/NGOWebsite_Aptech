@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "SlideCreate";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Models.ImageGallery
+
+<!-- /.row -->
+<div class="row" style="margin-top:30px">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-weight:bold">
+                <i class="fa fa-image  fa-fw"></i> Add New Image
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    @using (Html.BeginForm("SlideCreateProcess", "ImageGallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ImagePath)
+                                @Html.TextBoxFor(model => model.ImagePath, new { @class = "form-control", @type = "file", @multiple = "multiple", @accept = ".png,.gif,.jpg" })
+                                @Html.ValidationMessageFor(model => model.ImagePath)
+                            </div>
+                            
+                            <div>
+                                @Html.LabelFor(model => model.Description)
+                                @Html.TextAreaFor(model => model.Description, 5, 10, new { @class = "form-control" ,@placeholder="Enter text"})
+                                @Html.ValidationMessageFor(model => model.Description)
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="submit" class="btn btn-primary" style="margin-left:20px;margin-top:25px;width:120px"><i class="fa fa-plus-circle  fa-fw"></i> Add New </button><br />
+                            <button type="reset" class="btn btn-primary" style="margin-left: 20px;margin-top: 15px; width: 120px"><i class="fa  fa-refresh  fa-fw"></i> Reset </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
+
+
+

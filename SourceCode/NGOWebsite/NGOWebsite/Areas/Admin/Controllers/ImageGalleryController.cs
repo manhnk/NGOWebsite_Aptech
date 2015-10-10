@@ -152,8 +152,8 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
                 Models.ImageGallery ad = new Models.ImageGallery()
                 {
-                    Id=int.Parse(frm["Id"]),
-                    ImagePath=frm["ImagePath"],
+                    Id = int.Parse(frm["Id"]),
+                    ImagePath = frm["ImagePath"],
                     ProgramId = proId,
                     IsTopicImage = isTopicImg,
                     Description = frm["Description"]
@@ -170,7 +170,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
                 kt = 0;
             }
 
-            if (kt>0)
+            if (kt > 0)
             {
                 return RedirectToAction("Index", "ImageGallery", new { update = "success" });
             }
@@ -219,5 +219,133 @@ namespace NGOWebsite.Areas.Admin.Controllers
         }
 
 
+        //====================== Slider =================================================
+        public ActionResult ListSlide()
+        {
+            List<ImageGallery> lsSlide = ImageGalleryBusiness.GetImageSlide();
+            return View(lsSlide);
+        }
+
+        public ActionResult SlideDetails(int id)
+        {
+            ImageGallery img = ImageGalleryBusiness.GetImageGalleryById(id)[0];
+            return View(img);
+        }
+
+        public ActionResult SlideCreate()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SlideCreateProcess(FormCollection frm, HttpPostedFileBase[] ImagePath)
+        {
+            int kt = 0;
+            try
+            {
+                foreach (HttpPostedFileBase file in ImagePath)
+                {
+                    /*Geting the file name*/
+                    string filename = System.IO.Path.GetFileName(file.FileName);
+                    /*Saving the file in server folder*/
+                    file.SaveAs(Server.MapPath(@"~/Content/ImageUpload/Slider/" + filename));
+                    string filepathtosave = "Content/ImageUpload/Slider/" + filename;
+
+
+                    Models.ImageGallery ad = new Models.ImageGallery()
+                    {
+                        ImagePath = filepathtosave,
+                        IsSildeImage = 1,
+                        Description = frm["Description"]
+                    };
+
+                    int check = ImageGalleryBusiness.AddSlideImage(ad);
+                    if (check > 0)
+                    {
+                        kt++;
+                    }
+                }
+
+            }
+            catch
+            {
+                kt = 0;
+            }
+
+            if (kt == ImagePath.Count())
+            {
+                return RedirectToAction("ListSlide", "ImageGallery", new { add = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListSlide", "ImageGallery", new { add = "error" });
+            }
+        }
+
+        public ActionResult SlideEdit(int id)
+        {
+            ImageGallery img = ImageGalleryBusiness.GetImageGalleryById(id)[0];
+
+            return View(img);
+        }
+
+        [HttpPost]
+        public ActionResult SlideEditProcess(FormCollection frm, HttpPostedFileBase file)
+        {
+            int kt = 0;
+            try
+            {
+                string filepathtosave = "";
+                if (file != null)
+                {
+                        /*Geting the file name*/
+                        string filename = System.IO.Path.GetFileName(file.FileName);
+                        /*Saving the file in server folder*/
+                        file.SaveAs(Server.MapPath(@"~/Content/ImageUpload/Slider/" + filename));
+                        filepathtosave = "Content/ImageUpload/Slider/" + filename;
+                }
+                else
+                {
+                    filepathtosave = frm["ImagePath"];
+                }
+
+                int? position = null;
+                if (frm["PositionInSilde"].ToString() != "")
+                {
+                    position = int.Parse(frm["PositionInSilde"].ToString());
+                }
+
+                Models.ImageGallery ad = new Models.ImageGallery()
+                {
+                    Id=int.Parse(frm["Id"]),
+                    ImagePath = filepathtosave,
+                    IsSildeImage=1,
+                    PositionInSilde=position,
+                    Description = frm["Description"]
+                };
+
+                int check = ImageGalleryBusiness.EditImageSlide(ad);
+                if (check > 0)
+                {
+                    kt++;
+                }
+            }
+            catch
+            {
+                kt = 0;
+            }
+
+            if (kt >0)
+            {
+                return RedirectToAction("ListSlide", "ImageGallery", new { update = "success" });
+            }
+            else
+            {
+                return RedirectToAction("ListSlide", "ImageGallery", new { update = "error" });
+            }
+
+
+        }
     }
 }
