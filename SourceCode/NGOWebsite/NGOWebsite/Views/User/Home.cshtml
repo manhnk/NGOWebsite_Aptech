@@ -11,18 +11,29 @@
 @* ====Slider==== *@
 @{List<Models.ImageGallery> lsSlide;
   lsSlide = ViewData["slides"] as List<Models.ImageGallery>;
-  }
-@foreach (var item in lsSlide)
-{
-    <div id="slides">
+}
+<div id="slides">
     <div class="slides-container">
-        <img src="~/@item.ImagePath" alt="slider1">
-       @* <img src="~/Content/View_components/images/slider/slider2.jpg" alt="slider2">
-        <img src="~/Content/View_components/images/slider/slider3.jpg" alt="slider3">*@
+        @if (lsSlide.Count != 0)
+        {
+            foreach (var item in lsSlide)
+            {
+    
+            <img src="~/@item.ImagePath" alt="slider1">
+   
+            }
+        }
+        else
+        {
+               
+            <img src="~/Content/View_components/images/slider/slider2.jpg" alt="slider1">
+            <img src="~/Content/View_components/images/slider/slider2.jpg" alt="slider2">
+            <img src="~/Content/View_components/images/slider/slider3.jpg" alt="slider3"> 
+        
+        }
+
     </div>
 </div>
-}
-
 
 
 <div id="top" class="top">
@@ -57,20 +68,20 @@
                   prolist = ViewData["programs"] as IEnumerable<Models.Programs>;
                 }
                 @{List<Models.ImageGallery> listImg;
-              listImg = ViewData["lsTopicPrograms"] as List<Models.ImageGallery>;
-              }
+                  listImg = ViewData["lsTopicPrograms"] as List<Models.ImageGallery>;
+                }
                 @if (prolist != null)
                 {
                     foreach (var item in prolist)
                     {
-                        
-                    foreach (var i in listImg)
-                    {
-                        if (i.ProgramName == @item.Name)
+
+                        foreach (var i in listImg)
                         {
+                            if (i.ProgramName == @item.Name)
+                            {
                     <img src="~/@i.ImagePath" alt="img" class="animate_top" width="300px" height="300px">                                                    
+                            }
                         }
-                    }
 
                        
                     <h1>@item.Name</h1>
@@ -86,7 +97,7 @@
                         }
 
                         
-                        <hr style="height:2px;border-width:0;background-color:gray">
+                    <hr style="height: 2px; border-width: 0; background-color: gray">
                         
                        
                     
