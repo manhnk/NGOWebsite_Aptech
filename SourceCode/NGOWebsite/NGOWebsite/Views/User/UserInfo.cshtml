@@ -32,15 +32,31 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    @if (ViewData["img"] != null)
+                    {
+                    <img src="~/@ViewData["img"]" width="300px" height="300px/>
+                        
+                    }
+                    else
+                    {
+                    <img src="#"/>                            
+                    }
+                </div>
                 <div class="col-md-5 contact_form animate_left">
 
-                    @using (Html.BeginForm("EditProcess", "User", FormMethod.Post))
+                    @using (Html.BeginForm("EditProcess", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.HiddenFor(model => model.Id)
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
                           
+@*<div class="col-lg-6">*@
+                        <div class="form-group">
+                            @Html.Label("Update your avatar")
+                            @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @type = "file", @multiple = "multiple", @accept = ".png,.gif,.jpg" })
+                            @Html.ValidationMessageFor(model => model.Image)
+                        </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.UserName)
                             @Html.TextBoxFor(model => model.UserName, new { @disabled = "disabled", @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
@@ -48,9 +64,11 @@
 
                         </div>
                         <div class="form-group">
-                            @Html.HiddenFor(model=> model.Password)
+                            @Html.HiddenFor(model => model.Password)
+                            @Html.HiddenFor(model => model.IsMemberOfTeam)
+                            @Html.HiddenFor(model => model.IsDeleted)
 
-                        <h3><a href='@Url.Action("ChangePassword", "User")'>Change your password</a></h3>
+                            <h3><a href='@Url.Action("ChangePassword", "User")'>Change your password</a></h3>
 
                         </div>
                         <div class="form-group">
@@ -85,8 +103,7 @@
                             @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "100" })
                             @Html.ValidationMessageFor(model => model.Email)
                         </div>
-                        @Html.HiddenFor(model => model.Image)
-                        @*<div>
+@*<div>
                             @if (Model.IsMemberOfTeam == 1)
                             {
                                 <label>@Html.CheckBox("cbIsMOT", new { @Value = "rmb", @checked = "checked" }) Join With Us </label>		 

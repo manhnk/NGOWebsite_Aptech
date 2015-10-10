@@ -216,6 +216,7 @@ namespace NGOWebsite.Controllers
                 List<Models.Member> ls = MemberBusiness.GetMemberById(ad.Id);
                 if (ls.Count > 0)
                 {
+                    ViewData["img"] = ls[0].Image;
                     return View(ls[0]);
                 }
                 else return null;
@@ -247,8 +248,8 @@ namespace NGOWebsite.Controllers
                     Phone = frm["Phone"],
                     Address = frm["Address"],
                     Email = frm["Email"],
-                    IsMemberOfTeam = 0,
-                    IsDeleted = 0,
+                    IsMemberOfTeam = int.Parse(frm["IsMemberOfTeam"]),
+                    IsDeleted = int.Parse(frm["IsDeleted"]),
                     Image = frm["Image"]
                 };
 
