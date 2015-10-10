@@ -1,9 +1,179 @@
-﻿
-
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Hello Admin</h2>
-<a href="~/Admin/Admin/Details/2"> Hello </a>
+<div class="col-lg-12" style="margin-top:30px">
+
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <i class="fa fa-user-md fa-4x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <div class="huge">
+                                @Html.Raw(ViewData["Member"].ToString())
+                            </div>
+                            <div>Members</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("ListMember","Member")">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <i class="fa fa-sitemap fa-4x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <div class="huge">
+                                @Html.Raw(ViewData["Program"].ToString())
+                            </div>
+                            <div>Programs</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("ListProgram","ProgramsAD")">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <i class="fa fa-cube fa-5x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <div class="huge">
+                                @String.Format("{0:#,##0.00} $", ViewData["amountPro"])
+                            </div>
+                            <div style="font-weight:bold">Amount Donation Programs</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("DonationForPrograms", "Donation", new { type="other"})">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="row" style="margin-top:10px">
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-yellow">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <i class="fa fa-envelope fa-4x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <div class="huge">
+                                @Html.Raw(ViewData["MssPro"].ToString())
+                            </div>
+                            <div>New Message Programs</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("ListMessage", "Messages", new { type="pro"})">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-red">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <i class="fa fa-comments fa-4x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <div class="huge">
+                                @Html.Raw(ViewData["MssOther"].ToString())
+                            </div>
+                            <div>New Message Others</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("ListMessage", "Messages", new { type="other"})">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <i class="fa fa-bank fa-5x"></i>
+                        </div>
+                        <div class="col-xs-10 text-right">
+                            <div class="huge">
+                                @String.Format("{0:#,##0.00} $", ViewData["amountCause"])
+                            </div>
+                            <div style="font-weight:bold">Amount Donation Others</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("DonationForOthers", "Donation", new { type="other"})">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+       
+    </div>
+    <div class="row" style="margin-top:10px">
+        <div class="col-lg-12 col-md-12" style="float:right">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-dollar fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">
+                                @String.Format("{0:#,##0.00}", ViewData["totalAmount"])
+                            </div>
+                            <div style="font-weight:bold">Total Donation Amount</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -15,7 +15,6 @@ namespace NGOWebsite.Areas.Admin.Controllers
         {
             Session.Abandon();
             return RedirectToAction("Login", "Admin");
-
         }
 
         [AllowAnonymous]

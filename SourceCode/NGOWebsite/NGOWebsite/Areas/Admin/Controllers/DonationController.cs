@@ -13,6 +13,13 @@ namespace NGOWebsite.Areas.Admin.Controllers
         //
         // GET: /Admin/Donation/
 
+        public ActionResult DonatioPartialView(string type)
+        {
+            ViewData["Type"] = type;
+            List<Donation> ls = DonationBusiness.GetDonationByProgramOrCause(type);
+            return PartialView(ls);
+        }
+
         public ActionResult DonationForPrograms()
         {
             ViewData["Type"] = "program";

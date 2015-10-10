@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Models;
+using BusinessLogicLayer;
 
 namespace NGOWebsite.Areas.Admin.Controllers
 {
@@ -13,6 +15,34 @@ namespace NGOWebsite.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
+            //count member
+            List<Member> lsMember = MemberBusiness.GetAllMember();
+            ViewData["Member"] = lsMember.Count;
+
+            //count Programs
+            List<Programs> lsPro = ProgramsBusiness.GetAllPrograms();
+            ViewData["Program"] = lsPro.Count;
+
+            //count new mss program
+            List<Message> lsMssPro = MessageBusiness.GetProgramMessage().Where(d => d.Status==0).ToList();
+            ViewData["MssPro"] = lsMssPro.Count;
+
+            //count new mss others
+            List<Message> lsMssOther = MessageBusiness.GetOtherMessage().Where(d => d.Status==0).ToList();
+            ViewData["MssOther"] = lsMssOther.Count;
+
+            //total amount donation programs
+            List<Donation> lsDonationPro = DonationBusiness.GetDonationByProgramOrCause("program");
+            double amountPro = lsDonationPro.Sum(d => d.TotalAmount);
+            ViewData["amountPro"] = amountPro;
+
+            //total amount donation Cause
+            List<Donation> lsDonationCause = DonationBusiness.GetDonationByProgramOrCause("cause");
+            double amountCause = lsDonationCause.Sum(d => d.TotalAmount);
+            ViewData["amountCause"] = amountCause;
+
+            ViewData["totalAmount"] = amountPro + amountCause;
+
             return View();
         }
 

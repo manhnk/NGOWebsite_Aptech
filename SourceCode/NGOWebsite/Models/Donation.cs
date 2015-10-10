@@ -59,7 +59,7 @@ namespace Models
 
         public int IsDeleted { get; set; }
 
-        [Display(Name="Number Of Program")]
+        [Display(Name="Number Of Donation")]
         public int NumberOfDonation { get; set; }
 
         [Display(Name = "Total Amount")]
