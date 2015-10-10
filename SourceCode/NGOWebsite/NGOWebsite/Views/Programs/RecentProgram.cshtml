@@ -44,12 +44,13 @@
             <div class="row">
                 @if (program != null)
                 {<div class="row">
-                    <div class="col-md-12 text-center heading animate_top"><span class="brd">@program.Name</span></div>
+                    <div class="col-md-12 text-center heading animate_top">@program.Name</div>
                 </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5 text-center">
+
                         <img src="~/@ls1.ImagePath" alt="img" width="300px" height="300px">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <p class="date">18 - 24 October 2015</p>
                         <h3>@program.Contents</h3>
                     </div>
@@ -59,8 +60,10 @@
 
             <div class="row">
 
-                <div class="col-md-4"><a class="top_btn2" href="@Url.Action("Donate", "Donate")">Donate Now</a></div>
-                <div class="col-md-5 contact_form animate_left">
+                <div class="col-md-5 text-center"><a class="top_btn2" href="@Url.Action("Donate", "Donate")">Donate Now</a>
+                    <div class="col-md-12 text-center heading animate_top">Send message <span class="brd">for this program</span></div>
+                </div>
+                <div class="col-md-6 contact_form animate_left">
 
 
                     @using (Html.BeginForm("AddMsgProcess", "Message", FormMethod.Post))
