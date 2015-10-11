@@ -6,7 +6,7 @@
         ViewBag.Title = "Profile";
 
     }
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Sign up";
 
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
@@ -20,7 +20,7 @@
                 if (Request.QueryString["add"].Equals("error"))
                 {
                 <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
-                    <img src='~/Content/View_components/images/error.png' alt="img">Register Fail !
+                    <img src='~/Content/View_components/images/error.png' alt="img">Sign Up Fail !
 
                 </div>
                 
@@ -28,13 +28,13 @@
                 else
                 {
                 <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
-                    <img src='~/Content/View_components/images/success.png' alt="img">Register Successfull !
+                    <img src='~/Content/View_components/images/success.png' alt="img">Sign up Successfully !
 
                 </div>
                 }
             }
             <div class="row">
-                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register</span>&nbsp;&nbsp;&nbspForm</div>
+                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register</span>&nbsp;&nbsp;&nbsp Form</div>
             </div>
 
             <div class="row">
@@ -97,7 +97,7 @@
                         </div>
                         
                         
-                        <button class="bttn" id='register' type="submit">Register</button>
+                        <button class="bttn" id='register' type="submit">Sign up</button>
                         <button class="bttn" id='cancel' type="reset">Reset</button>
                     }
                     <h3><a href='@Url.Action("Login", "User")'>You have an account? Back to login!</a></h3>
