@@ -878,6 +878,9 @@
     <Content Include="Content\ImageUpload\Partners\partners.jpg" />
     <Content Include="Content\ImageUpload\Partners\Progreso.jpg" />
     <Content Include="Content\ImageUpload\Partners\zukunftsstiftung-landwirtschaft.jpg" />
+    <Content Include="Content\ImageUpload\Slider\ngo1.jpg" />
+    <Content Include="Content\ImageUpload\Slider\ngo3.jpg" />
+    <Content Include="Content\ImageUpload\Slider\nog2.jpg" />
     <Content Include="Content\ImageUpload\Users\default.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -1671,7 +1674,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Content\ImageUpload\Slider\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
