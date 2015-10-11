@@ -26,9 +26,9 @@ lsSlide = ViewData["slides"] as List<Models.ImageGallery>;
         {
             foreach (var item in lsSlide)
             {
-
-                <img src="~/@item.ImagePath" width="1200" height="800" alt="slider1">
-
+    
+            <img src="~/@item.ImagePath" width="1200" height="800" alt="slider1">
+   
             }
         }
         else
@@ -96,7 +96,6 @@ lsSlide = ViewData["slides"] as List<Models.ImageGallery>;
                             }
 
                             <h1><a href="@Url.Action("ProgramDetail", "Programs", new { @id = item.Id })">@item.Name</a></h1>
-
                             string[] arrListStr = item.Contents.Split(new char[] { '.' });
                             if (arrListStr.Count() > 2)
                             {
