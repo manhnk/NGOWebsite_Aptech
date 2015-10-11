@@ -20,7 +20,7 @@
                 {
                     if (i.ProgramName == @item.Name)
                     {
-                        <img src="~/@i.ImagePath" alt="img" class="animate_top" width="300px" height="300px" />
+                        <img src="~/@i.ImagePath" alt="img" class="animate_top" width="300px" height="200px" />
                     }
                 }
 
@@ -33,16 +33,12 @@
                         <i class="fa fa-map-marker"></i>TheWebLab
                     </p>
 
-                    @{
-                        <p> @Html.Raw(DataAccessLayer.DataConnect.SubStringText(item.Contents)) </p>
-
-                    }
                     <p class="readmore"><a href="@Url.Action("ProgramDetail", "Programs", new { @id = item.Id })">...read more</a></p>
                 </div>
             </div>
         }
     </div>
     <div class="row">
-        <a class="top_btn2" style="float:right" href="@Url.Action("ListProgram", "Programs", new {type=type })">Read more...</a>
+        <a class="top_btn2" style="float:right;margin-right:15px" href="@Url.Action("ListProgram", "Programs", new {type=type })">Read more...</a>
     </div>
 </div>

@@ -24,8 +24,9 @@ namespace NGOWebsite.Areas.Admin.Controllers
             ViewData["Program"] = lsPro.Count;
 
             //count new mss program
-            List<Message> lsMssPro = MessageBusiness.GetProgramMessage().Where(d => d.Status==0).ToList();
-            ViewData["MssPro"] = lsMssPro.Count;
+            List<Message> lsMssPro = MessageBusiness.GetProgramMessage();
+            int count = lsMssPro.Sum(d => d.TotalNewMessage);
+            ViewData["MssPro"] = count;
 
             //count new mss others
             List<Message> lsMssOther = MessageBusiness.GetOtherMessage().Where(d => d.Status==0).ToList();

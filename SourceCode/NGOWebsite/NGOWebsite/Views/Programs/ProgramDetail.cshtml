@@ -3,24 +3,24 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 @*<style>
-    #custom-content img {
-        max-width: 100%;
-        margin-bottom: 10px;
-    }
-</style>*@
+        #custom-content img {
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>*@
 @model Models.Message
 
-@{Models.ImageGallery ls1=new Models.ImageGallery();
-  if (ViewData["ls1"] != null)
-  {
-      ls1 = ViewData["ls1"] as Models.ImageGallery;
-  }
+@{Models.ImageGallery ls1 = new Models.ImageGallery();
+if (ViewData["ls1"] != null)
+{
+    ls1 = ViewData["ls1"] as Models.ImageGallery;
+}
 }
 
 
 
 @{
-    Models.Programs program=new Models.Programs();
+    Models.Programs program = new Models.Programs();
     if (ViewData["program"] != null)
     {
         program = ViewData["program"] as Models.Programs;
@@ -34,18 +34,18 @@
             {
                 if (Request.QueryString["add"].Equals("error"))
                 {
-                <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
-                    <img src='~/Content/View_components/images/error.png' alt="img">Send Message Fail !
-                    
-                </div>
-                
+                    <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                        <img src='~/Content/View_components/images/error.png' alt="img">Send Message Fail !
+
+                    </div>
+
                 }
                 else
                 {
-                <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
-                    <img src='~/Content/View_components/images/success.png' alt="img">Send Message Successfully !
+                    <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                        <img src='~/Content/View_components/images/success.png' alt="img">Send Message Successfully !
 
-                </div>
+                    </div>
                 }
             }
 
@@ -53,50 +53,53 @@
                 <div class="row">
                     <div class="col-md-12 text-center heading animate_top"> @program.Name </div>
                 </div>
-                    <div class="col-md-5 text-center">
+                <div class="col-md-5 text-center">
 
-                        <img src="~/@ls1.ImagePath" alt="img" width="300px" height="300px">
-                    </div>
-                    <div class="col-md-7">
-                        <p class="date">18 - 24 October 2015</p>
-                        <h3>@program.Contents</h3>
-                    </div>
-                    
-                
+                    <img src="~/@ls1.ImagePath" alt="img" width="300px" height="300px">
+                </div>
+                <div class="col-md-7">
+                    <p class="date">18 - 24 October 2015</p>
+                    <h3>@program.Contents</h3>
+                </div>
+
+
             </div>
 
             <div class="row">
 
-                <div class="col-md-5 text-center"><a class="top_btn2" href="@Url.Action("Donate", "Donate", new {proId=program.Id })">Donate Now</a>
+                <div class="col-md-5 text-center">
+                    @if (program.Status == 0 || program.Status == 1)
+                    {
+                        <a class="top_btn2" href="@Url.Action("Donate", "Donate", new {proId=program.Id })">Donate Now</a>
+                    }
                     <div class="col-md-12 text-center heading animate_top">Send message <span class="brd">for this program</span></div>
                 </div>
                 <div class="col-md-6 contact_form animate_left">
 
-
                     @using (Html.BeginForm("AddMsgProcess", "Message", FormMethod.Post))
                     {
-                        
+
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
-                          
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.SenderName)
                             @Html.TextBoxFor(model => model.SenderName, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
                             @Html.ValidationMessageFor(model => model.SenderName)
 
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.SenderEmail)
                             @Html.TextBoxFor(model => model.SenderEmail, new { @class = "form-control", @placeholder = "Enter text", @maxlength = "50" })
                             @Html.ValidationMessageFor(model => model.SenderEmail)
                         </div>
-                       
+
                         <div class="form-group">
                             @Html.Hidden("programId", program.Id)
                             @Html.Hidden("sender", "recentPro")
                         </div>
-                            
+
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Messages)
@@ -104,7 +107,7 @@
                             @Html.ValidationMessageFor(model => model.Messages)
 
                         </div>
-                        
+
                         <button class="bttn" id='send' type="submit">Send</button>
                         <button class="bttn" id='cancel' type="reset">Reset</button>
                     }
@@ -115,7 +118,7 @@
     </div>
 </div>
 
-@section Scripts 
+@section Scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -166,7 +166,7 @@ namespace DataAccessLayer
                 }
             }
 
-            return mes.ToString().Trim()+"...";
+            return mes.Append("...").ToString().Trim();
         }
 
     }

@@ -39,12 +39,18 @@ namespace NGOWebsite.Controllers
         public ActionResult AddMsgProcess(FormCollection frm)
         {
             int kt = 0;
+                int? programId = null;
+
             try
             {
+                if (frm["ProgramId"] != null && frm["ProgramId"] != "")
+                {
+                    programId = int.Parse(frm["programId"]);
+                }
                 // TODO: Add insert logic here
                 Models.Message ad = new Models.Message()
                 {
-                    ProgramId = int.Parse(frm["ProgramId"]),
+                    ProgramId = programId,
                     SenderName = frm["SenderName"],
                     SenderEmail = frm["SenderEmail"],
                     Messages = frm["Messages"],
@@ -64,7 +70,7 @@ namespace NGOWebsite.Controllers
             {
                 if (frm["sender"] != null)
                 {
-                    return RedirectToAction("RecentProgram", "Programs", new { add = "success", @id = int.Parse(frm["ProgramId"]) });
+                    return RedirectToAction("ProgramDetail", "Programs", new { add = "success", @id = programId });
                 }
                 else
                     return RedirectToAction("Message", "Message", new { add = "success" });
@@ -73,7 +79,7 @@ namespace NGOWebsite.Controllers
             {
                 if (frm["sender"] != null)
                 {
-                    return RedirectToAction("RecentProgram", "Programs", new { add = "error", @id = int.Parse(frm["ProgramId"]) });
+                    return RedirectToAction("ProgramDetail", "Programs", new { add = "error", @id = programId});
                 }
                 else
                     return RedirectToAction("Message", "Message", new { add = "error" });
