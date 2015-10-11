@@ -9,14 +9,22 @@
     }
 </style>*@
 @model Models.Message
-@{Models.ImageGallery ls1;
-  ls1 = ViewData["ls1"] as Models.ImageGallery;
+
+@{Models.ImageGallery ls1=new Models.ImageGallery();
+  if (ViewData["ls1"] != null)
+  {
+      ls1 = ViewData["ls1"] as Models.ImageGallery;
+  }
 }
 
 
 
-@{Models.Programs program;
-  program = ViewData["program"] as Models.Programs;
+@{
+    Models.Programs program=new Models.Programs();
+    if (ViewData["program"] != null)
+    {
+        program = ViewData["program"] as Models.Programs;
+    }
 }
 
 <div class="contact-bg parallax" id="contact">
@@ -42,9 +50,8 @@
             }
 
             <div class="row">
-                @if (program != null)
-                {<div class="row">
-                    <div class="col-md-12 text-center heading animate_top">@program.Name</div>
+                <div class="row">
+                    <div class="col-md-12 text-center heading animate_top"> @program.Name </div>
                 </div>
                     <div class="col-md-5 text-center">
 
@@ -55,12 +62,12 @@
                         <h3>@program.Contents</h3>
                     </div>
                     
-                }
+                
             </div>
 
             <div class="row">
 
-                <div class="col-md-5 text-center"><a class="top_btn2" href="@Url.Action("Donate", "Donate")">Donate Now</a>
+                <div class="col-md-5 text-center"><a class="top_btn2" href="@Url.Action("Donate", "Donate", new {proId=program.Id })">Donate Now</a>
                     <div class="col-md-12 text-center heading animate_top">Send message <span class="brd">for this program</span></div>
                 </div>
                 <div class="col-md-6 contact_form animate_left">

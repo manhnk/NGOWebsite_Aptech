@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "ListProgram";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@using DataAccessLayer;
+
+@model IEnumerable<Models.Programs>
+@{
+    string type="";
+    if(ViewData["type"]!=null){
+        type=ViewData["type"].ToString();
+    }
+}
+<div class="recent_news" id="recent_news">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12 heading dark animate_top">
+                @if (type == "upcoming")
+                {
+                    @Html.DisplayName("Upcoming")
+                }else if(type=="recent"){
+                    @Html.DisplayName("Recent")
+                }
+                else
+                {
+                    @Html.DisplayName("Complete")
+                }
+                <span>Programs</span>
+            </div>
+        </div>
+        <div class="row act">
+            @{List<Models.ImageGallery> listImg;
+            listImg = ViewData["lsTopicPrograms"] as List<Models.ImageGallery>;
+            }
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    @foreach (var i in listImg)
+                    {
+                        if (i.ProgramName == @item.Name)
+                        {
+                            <img src="~/@i.ImagePath" alt="img" class="animate_top" width="300px" height="300px" />
+                        }
+                    }
+
+                    <div class="animate_bottom s1">
+                        <h4><a href="@Url.Action("ProgramDetail", "Programs", new { @id = item.Id })">@item.Name</a></h4>
+                        <p class="date">Issie 18 - 24 October 2015</p>
+                        <p class="meta">
+                            <i class="fa fa-calendar"></i>August 5, 2015<br>
+                            <i class="fa fa-clock-o"></i>9:00am - 1:00pm<br>
+                            <i class="fa fa-map-marker"></i>TheWebLab
+                        </p>
+
+                        @{
+                            <p> @Html.Raw(DataAccessLayer.DataConnect.SubStringText(item.Contents)) </p>
+
+                        }
+                        <p class="readmore"><a href="@Url.Action("ProgramDetail", "Programs", new { @id = item.Id })">...read more</a></p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

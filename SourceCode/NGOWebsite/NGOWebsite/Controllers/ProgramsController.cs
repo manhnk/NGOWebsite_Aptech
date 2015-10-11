@@ -15,18 +15,56 @@ namespace NGOWebsite.Controllers
 
         public ActionResult Programs()
         {
+
+            return View();
+        }
+
+        public ActionResult ListProgram(string type)
+        {
+            ViewData["type"] = type;
             List<Models.ImageGallery> lsTopic = ImageGalleryBusiness.GetImageTopicPrograms();
             ViewData["lsTopicPrograms"] = lsTopic;
-            
-            List<Models.Programs> ls = ProgramsBusiness.GetAllPrograms();
-            if (ls.Count > 0)
-            {
-                return View(ls);
-            }
-            else return null;
 
+            List<Models.Programs> ls = ProgramsBusiness.GetAllPrograms();
+            if (type == "upcoming")
+            {
+                ls = ls.Where(d => d.Status == 0).ToList();
+            }
+            else if (type == "recent")
+            {
+                ls = ls.Where(d => d.Status == 1).ToList();
+            }
+            else
+            {
+                ls = ls.Where(d => d.Status == 2).ToList();
+            }
+            return View(ls);
         }
-        public ActionResult RecentProgram(int id)
+
+        public ActionResult PartialViewProgram(string type)
+        {
+            List<Models.ImageGallery> lsTopic = ImageGalleryBusiness.GetImageTopicPrograms();
+            ViewData["lsTopicPrograms"] = lsTopic;
+            ViewData["type"] = type;
+
+            List<Models.Programs> ls = ProgramsBusiness.GetAllPrograms();
+            if (type == "upcoming")
+            {
+                ls = ls.Where(d => d.Status == 0).Take(3).ToList();
+            }
+            else if (type == "recent")
+            {
+                ls = ls.Where(d => d.Status == 1).Take(3).ToList();
+            }
+            else
+            {
+                ls = ls.Where(d => d.Status == 2).Take(3).ToList();
+            }
+
+            return PartialView(ls);
+        }
+
+        public ActionResult ProgramDetail(int id)
         {
             List<Models.ImageGallery> lsTopic = ImageGalleryBusiness.GetImageTopicPrograms();
             foreach (var item in lsTopic)

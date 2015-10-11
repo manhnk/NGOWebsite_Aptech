@@ -40,7 +40,14 @@
                 }
             }
             <div class="row">
-                <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donate</span>&nbsp;&nbsp;&nbspForm</div>
+                @if (pro != null)
+                {
+                    <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donate For</span>&nbsp;&nbsp;&nbsp;@pro.Name</div>
+                }
+                else
+                {
+                    <div class="col-md-12 text-center heading animate_top"><span class="brd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donate</span>&nbsp;&nbsp;&nbspForm</div>
+                }
             </div>
 
             <div class="row">
@@ -51,8 +58,7 @@
                     {
                         if (pro != null)
                         {
-                            @Html.Hidden("ProgramId",pro.Id)
-                            <span>Donate for </span><span style="font-weight:bold;color:white">@pro.Name</span>
+                            @Html.Hidden("ProgramId", pro.Id)
                         }
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
