@@ -23,5 +23,13 @@ namespace NGOWebsite.Controllers
             ViewData["lsOthers"] = lsOthers;
             return View();
         }
+
+        public ActionResult GalleryDetail(int proId)
+        {
+            List<ImageGallery> ls = ImageGalleryBusiness.GetImageGalleryByProgram(proId);
+            ViewData["program"] = ls[0].ProgramName;
+            return View(ls);
+        }
+
     }
 }

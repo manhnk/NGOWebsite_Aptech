@@ -1665,6 +1665,8 @@
     <Content Include="Views\Donate\Donate.cshtml" />
     <Content Include="Views\Programs\PartialViewProgram.cshtml" />
     <Content Include="Views\Programs\ListProgram.cshtml" />
+    <Content Include="Views\Gallery\GalleryDetail.cshtml" />
+    <Content Include="Views\Informationss\NewsDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

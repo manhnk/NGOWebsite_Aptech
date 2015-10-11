@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "NewsDetail";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@model Models.Informations
+@using Models
+
+@{
+    Informations info = ViewData["info"] as Informations;
+}
+
+<div class="recent_news">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12 heading dark animate_top"><span>@Html.DisplayName(info.Subject)</span></div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-10 welcome_txt text-justify animate_bottom">
+            <p>@info.Contents</p>
+        </div>
+        <div class="col-md-1"></div>
+        <p style="border-bottom:1px solid gray"> </p>
+
+
+
+        @if (ViewData["lsRandom"] != null)
+        {
+            <div class="row ">
+                <div class="col-md-12 dark animate_top text-center heading">Others News</div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    @{
+            List<Informations> ls = ViewData["lsRandom"] as List<Informations>;
+            foreach (Informations item in ls)
+            {<div class="col-md-6">
+                <a style="font-size:20px" href="@Url.Action("NewsDetail", "Informationss", new { id=item.Id})"> @item.Subject </a><br />
+                <div class="newContent">
+                    @Html.Raw(DataAccessLayer.DataConnect.SubStringText(item.Contents))
+                </div>
+                <p class="readmore"><a href="@Url.Action("NewsDetail", "Informationss", new { @id = item.Id })">...read more</a></p>
+
+            </div>
+            }}
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+        }
+    </div>
+</div>

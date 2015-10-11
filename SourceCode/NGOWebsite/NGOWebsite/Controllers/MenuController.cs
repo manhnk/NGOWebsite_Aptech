@@ -17,7 +17,7 @@ namespace NGOWebsite.Controllers
         {
             List<Models.Menu> ls = MenuBusiness.GetAllMenuPostionNotNull();
             //List<Models.Menu> ls = MenuBusiness.GetAllMenu();
-            List<Models.Informations> ls1 = InformationsBusiness.GetAllInformations();
+            List<Models.Informations> ls1 = InformationsBusiness.GetAllInformations().Where(d=> d.ParentId!=null).ToList();
 
             ViewData["submenu"] = ls1;
 

@@ -28,47 +28,18 @@ namespace NGOWebsite.Controllers
             ViewData["lsTopicPrograms"] = lsTopic;
 
             //Get recent programs which have status = 1
-            List<Models.Programs> ls1 = ProgramsBusiness.GetAllPrograms();
-            List<Models.Programs> program = new List<Programs>();
-
-            foreach (var item in ls1)
-            {
-                if (item.Status == 1)
-                {
-                    program.Add(item);
-                }
-            }
-            if (program.Count > 0)
-            {
-                ViewData["programs"] = program;
-            }
-            else
+            List<Models.Programs> ls1 = ProgramsBusiness.GetAllPrograms().Where(d=> d.Status==1).OrderByDescending(d=>d.Id).Take(3).ToList();
+            if (ls1.Count > 0)
             {
                 ViewData["programs"] = ls1;
-                //ViewData["programs"] = null;
             }
 
             //Get NEWS from Information
-            List<Models.Informations> ls2 = InformationsBusiness.GetAllInformations();
-            List<Models.Informations> infor = new List<Informations>();
-            foreach (var item in ls2)
-            {
-                if (item.ParentId == null)
-                {
-                    infor.Add(item);
-                }
-            }
-
+            List<Models.Informations> ls2 = InformationsBusiness.GetAllInformations().Where(d=> d.ParentId==null).OrderByDescending(d=>d.Id).Take(5).ToList();
             
-            if (infor.Count > 0)
-            {
-                ViewData["infor"] = infor;
-            }
-            else
+            if (ls2.Count > 0)
             {
                 ViewData["infor"] = ls2;
-                //ViewData["infor"] = null;
-
             }
 
             return View(ls);

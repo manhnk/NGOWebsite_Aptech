@@ -14,8 +14,8 @@ $(document).ready(function () {
 		var html = '';
 		html += img;
 		html += '<div style="height:25px;clear:both;display:block;">';
-		html += '<h1 class="heading"><a class="controls next" href="' + (index + 2) + '">Next &raquo;</a></h1>';		
-		html += '<h1 class="heading"><a class="controls previous" href="' + (index) + '">&laquo; Prev</a></h1>';
+		html += '<a class="controls next" href="' + (index + 2) + '">Next &raquo;</a>';		
+		html += '<a class="controls previous" href="' + (index) + '">&laquo; Prev</a>';
 		html += '<div style="margin-left:140px;float:left ;font-size: 11px;padding-top: 8px;font-weight: bold;">';
 		
 		html += '</div>';

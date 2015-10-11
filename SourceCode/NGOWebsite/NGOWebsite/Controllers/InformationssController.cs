@@ -43,5 +43,18 @@ namespace NGOWebsite.Controllers
             List<Models.Informations> about = InformationsBusiness.GetInformationsById(1);
             return View(about);
         }
+
+        public ActionResult NewsDetail(int id)
+        {
+            Informations info = InformationsBusiness.GetInformationsById(id)[0];
+            ViewData["info"] = info;
+            Random rnd=new Random();
+            List<Informations> ls = InformationsBusiness.GetAllInformations().Where(d => d.ParentId == null).OrderBy(q => Guid.NewGuid()).Take(10).ToList();
+            ViewData["lsRandom"] = ls;
+
+            return View();
+        }
     }
+
+   
 }

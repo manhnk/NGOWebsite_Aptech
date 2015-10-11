@@ -6,9 +6,18 @@
 }
 
 <style type="text/css">
-    .newContent p{
-        color:black;
+    p {
+        margin: 0px;
     }
+
+    .newContent {
+        text-indent: 30px;
+        text-transform: capitalize;
+    }
+
+        .newContent p {
+            color: black;
+        }
 </style>
 @using DataAccessLayer
 
@@ -26,9 +35,9 @@ lsSlide = ViewData["slides"] as List<Models.ImageGallery>;
         {
             foreach (var item in lsSlide)
             {
-    
-            <img src="~/@item.ImagePath" width="1200" height="800" alt="slider1">
-   
+
+                <img src="~/@item.ImagePath" width="1200" height="800" alt="slider1">
+
             }
         }
         else
@@ -55,7 +64,7 @@ lsSlide = ViewData["slides"] as List<Models.ImageGallery>;
                     <span class="subtitle">Education for all.</span>
                 </div>
                 <div class="col-md-9 slider_title">
-                    <h2 class="animate_top">Supporting child education, and counting...</h2>
+                    <h2 class="animate_top">Supporting education, children, health and counting...</h2>
                     <a class="top_btn" href="@Url.Action("Donate", "Donate")">Donate Now</a>
 
                 </div>
@@ -77,68 +86,50 @@ lsSlide = ViewData["slides"] as List<Models.ImageGallery>;
                 }
                 @{List<Models.ImageGallery> listImg;
                 listImg = ViewData["lsTopicPrograms"] as List<Models.ImageGallery>;
-                int flag = 0;
                 }
 
                 @if (prolist != null)
                 {
                     foreach (var item in prolist)
-                    {
-                        flag++;
-                        if (flag < 4)
-                        {
-                            foreach (var i in listImg)
+                    {<div class="row" style="margin-bottom:20px">
+                        <div class="col-md-5">
+                            @foreach (var i in listImg)
                             {
                                 if (i.ProgramName == @item.Name)
-                                {
-                                    <img src="~/@i.ImagePath" alt="img" class="animate_top" width="300px" height="300px">
+                                {   <img src="~/@i.ImagePath" alt="img" class="animate_top" width="270px" height="200px">
                                 }
                             }
-
-                            <h1><a href="@Url.Action("ProgramDetail", "Programs", new { @id = item.Id })">@item.Name</a></h1>
-                            string[] arrListStr = item.Contents.Split(new char[] { '.' });
-                            if (arrListStr.Count() > 2)
-                            {
-                                <h3>@String.Concat(arrListStr[0], arrListStr[1])</h3>
-                            }
-                            else
-                            {
-                                <h3>@item.Contents</h3>
-                            }
-
-
-                            <hr style="height: 2px; border-width: 0; background-color: gray">
-                        }
-
-
-
+                        </div>
+                        <div class="col-md-7">
+                            <a style="font-weight:bold;font-size:20px" href="@Url.Action("ProgramDetail", "Programs", new { @id = item.Id })">@item.Name</a>
+                            <div class="newContent">@Html.Raw(DataAccessLayer.DataConnect.SubStringText(item.Contents))</div>
+                            <p class="readmore"><a href="@Url.Action("ProgramDetail", "Programs", new { @id = item.Id })">...read more</a></p>
+                        </div>
+                    </div>
+                    <hr style="height: 1px; border-width: 0; background-color: gray">
 
                     }
                 }
             </div>
 
-            @* ==== Display News ===== *@
+            @*================== ==== Display News ===== *@
             <div class="col-md-5 slider_title">
-                <h1 class="heading text-center"><span>NEWS</span></h1>
+                <div class="text-center heading">
+                    <span>NEWS</span>
+                </div>
                 @{IEnumerable<Models.Informations> news;
                 news = ViewData["infor"] as IEnumerable<Models.Informations>;
-                int fl = 0;
                 }
                 @if (news != null)
                 {
-                    fl++;
-                    if (fl < 11)
+                    foreach (var i in news)
                     {
-                        foreach (var i in news)
-                        {
-                            <h1>@i.Subject</h1>
-                            <div class="newContent">
-                                @Html.Raw(DataAccessLayer.DataConnect.SubStringText(@i.Contents))
-                            </div>
-                            <p class="readmore"><a href="@Url.Action("NewsDetail", "Informationss", new { @id = i.Id })">...read more</a></p>
-
-                        }
-
+                        <a style="font-weight:bold;font-size:20px" href="@Url.Action("NewsDetail", "Informationss", new { @id = i.Id })">@i.Subject</a>
+                        <div class="newContent">
+                            @Html.Raw(DataAccessLayer.DataConnect.SubStringText(@i.Contents))
+                        </div>
+                        <p class="readmore"><a href="@Url.Action("NewsDetail", "Informationss", new { @id = i.Id })">...read more</a></p>
+                        <hr style="height: 1px; border-width: 0; background-color: gray">
                     }
                 }
 
