@@ -2,16 +2,20 @@
 @{
     ViewBag.Title = "OurAchievements";
 }
+<style type="text/css">
+    p {
+        color: blue;
+    }
 
+</style>
 <div class="container">
 			<div class="row">
             <div class="col-md-12 heading dark text-center animate_top">Our Achievements</div>
                  @foreach (var item in Model)
                     {
 				<div class="col-md-1"></div>
-				<div class="col-md-10 welcome_txt text-center animate_bottom">
-					<p>Lorem Ipsum has been the industry's standard dummy text ever since the <span>1500s</span>, when an unknown <span>printer</span> took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining unchanged. It was <span>popularised</span> in the 1960s.
-					</p>
+				<div class="col-md-10 text-center animate_bottom">
+					
                     <p>@Html.Raw(item.Contents)</p>
 				</div>
 				<div class="col-md-1"></div>
