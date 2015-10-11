@@ -124,7 +124,7 @@ namespace NGOWebsite.Areas.Admin.Controllers
                         smtp.UseDefaultCredentials = true;
                         smtp.Credentials = networkCre;
                         smtp.Port = 25;
-                       // smtp.Send(mail);
+                        //smtp.Send(mail);
                     }
 
                 }
