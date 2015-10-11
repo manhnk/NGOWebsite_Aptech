@@ -104,8 +104,10 @@
 
 
     <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">@ad.UserName <b class="caret"></b></a>
-        <ul class="dropdown-menu navfix">
+        
+         <a href="#" data-toggle="dropdown" class="dropdown-toggle" title="Your account"><img src="~/@ad.Image"/ width="25px" height="20px">@ad.UserName <b class="caret"></b></a>
+        
+            <ul class="dropdown-menu navfix">
             @foreach (var item in Model)
             {
                 string str = item.Subject;

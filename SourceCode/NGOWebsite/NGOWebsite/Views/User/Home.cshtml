@@ -60,7 +60,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 animate_top">
+            <div class="col-md-7 animate_top">
                 <div class="text-center heading">
                     <span>PROGRAMS</span>
                 </div>
@@ -69,13 +69,17 @@
                 }
                 @{List<Models.ImageGallery> listImg;
                   listImg = ViewData["lsTopicPrograms"] as List<Models.ImageGallery>;
+                  int flag = 0;
                 }
+
                 @if (prolist != null)
                 {
                     foreach (var item in prolist)
                     {
-
-                        foreach (var i in listImg)
+                        flag ++;
+                        if (flag <4)
+                        {
+                             foreach (var i in listImg)
                         {
                             if (i.ProgramName == @item.Name)
                             {
@@ -98,6 +102,8 @@
 
                         
                     <hr style="height: 2px; border-width: 0; background-color: gray">
+                        }
+                       
                         
                        
                     
@@ -105,20 +111,25 @@
                 }
             </div>
 
-
-            <div class="col-md-4 slider_title">
-                <h1>NEWS</h1>
+@* ==== Display News ===== *@
+            <div class="col-md-5 slider_title">
+                <h1 class="heading text-center"><span>NEWS</span></h1>
                 @{IEnumerable<Models.Informations> news;
                   news = ViewData["infor"] as IEnumerable<Models.Informations>;
+                  int fl = 0;
                 }
                 @if (news != null)
                 {
+                    fl++;
+                    if (fl<11)
+                    {
                     foreach (var i in news)
                     {
                     <h1>@i.Subject</h1>
                     <h3>Content</h3>
-                    <p>@i.Contents</p>
-                                       
+                    <p>@i.Contents</p>    
+                    }
+                                                           
                     }
                 }
 
