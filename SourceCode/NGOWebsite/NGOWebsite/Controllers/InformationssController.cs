@@ -30,8 +30,9 @@ namespace NGOWebsite.Controllers
         }
         public ActionResult OurTeam()
         {
-            List<Models.Informations> about = InformationsBusiness.GetInformationsById(3);
-            return View(about);
+            //List<Models.Informations> about = InformationsBusiness.GetInformationsById(3);
+            List<Models.Member> ls = MemberBusiness.GetAllMember().Where(d => d.IsMemberOfTeam == 1).ToList();
+            return View(ls);
         }
         public ActionResult ReadAboutUs()
         {
