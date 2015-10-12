@@ -121,10 +121,10 @@ namespace NGOWebsite.Areas.Admin.Controllers
                         smtp.Host = "smtp.gmail.com";
                         smtp.EnableSsl = true;
                         NetworkCredential networkCre = new NetworkCredential(from, "project4");
-                        smtp.UseDefaultCredentials = true;
+                       //smtp.UseDefaultCredentials = true;
                         smtp.Credentials = networkCre;
                         smtp.Port = 25;
-                        //smtp.Send(mail);
+                       smtp.Send(mail);
                     }
 
                 }
