@@ -1,24 +1,22 @@
-﻿@model IEnumerable<Models.Informations>
+﻿@model Models.Informations
 @{
     ViewBag.Title = "WhatWeDo";
 }
 <style type="text/css">
-    p {
+    .col-md-10 p {
         color: green;
+        text-align: justify;
+        text-indent: 30px;
     }
-
 </style>
 
 <div class="container">
     <div class="row">
         <div class="col-md-12 heading dark text-center animate_top">What  <span>we do</span></div>
-        @foreach (var item in Model)
-        {                    
-            <div class="col-md-1"></div>
-            <div class="col-md-10 text-center animate_bottom">              
-                <p>@Html.Raw(item.Contents)</p>
-            </div>
-            <div class="col-md-1"></div>
-        }
+        <div class="col-md-1"></div>
+        <div class="col-md-10 text-center animate_bottom">
+            <p>@Html.Raw(Model.Contents)</p>
+        </div>
+        <div class="col-md-1"></div>
     </div>
 </div>

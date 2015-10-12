@@ -10,13 +10,27 @@
     Informations info = ViewData["info"] as Informations;
 }
 
+<style type="text/css">
+    .newContent {
+        text-indent: 30px;
+        text-transform: capitalize;
+    }
+
+            .newContent p span {
+                font-size: 20px !important;
+                
+            }
+</style>
+
+
+
 <div class="recent_news">
     <div class="container">
         <div class="row text-center">
-            <div class="col-md-12 heading dark animate_top">@Html.DisplayName(info.Subject)</div>
+            <div class="col-md-12 heading dark animate_top"><span>@Html.DisplayName(info.Subject)</span></div>
         </div>
         <div class="col-md-1"></div>
-        <div class="col-md-10 welcome_txt text-justify animate_bottom">
+        <div class="col-md-10 text-justify animate_bottom" style="padding-bottom:30px">
             <p>@Html.Raw(info.Contents)</p>
         </div>
         <div class="col-md-1"></div>
@@ -34,12 +48,12 @@
             List<Informations> ls = ViewData["lsRandom"] as List<Informations>;
             foreach (Informations item in ls)
             {<div class="col-md-6">
-                <a style="font-size:20px" href="@Url.Action("NewsDetail", "Informationss", new { id=item.Id})"> @item.Subject </a><br />
+                <a style="font-size:20px;font-weight:bold" href="@Url.Action("NewsDetail", "Informationss", new { id=item.Id})"> @item.Subject </a><br />
                 <div class="newContent">
                     @Html.Raw(DataAccessLayer.DataConnect.SubStringText(item.Contents))
                 </div>
                 <p class="readmore"><a href="@Url.Action("NewsDetail", "Informationss", new { @id = item.Id })">...read more</a></p>
-
+                <hr style="height:1px;color:gray" />
             </div>
             }}
                 </div>

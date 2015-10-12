@@ -14,10 +14,17 @@
         text-indent: 30px;
         text-transform: capitalize;
     }
+    
 
         .newContent p {
-            color: black;
+            color: black ;
         }
+
+            .newContent p span {
+                font-size: 20px !important;
+                background-color: #ffffff !important;
+                color: black !important;
+            }
 </style>
 @using DataAccessLayer
 
@@ -125,7 +132,7 @@ lsSlide = ViewData["slides"] as List<Models.ImageGallery>;
                     foreach (var i in news)
                     {
                         <a style="font-weight:bold;font-size:20px" href="@Url.Action("NewsDetail", "Informationss", new { @id = i.Id })">@i.Subject</a>
-                        <div class="newContent">
+                        <div class="newContent" >
                             @Html.Raw(DataAccessLayer.DataConnect.SubStringText(@i.Contents))
                         </div>
                         <p class="readmore"><a href="@Url.Action("NewsDetail", "Informationss", new { @id = i.Id })">...read more</a></p>
