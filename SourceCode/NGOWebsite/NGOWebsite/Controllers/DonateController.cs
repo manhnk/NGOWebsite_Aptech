@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Models;
 using BusinessLogicLayer;
+using System.Net.Mail;
+using System.Net;
 
 namespace NGOWebsite.Controllers
 {
@@ -72,5 +74,49 @@ namespace NGOWebsite.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult SendEmail(FormCollection frm)
+        {
+            int kt = 0;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string url = HttpContext.Request.Url.AbsoluteUri;
+                    url=url.Substring(0,url.IndexOf("Donate/"));
+
+                    string from = "ngowebsite4@gmail.com";
+                    string to = frm["EmailDonator"];
+                    using (MailMessage mail = new MailMessage(from, to))
+                    {
+                        mail.IsBodyHtml = true;
+                        mail.Subject = "From N.G.O Website";
+                        mail.Body = string.Format("Dear Sir/Madam,<br/><br/>A your friend has invited join with us ! Welcome to NGO Website !<br/><a href='{0}'>NGO Webiste</a> <br/><br/>Thanks and regards,<br/>N.G.O",url);
+                        SmtpClient smtp = new SmtpClient();
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.EnableSsl = true;
+                        NetworkCredential networkCre = new NetworkCredential(from, "project4");
+                        //smtp.UseDefaultCredentials = false;
+                        smtp.Credentials = networkCre;
+                        smtp.Port = 25;
+                        smtp.Send(mail);
+                    }
+
+                }
+                kt = 1;
+            }
+            catch
+            {
+                kt = 0;
+            }
+            if (kt > 0)
+            {
+                return RedirectToAction("Donate", "Donate", new { send = "success" });
+            }
+            else
+            {
+                return RedirectToAction("Donate", "Donate", new { send = "error" });
+            }
+        }
     }
 }

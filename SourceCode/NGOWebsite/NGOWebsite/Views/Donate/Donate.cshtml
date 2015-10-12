@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
+
 @model Models.Donation
 
 @{
@@ -39,6 +40,24 @@
                     </div>
                 }
             }
+            @if (Request.QueryString["send"] != null)
+            {
+                if (Request.QueryString["send"].Equals("error"))
+                {
+                    <div class="alert alert-danger" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                        <img src='~/Content/View_components/images/error.png' alt="img">Invite Fail !
+
+                    </div>
+
+                }
+                else
+                {
+                    <div class="alert alert-success" style="text-align: center; margin-top: 30px; margin-bottom: -50px">
+                        <img src='~/Content/View_components/images/success.png' alt="img">Invite Successfull !
+
+                    </div>
+                }
+            }
             <div class="row">
                 @if (pro != null)
                 {
@@ -51,7 +70,26 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4"></div>
+                
+                <div class="col-md-4">
+                    @using (Html.BeginForm("SendEmail", "Donate", FormMethod.Post))
+                    {
+                        if (pro != null)
+                        {
+                            @Html.Hidden("ProgramId", pro.Id)
+                        }
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                         <div class="form-group">
+                            @Html.Label("Your Friend's Email")
+                            @Html.TextBoxFor(model => model.EmailDonator, new { @class = "form-control", @Value = mb.Email, @placeholder = "Enter text" })
+                            @Html.ValidationMessageFor(model => model.EmailDonator)
+                        </div>
+                        <button type="submit" class="bttn" style="font-size:25px">Invite Your Friend</button>
+                    }
+                </div>
+                <div class="col-md-1"></div>
+
                 <div class="col-md-5 contact_form animate_left">
 
                     @using (Html.BeginForm("DonateProcess", "Donate", FormMethod.Post))
@@ -137,13 +175,13 @@
                     }
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 @section Scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
-
 }
 
 

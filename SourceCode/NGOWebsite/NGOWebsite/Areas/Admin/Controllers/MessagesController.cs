@@ -116,12 +116,12 @@ namespace NGOWebsite.Areas.Admin.Controllers
                     {
                         mail.IsBodyHtml = true;
                         mail.Subject = "[Reply] From N.G.O Website";
-                        mail.Body = string.Format("Dear Mr/Mrs.{0},\r\n{1}", frm["SenderName"], frm["MessageReply"]);
+                        mail.Body = string.Format("Dear Mr/Mrs.{0},<br/><br/>{1}<br/><br/>Thanks and regards,<br/>N.G.O", frm["SenderName"], frm["MessageReply"]);
                         SmtpClient smtp = new SmtpClient();
                         smtp.Host = "smtp.gmail.com";
                         smtp.EnableSsl = true;
                         NetworkCredential networkCre = new NetworkCredential(from, "project4");
-                       //smtp.UseDefaultCredentials = true;
+                        //smtp.UseDefaultCredentials = false;
                         smtp.Credentials = networkCre;
                         smtp.Port = 25;
                        smtp.Send(mail);
